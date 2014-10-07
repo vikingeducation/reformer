@@ -18,3 +18,16 @@
   <input type="hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
   <input type = "submit" id = "new-user-submit" name ="[user][submitted]"/>
 </form>
+
+<% form_tag "/users" %>
+  <%= label_tag "email" %>
+  <%= email_field_tag "email" %>
+  
+  <%= label_tag "username" %>
+  <%= text_field_tag "username" %>
+  
+  <%= label_tag "password" %>
+  <%= password_field_tag "password" %>
+  
+  <%= submit_tag %>
+<% end %>
