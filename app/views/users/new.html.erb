@@ -1,16 +1,26 @@
 <form action="/users" method="post" accept-charset="UTF-8">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
   <label>
-    User Name
+    Username
     <input type="text" name="user[username]">
+  </label>
+  <label>
+    Email Address
+    <input type="text" name="user[email]">
   </label>
   <label>
     Password
     <input type="password" name="user[password]">
   </label>
-  <label>
-    Email
-    <input type="text" name="user[email]">
-  </label>
   <input type="submit">
 </form>
+
+<%= form_tag("/users", :method => "post") do %>
+  <%= label_tag(:username, "Username") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email Address") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+<% end %>
