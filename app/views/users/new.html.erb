@@ -31,3 +31,12 @@
   
   <%= submit_tag %>
 <% end %>
+
+<% form_for @post %>
+  <%= label :post, :email %>
+  <%= f.email_field :email %>
+  <%= label :post, :username %>  
+  <%= f.text_field :username %>
+  <%= label :post, :password %>
+  <%= f.password_field :password %>
+<% end % >
