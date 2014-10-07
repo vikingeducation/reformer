@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 
+gem 'better_errors', group: :development
+gem 'binding_of_caller', group: :development
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
