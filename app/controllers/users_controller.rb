@@ -15,6 +15,19 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    params = check_flat_params
     params.require(:user).permit(:username, :email, :password)
   end
+
+  def check_flat_params
+    if params['user'].nil?
+      params['user'] = {
+        'username' => params['username'],
+        'email' => params['email'],
+        'password' => params['password']
+      }
+    end
+    params
+  end
 end
+
