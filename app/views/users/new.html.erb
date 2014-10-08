@@ -19,7 +19,7 @@
   <input type = "submit" id = "new-user-submit" name ="[user][submitted]"/>
 </form>
 
-<% form_tag "/users" %>
+<%= form_tag "/users" do %>
   <%= label_tag "email" %>
   <%= email_field_tag "email" %>
   
@@ -32,11 +32,12 @@
   <%= submit_tag %>
 <% end %>
 
-<% form_for @post %>
-  <%= label :post, :email %>
+<%= form_for @user do |f| %>
+  <%= f.label :user, :email %>
   <%= f.email_field :email %>
-  <%= label :post, :username %>  
+  <%= f.label :user, :username %>
   <%= f.text_field :username %>
-  <%= label :post, :password %>
+  <%= f.label :user, :password %>
   <%= f.password_field :password %>
-<% end % >
+  <%= f.submit %>
+<% end %>

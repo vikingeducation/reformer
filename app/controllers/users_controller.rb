@@ -18,11 +18,14 @@ end
 
 private
 
+# Works for flat params and nested params
 def whitelisted_user_params
-  if params[:user][:email] && params[:user][:password] && params[:user][:username]
+  if params[:user]
     params.require(:user).permit(:email, :username, :password)
   else
-    :email => params[:email], :username => params[:username], :password => params[:password]
+    { :email => params[:email],
+      :username => params[:username],
+      :password => params[:password] }
   end
 end
 
