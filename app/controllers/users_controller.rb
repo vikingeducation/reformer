@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -20,13 +21,11 @@ class UsersController < ApplicationController
   end
 
   def check_flat_params
-    if params['user'].nil?
       params['user'] = {
         'username' => params['username'],
         'email' => params['email'],
         'password' => params['password']
-      }
-    end
+      } if params['user'].nil?
     params
   end
 end

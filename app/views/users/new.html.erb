@@ -1,3 +1,4 @@
+<p>Raw HTML</p>
 <form action="/users#create" method="post" accept-charset="UTF-8">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<label for="username">
@@ -5,7 +6,7 @@
 		<input type="text" name="[user][username]">
 	</label>
 	<label for="email">
-	Email Address:
+	Email:
 		<input type="text" name="[user][email]">
 	</label>
 
@@ -17,6 +18,8 @@
 	<input type="submit">
 </form>
 
+<p>Form_tag</p>
+
 <%= form_tag ('/users#create') do %>
 	<%= label_tag(:username, "Username:") %>
 	<%= text_field_tag(:username) %>
@@ -25,10 +28,23 @@
 	<%= text_field_tag(:email) %>
 	
 	<%= label_tag(:password, "Password:") %>
-	<%= text_field_tag(:password) %>
+	<%= password_field_tag(:password) %>
 
 	<%= submit_tag("Submit") %>
 
 <% end %>
 
-{"utf8"=>"✓", "authenticity_token"=>"FxbO6cWhyaY2JKxvvGJnpr8dOQXILOhGENFdEPnnNzs=", "username"=>"as", "email"=>"as", "password"=>"as", "commit"=>"Submit", "action"=>"create", "controller"=>"users"}
+<p>form_for</p>
+<%= form_for(@user) do |f| %>
+	<%= f.label :username, "Username:" %>
+	<%= f.text_field :username %>
+
+	<%= f.label :email, "Email:"  %>
+	<%= f.text_field :email %>
+
+	<%= f.label :password, "Password:" %>
+	<%= f.password_field :password %>
+
+	<%= f.submit "Submit!" %>
+
+<% end %>
