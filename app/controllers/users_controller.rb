@@ -10,7 +10,7 @@ def create
   if @user.save
     redirect_to new_user_path
   else
-    flash[:notice] = "Oh no!!!!!"
+    flash.now[:notice] = "Oh no!!!!!"
     render :new
   end
 

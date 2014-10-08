@@ -33,11 +33,11 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-  <%= f.label :user, :email %>
-  <%= f.email_field :email %>
-  <%= f.label :user, :username %>
-  <%= f.text_field :username %>
-  <%= f.label :user, :password %>
+  <%= f.label :email, "Enter your email: " %>
+  <%= f.email_field :email, placeholder: "email@email.com" %>
+  <%= f.label :username, "This is a custom label." %>
+  <%= f.text_field :username, value: :guest %>
+  <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.submit %>
 <% end %>
