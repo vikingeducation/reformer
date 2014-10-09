@@ -1,6 +1,7 @@
-<h1>Hello, world!</h1>
+<h1>Hello, world! Make a new user in 3 magical ways!</h1>
 
 <p id="notice"><%= flash[:notice] %></p>
+
 
 <form accept-charset="UTF-8" action = "/users" method ="post">
   <label for="email">
@@ -21,14 +22,15 @@
 
 <%= form_tag "/users" do %>
   <%= label_tag "email" %>
-  <%= email_field_tag "email" %>
-  
+  <%= field_with_errors(@user, :email) %>
+
   <%= label_tag "username" %>
-  <%= text_field_tag "username" %>
-  
+  <%= field_with_errors(@user, :username) %>
+
+
   <%= label_tag "password" %>
-  <%= password_field_tag "password" %>
-  
+  <%= field_with_errors(@user, :password) %>
+
   <%= submit_tag %>
 <% end %>
 
@@ -41,3 +43,7 @@
   <%= f.password_field :password %>
   <%= f.submit %>
 <% end %>
+
+<p>
+  <%= link_to "Back to index", root_path %>
+</p>
