@@ -1,0 +1,30 @@
+Fill in the forms to see a sample of how our wonderful forms work!
+
+<form name="create_user" action="/users" method="POST" accept-charset="UTF-8">
+	<input name="utf8" value="✓" type="hidden" >
+	<input type="hidden" name="authenticity_token" vaue="<%=form_authenticity_token%>">
+	<label for="username">Username:</label><input name="[user][username]" type="string">
+	<label for="email">Email:</label>
+	<input name="[user][email]" type="string">
+	<label for="password">Password:</label>
+	<input name="[user][password]" type="password">
+	<input type ="submit" value="SMASH">
+</form>
+
+<%= form_tag("/users") do %>
+	<%= label_tag(:username) %>
+	<%= text_field(:user, :username) %>
+	<%= label_tag(:email) %>
+	<%= email_field(:user, :email) %>
+	<%= label_tag(:password) %>
+	<%= password_field(:user, :password) %>
+	<%= submit_tag("DERPINATE") %>
+<%  end %>
+
+<%= form_for @user do |f| %>
+	Username: <%= f.text_field :username %>
+	Email:    <%= f.email_field :email %>
+	Password:  <%= f.password_field :password %>
+							<%= f.submit("HERPINERP") %>
+<% end %>
+<%= render "errors" %>
