@@ -1,0 +1,12 @@
+<h1>Edit</h1>
+<p id="notice"><%= flash[:notice] %></p>
+
+<%= form_for @user do |f| %>
+  <%= f.label :email, "Change your email: " %>
+  <%= f.email_field :email, placeholder: "email@email.com" %>
+  <%= f.label :username, "Change whatever." %>
+  <%= f.text_field :username, value: :guest %>
+  <%= f.label :password, "New password?" %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>

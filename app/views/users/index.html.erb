@@ -1,0 +1,11 @@
+<h1>HI WORLD HI HI HI </h1>
+<h3>Existing Users</h3>
+<% @users.each do |user| %>
+  <p><%= user.inspect %>
+  <%= link_to "Edit this user.", edit_user_path(user.id) %></p>
+<% end %>
+
+<p>
+  <%= link_to "Create a new user", new_user_path %>
+</p>
+
