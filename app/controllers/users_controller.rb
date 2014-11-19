@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Congratulations on creating a new account!" # how to make work?
 			redirect_to users_path
 		else
-			render edit_user_path
+			render "edit"
 		end
 	end
 
