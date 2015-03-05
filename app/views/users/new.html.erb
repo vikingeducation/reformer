@@ -4,7 +4,7 @@
 <form accept-charset="UTF-8" action="/users" method="post">
   <div style="margin:0;padding:0;display:inline">
     <input name="utf8" type="hidden" value="✓">
-    <input name="authenticity_token" type="hidden" value="<%#put helper method here %>">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   </div>
   <div>
     <label>
@@ -26,6 +26,24 @@
 </form>
 
 <h3>New User fancy shmancy form_tag</h3>
-
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= text_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+<% end %>
 
 <h3>New User INSANO form_for</h3>
+
+<%= form_for @user do |f| %>
+  Email:
+  <%= f.text_field :email %>
+  Username:
+  <%= f.text_field :username %>
+  Password:
+  <%= f.text_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>

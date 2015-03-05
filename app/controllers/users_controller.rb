@@ -24,7 +24,12 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_user_params
-    params.require(:user).permit(:username, :password, :email)
+    if params[:user]
+      params.require(:user).permit(:email, :username, :password)
+    else
+      { email: params[:email],
+        username: params[:username],
+        password: params[:password] }
+    end
   end
-
 end

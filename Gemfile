@@ -13,12 +13,17 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+#THERE ARE ALL THE SCHWAD MODIFICATIONS
 gem 'spring', '~> 1.3.3',       group: :development
 
 gem 'hirb',                      group: :development
 gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger',  group: :development
 
 gem 'pry-byebug', group: :development
+group :development do
+  gem "better_errors"
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
