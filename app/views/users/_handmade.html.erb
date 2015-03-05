@@ -1,0 +1,24 @@
+<form action="/users" method="post">
+  <div>
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  </div>
+  <% if flash[:error] %>
+    <div>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+  <label>
+    User name
+    <input type="text" id="username" name="user[username]" value = "<%= user.username %>">
+  </label>
+  <label>
+    Email
+    <input type="text" id="email" name="user[email]" value="<%= user.email %>">
+  </label>
+  <label>
+    Password
+    <input type="password" id="password" name="user[password]" value="<%= user.password %>">
+  </label>
+  <input type="submit" value="Create">
+</form>
