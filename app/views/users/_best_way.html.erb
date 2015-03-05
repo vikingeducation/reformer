@@ -1,0 +1,19 @@
+
+<%= form_for @user do |f| %>
+
+  <%= flash[:error] if flash[:error] %>
+
+  <%= field_with_errors(@user,:username) %>
+  <%= f.label :username, "User name" %>
+  <%= f.text_field :username %>
+
+  <%= field_with_errors(@user,:email) %>
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email, value: "example@email.com" %>
+
+  <%= field_with_errors(@user,:password) %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Create" %>
+<% end %>

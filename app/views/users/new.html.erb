@@ -1,0 +1,16 @@
+<h1>Welcome, new user.</h1>
+
+<h2>
+  This is the PITA hand-crafted form.
+</h2>
+<%= render partial: 'handmade', locals: { user: @user }  %>
+
+<h2>
+  This is the slightly less painful form tag form.
+</h2>
+<%= render 'with_tags' %>
+
+<h2>
+  This is the best way.
+</h2>
+<%= render 'best_way' %>
