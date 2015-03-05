@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reformerreal</title>
+  <title>Do sumfin crazy!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
+    <%= link_to "All Users", users_path %>
+    <%= link_to "New User", new_user_path %>
+    <%= yield %>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
