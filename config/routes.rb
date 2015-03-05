@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
   root 'users#new'
-  resources :users, only: [:new, :create, :index, :show]
+  resources :users, except: [:destroy]
 
 end
