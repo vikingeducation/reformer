@@ -1,0 +1,11 @@
+<h1>Hello, world! Make a new user in 3 magical ways!</h1>
+
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li class='error'><%= error %></li>
+  <% end %>
+</ul>
+
+<%= render partial: 'naked', locals: {user: @user} %>
+<%= render partial: 'tags' %>
+<%= render partial: 'pro' %>
