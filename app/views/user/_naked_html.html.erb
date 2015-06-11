@@ -1,0 +1,18 @@
+<!-- Building the form without any rails helpers -->
+<form method="POST" action="/user"> 
+	<label for="email">Email:</label>
+	<input type="email" name="[user][email]" placeholder="Enter email" value="<%= params["user"][:email] unless params["user"].nil? %> ">
+
+	<label for="username">Name:</label>
+	<input type="text" name="[user][username]" placeholder="Enter username" value="<%= params["user"][:username] unless params["user"].nil? %>">
+
+	<label for="password">Password:</label>
+	<input type="password" name="[user][password]" placeholder="Password"> 
+	<!-- Intentionally not letting password populate on resubmit for security purposes. -->
+
+	<!-- Don't forget our hidden fields -->
+	<input name="utf8" type="hidden" value="✓">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<input type="submit"> 
+</form>
