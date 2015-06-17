@@ -43,3 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem "better_errors"
+end
