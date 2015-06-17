@@ -1,0 +1,6 @@
+<h2>All Users:</h2>
+<ul>
+	<% @user.each do |user| %>
+		<li><%= link_to user.email, "/user/#{user.id}/edit" %></li>
+	<%	end %>
+</ul>
