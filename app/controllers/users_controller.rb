@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
@@ -16,6 +24,11 @@ class UsersController < ApplicationController
 
   end
 
+  def destroy
+    @user = User.find(params[:id]).destroy
+    redirect_to users_path
+  end
+
 
 
   private
@@ -26,7 +39,7 @@ class UsersController < ApplicationController
 
   def parse_params(passed_params)
     if params[:user]
-      params.require(:user).permit(:username, :email, :password)
+      whitelisted_params
     else
       params.permit(:username, :email, :password)
     end
