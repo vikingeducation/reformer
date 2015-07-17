@@ -33,13 +33,21 @@
 
 
 <%= form_for @user do |f| %>
-  <%= f.label :username, 'Username:' %>
+  <%= f.label :username do %>
+    Username: <%= @user.errors[:username].first if @user.errors[:username] %>
+  <% end %>
   <%= f.text_field :username, value: 'Newbie' %>
 
-  <%= f.label :email, 'Email, please:' %>
+
+  <%= f.label :email do %>
+    Email, please: <%= @user.errors[:email].first if @user.errors[:email] %>
+  <% end %>
   <%= f.text_field :email, placeholder: 'example@example.com' %>
 
-  <%= f.label :password, 'Password:' %>
+
+  <%= f.label :password do %>
+    Password: <%= @user.errors[:password].first if @user.errors[:password] %>
+  <% end %>
   <%= f.password_field :password %>
 
   <%= f.submit %>
