@@ -3,12 +3,6 @@
 
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
 <% end %>
 
 
@@ -17,16 +11,34 @@
     Username
   </label>
   <input type="text" name="user[username]" />
+  <% unless @user.errors[:username].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:username].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <label for="email">
     Email
   </label>
   <input type="text" name="user[email]" />
+  <% unless @user.errors[:email].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:email].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <label for="password">
     Password
   </label>
   <input type="password" name="user[password]" />
+  <% unless @user.errors[:password].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:password].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
@@ -42,16 +54,55 @@
 
   <%= label_tag :username %>
   <%= text_field_tag 'user[username]' %>
+  <% unless @user.errors[:username].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:username].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <%= label_tag :email %>
   <%= text_field_tag 'user[email]' %>
+  <% unless @user.errors[:email].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:email].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <%= label_tag :password %>
   <%= password_field_tag 'user[password]' %>
+  <% unless @user.errors[:password].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:password].first}" %>
+    </div>
+  <% end %>
+  <br>
 
   <%= submit_tag "Create new user" %>
 
-
 <% end -%>
 
+<hr>
 
+<%= form_for @user do |f| %>
+  Username: <%= f.text_field :username %>
+  <% unless @user.errors[:username].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:username].first}" %>
+    </div>
+  <% end %>
+  Email: <%= f.text_field :email %>
+  <% unless @user.errors[:email].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:email].first}" %>
+    </div>
+  <% end %>
+  Password: <%= f.password_field :password %>
+  <% unless @user.errors[:password].empty? %>
+    <div class="error">
+      <%= "#{@user.errors[:password].first}" %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>

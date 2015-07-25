@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
             :format => { :with => /@/ },
             :on => :create
 
-  validates :password,
-            :presence => true,
+  validates :password, 
+            :presence => {:message => "Password can't be blank."},
             :length => { :in => 6..40 },
             :on => :create
 

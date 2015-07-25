@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_user_params)
     if @user.save
       flash[:success] = "New user #{@user.username} was created!"
-      redirect_to new_user_path
+      redirect_to @user
     else
       render :new
     end
@@ -17,6 +17,29 @@ class UsersController < ApplicationController
 
   def whitelisted_user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(whitelisted_user_params)
+      flash[:success] = "User #{@user.username} was updated!"
+      redirect_to user_path
+    else
+      render :edit
+    end
+
   end
 
 end
