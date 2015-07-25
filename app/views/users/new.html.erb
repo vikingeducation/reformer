@@ -12,12 +12,14 @@
   <input type="submit">
 </form> -->
 
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag("user[username]") %>
-  <%= label_tag(:email, "email:") %>
-  <%= email_field_tag("user[email]") %>
-  <%= label_tag(:password, "password:") %>
-  <%= password_field_tag("user[password]") %>
-  <%= submit_tag("submit") %>
-<% end %>
+<div>
+  <%= form_tag("/users", method: "post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag("username") %>
+    <%= label_tag(:email, "email:") %>
+    <%= email_field_tag("email") %>
+    <%= label_tag(:password, "password:") %>
+    <%= password_field_tag("password") %>
+    <%= submit_tag("submit") %>
+  <% end %>
+</div>

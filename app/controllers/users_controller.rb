@@ -11,7 +11,18 @@ class UsersController < ApplicationController
 
   private
 
+  def check_nest
+    unless params[:user]
+      params[:user] = {}
+      params[:user][:password] = params[:password]
+      params[:user][:email] = params[:email]
+      params[:user][:username] = params[:username]
+    end
+  end
+
   def params_hash
+    check_nest
     params.require(:user).permit(:email, :username, :password)
   end
+
 end
