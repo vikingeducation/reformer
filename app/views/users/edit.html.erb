@@ -3,27 +3,12 @@
 <% end %>
 <br><br>
 
-
-<%= form_for(@user) do |f| %>
-
-
-
-<%= f.text_field(:username) %><br>
-
-<%= get_errors("username", @user) %>
-
-<br>
-
-
-<%= f.email_field(:email) %><br>
-
-<%= get_errors("email", @user) %>
-
-
-<%= f.password_field(:password) %>
-
-<%= get_errors("password", @user) %>
-
-<br><%= f.submit("Submit") %><br>
-
+<%= form_for @user do |f| %>
+  <%= get_errors("username", @user) %>
+  <%= f.text_field :username%>
+  <%= get_errors("email", @user) %>
+  <%= f.email_field :email%>
+  <%= get_errors("password", @user) %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
 <% end %>
