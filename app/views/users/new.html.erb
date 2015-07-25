@@ -86,23 +86,30 @@
 <hr>
 
 <%= form_for @user do |f| %>
-  Username: <%= f.text_field :username %>
+
   <% unless @user.errors[:username].empty? %>
     <div class="error">
       <%= "#{@user.errors[:username].first}" %>
     </div>
   <% end %>
-  Email: <%= f.text_field :email %>
+  Username: <%= f.text_field :username %>
+
+
   <% unless @user.errors[:email].empty? %>
     <div class="error">
       <%= "#{@user.errors[:email].first}" %>
     </div>
   <% end %>
-  Password: <%= f.password_field :password %>
+  Email: <%= f.text_field :email %>
+
+
   <% unless @user.errors[:password].empty? %>
     <div class="error">
       <%= "#{@user.errors[:password].first}" %>
     </div>
   <% end %>
+  Password: <%= f.password_field :password %>
+
+
   <%= f.submit %>
 <% end %>
