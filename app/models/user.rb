@@ -1,24 +1,21 @@
 class User < ActiveRecord::Base
-  validates :username
-            :presence => true,
-            :uniqueness => true,
-            :length =>{ :in => 6..16 }
+  validates :username,
+            :presence => {:message => "User name can't be blank." },
+            :uniqueness => {:message => "User name already exists."},
+            :length => { :in => 4..16 },
             :on => :create
-            :message => "Not a valid username."
 
-  validates :email
-            :presence => true,
-            :uniqueness => true,
-            :length =>{ :in => 5..40 },
+  validates :email,
+            :presence => {:message => "Email can't be blank." },
+            :uniqueness => {:message => "Email is already registered."},
+            :length => { :in => 5..40 },
             :format => { :with => /@/ },
             :on => :create
-            :message => "Not a valid email."
 
-  validates :password
+  validates :password,
             :presence => true,
-            :length =>{ :in => 6..40 },
+            :length => { :in => 6..40 },
             :on => :create
-            :message => "Not a valid password."
 
 
 end

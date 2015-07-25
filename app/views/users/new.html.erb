@@ -1,10 +1,57 @@
-<form action="/user#create" method="post" accept-charset="UTF-8">
-<label for="email">
-Email
-</label>
-<input type="text" name="users[email]" />
-<label for="username">
-Email
-</label>
-<input type="text" name="users[username]" />
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<form action="/users" method="post" accept-charset="UTF-8">
+  <label for="username">
+    Username
+  </label>
+  <input type="text" name="user[username]" />
+
+  <label for="email">
+    Email
+  </label>
+  <input type="text" name="user[email]" />
+
+  <label for="password">
+    Password
+  </label>
+  <input type="password" name="user[password]" />
+
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <input name="utf8" type="hidden" value="✓">
+
+
+  <input type = "submit">
 </form>
+
+<hr>
+
+<%= form_tag('/users') do %>
+
+  <%= label_tag :username %>
+  <%= text_field_tag 'user[username]' %>
+
+  <%= label_tag :email %>
+  <%= text_field_tag 'user[email]' %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag 'user[password]' %>
+
+  <%= submit_tag "Create new user" %>
+
+
+<% end -%>
+
+
