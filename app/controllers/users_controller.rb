@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
   def new
-  
+
   end
 
   def create
     @user = User.new(white_list_user_params)
+    p @user
     if @user.save
-      redirect root_path
+      redirect_to root_path
     else
       render :new
     end
@@ -16,6 +17,6 @@ class UsersController < ApplicationController
   private
 
   def white_list_user_params
-    params.require(:user).permit(:username,:email,:password)  
+    params.require(:user).permit(:username,:email,:password)
   end
 end

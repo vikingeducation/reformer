@@ -4,13 +4,25 @@
 <form action = '/users' method ="POST" >
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>User
-    <input type="text" name="user[username]">
+    <input type="text" name="user[username]" value="<%= @user.username unless @user.nil? %>">
   </label>
   <label>Email
-    <input type="text" name="user[email]">
+    <input type="text" name="user[email]" value="<%= @user.email unless @user.nil?%>">
   </label>
   <label>Password
-    <input type="password" name="user[password]">
-  </label>  
+    <input type="password" name="user[password]" value="<%= @user.password unless @user.nil?%>">
+  </label>
    <input type="submit">
 </form>
+<br>
+<br>
+<br>
+<br>
+
+<%= form_tag '/users', method: 'post' do%>
+  <%= label_tag(:username, "User") %>
+  <%= text_field_tag :username %>
+  <%= text_field_tag :email %>
+  <%= password_field_tag :password %>
+  <%= submit_tag %>
+<% end %>
