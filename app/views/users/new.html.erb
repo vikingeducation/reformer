@@ -1,35 +1,5 @@
-<h1>Hello, world</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-
-<!-- <form action="/users" method="post">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label for="username">Username:</label>
-  <input type="text" name="user[username]"><br>
-  <label for="email">Email:  </label>
-  <input type="text" name="user[email]"></br>
-  <label for="password">Password:</label>
-  <input type="password" name="user[password]"><br>
-  <input type="submit">
-</form> -->
+<h1>Create a User</h1>
+<%= render :partial => 'form' %>
 
 
-<!--   <%= form_tag("/users", method: "post") do %>
-    <%= label_tag(:username, "Username:") %>
-    <%= text_field_tag("username") %>
-    <%= label_tag(:email, "email:") %>
-    <%= email_field_tag("email") %>
-    <%= label_tag(:password, "password:") %>
-    <%= password_field_tag("password") %>
-    <%= submit_tag("submit") %>
-  <% end %> -->
-
-<%= form_for(@user) do |f| %>
-<%= f.label(:username) %>
-<%= f.text_field(:username) %>
-<%= f.label(:"email") %>
-<%= f.email_field(:email) %>
-<%= f.label(:password) %>
-<%= f.password_field(:password) %>
-<%= f.submit(:Submit) %>
-<% end %>
 

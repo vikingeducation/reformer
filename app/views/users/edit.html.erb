@@ -1,14 +1,2 @@
-<% @user.errors.full_messages.each do |i| %>
-<%= "#{i}" %><br>
-<% end %>
-<br><br>
-
-<%= form_for @user do |f| %>
-  <%= get_errors("username", @user) %>
-  <%= f.text_field :username%>
-  <%= get_errors("email", @user) %>
-  <%= f.email_field :email%>
-  <%= get_errors("password", @user) %>
-  <%= f.password_field :password %>
-  <%= f.submit %>
-<% end %>
+<h1>Edit Form</h1>
+<%= render :partial => 'form' %>

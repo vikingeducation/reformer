@@ -5,9 +5,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params_hash)
-    user.save!
-    redirect_to users_path
+    @user = User.new(params_hash)
+    if @user.save
+      redirect_to users_path
+    else
+      render :new
+    end
   end
 
   def index
