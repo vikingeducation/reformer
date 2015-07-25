@@ -12,7 +12,7 @@
   <input type="submit">
 </form> -->
 
-<div>
+<!-- <div>
   <%= form_tag("/users", method: "post") do %>
     <%= label_tag(:username, "Username:") %>
     <%= text_field_tag("username") %>
@@ -22,4 +22,20 @@
     <%= password_field_tag("password") %>
     <%= submit_tag("submit") %>
   <% end %>
-</div>
+</div> -->
+
+<%= form_for(@user) do |f| %>
+<%= f.label(:Username) %>
+<%= f.text_field(:username) %>
+<%= f.label("Electronic-mail") %>
+<%= f.email_field(:email) %>
+<%= f.label(:Password) %>
+<%= f.password_field(:password) %>
+<%= f.submit("Submit") %>
+<% end %>
+
+
+
+
+
+
