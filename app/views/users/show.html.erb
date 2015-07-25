@@ -1,0 +1,6 @@
+<h1><%= @user.username %></h1>
+Email: <%= @user.email %>
+
+<%= link_to "Edit this user!", edit_user_path(@user) %>
+
+<%= render partial: "index_return" %>

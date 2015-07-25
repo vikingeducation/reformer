@@ -9,14 +9,26 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+  end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(white_list_user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def create
     @user = User.new(white_list_user_params)
-    p @user
     if @user.save
-      redirect_to root_path
+      redirect_to users_path
     else
       render :new
     end
