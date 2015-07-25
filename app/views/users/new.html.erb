@@ -5,12 +5,28 @@
 <h1>Form_for</h1>
 
 <%= form_for @user do |f| %>
+
+<% unless @user.errors.empty? %>
+  <div class="error">
+    <%= @user.errors[:username].first %>
+    </div>
+<%end%>
   <%= f.label :username %>
   <%= f.text_field :username,  placeholder: "Your name" %>
 <br>
+<% unless @user.errors.empty? %>
+  <div class="error">
+    <%= @user.errors[:email].first %>
+    </div>
+<%end%>
   <%= f.label :email %>
   <%= f.email_field :email, value: "example@example.com" %>
 <br>
+<% unless @user.errors.empty? %>
+  <div class="error">
+    <%= @user.errors[:password].first %>
+    </div>
+<%end%>
   <%= f.label :password %>
   <%= f.password_field :password, value: "samplepassword" %>
 
