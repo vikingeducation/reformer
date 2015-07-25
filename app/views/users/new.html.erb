@@ -11,9 +11,9 @@
   <input type="password" name="user[password]"><br>
   <input type="submit">
 </form> -->
-<!-- 
 
-  <%= form_tag("/users", method: "post") do %>
+
+<!--   <%= form_tag("/users", method: "post") do %>
     <%= label_tag(:username, "Username:") %>
     <%= text_field_tag("username") %>
     <%= label_tag(:email, "email:") %>
@@ -21,16 +21,15 @@
     <%= label_tag(:password, "password:") %>
     <%= password_field_tag("password") %>
     <%= submit_tag("submit") %>
-  <% end %>
- -->
+  <% end %> -->
 
 <%= form_for(@user) do |f| %>
-<%= f.label(:Username) %>
+<%= f.label(:username) %>
 <%= f.text_field(:username) %>
-<%= f.label("Electronic-mail") %>
+<%= f.label(:"email") %>
 <%= f.email_field(:email) %>
-<%= f.label(:Password) %>
+<%= f.label(:password) %>
 <%= f.password_field(:password) %>
-<%= f.submit("Submit") %>
+<%= f.submit(:Submit) %>
 <% end %>
 
