@@ -1,0 +1,8 @@
+Username <%=@user.username %>
+<br>
+Email <%=@user.email %>
+<br>
+Password <%=@user.password %>
+
+<%= link_to "Edit", edit_user_path(@user.id)%>
+<%= link_to "Index", users_path %>
