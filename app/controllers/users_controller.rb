@@ -19,7 +19,11 @@ end
 private
 
 def whitelist_new_user_input
-	params.require(:user).permit(:username, :email, :password)
+	if params.class == Array
+
+	else
+		params.require(:user).permit(:username, :email, :password)
+	end
 end
 
 end
