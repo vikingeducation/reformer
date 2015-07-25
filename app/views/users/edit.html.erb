@@ -1,19 +1,29 @@
 <% @user.errors.full_messages.each do |i| %>
 <%= "#{i}" %><br>
 <% end %>
-<br>
+<br><br>
 
 
 <%= form_for(@user) do |f| %>
-<%= f.label(:Username) %><br>
-<%= f.text_field(:username) %>
-<%= "Username #{@user.errors[:username][0]}" if @user.errors[:username] %><br>
-<%= f.label("Electronic-mail") %><br>
-<%= f.email_field(:email) %>
-<%= "Email #{@user.errors[:email][0]}" if @user.errors[:email] %><br>
-<%= f.label(:Password) %><br>
+
+
+
+<%= f.text_field(:username) %><br>
+
+<%= get_errors("username", @user) %>
+
+<br>
+
+
+<%= f.email_field(:email) %><br>
+
+<%= get_errors("email", @user) %>
+
+
 <%= f.password_field(:password) %>
-<%= "Password #{@user.errors[:password][0]}" if @user.errors[:password] %><br>
-<%= f.submit("Submit") %>
+
+<%= get_errors("password", @user) %>
+
+<br><%= f.submit("Submit") %><br>
 
 <% end %>
