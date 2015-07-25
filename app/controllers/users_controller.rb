@@ -7,7 +7,7 @@ end
 def create
 	@user = User.new(whitelist_new_user_input)
 	if @user.save
-		redirect_to user_path
+		redirect_to user_path(@user)
 	else
 		render :new
 	end
@@ -19,7 +19,7 @@ end
 private
 
 def whitelist_new_user_input
-	params.require(:user).permit(:name, :email, :password)
+	params.require(:user).permit(:username, :email, :password)
 end
 
 end
