@@ -1,0 +1,44 @@
+<h1>hello world(just for test)</h1>
+<h2>the plain form way</h2>
+<form action = '/users' method ="POST" >
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label>User
+          <input type="text" name="user[username]" value="<%= @user.username unless @user.nil? %>">
+      </label>
+      <label>Email
+          <input type="text" name="user[email]" value="<%= @user.email unless @user.nil?%>">
+      </label>
+      <label>Password
+          <input type="password" name="user[password]" value="<%= @user.password unless @user.nil?%>">
+      </label>
+      <input type="submit">
+</form>
+<br>
+<br>
+<h2>the form tag way</h2>
+      <%= form_tag '/users', method: 'post' do%>
+      <%= label_tag(:username, "User") %>
+      <%= text_field_tag :username %>
+      <%= label_tag(:email, "Email") %>
+      <%= text_field_tag :email %>
+
+      <%= label_tag(:password, "Password") %>
+      <%= password_field_tag :password %>
+      <%= submit_tag %>
+<% end %>
+<br>
+<br>
+<h2>the form for way</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :username, 'username' %>
+  <%= f.text_field :username, {value: 'sample_user' } %>
+  <%= f.label :email%>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%=  f.submit 'submit' %>
+<% end %>
+
+<%= field_with_errors(@user, :password) %>
+<%= field_with_errors(@user, :email) %>
+<%= field_with_errors(@user, :username) %>
