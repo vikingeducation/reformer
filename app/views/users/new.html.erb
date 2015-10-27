@@ -1,0 +1,52 @@
+Basic Form
+<form action="/users" method="POST" accept-charset="UTF-8">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token  %>">
+  
+  <label>Username
+    <input type="text" name="user[username]">
+  </label>
+
+  <label>Email
+    <input type="email" name="user[email]">
+  </label>
+
+
+  <label>Password
+    <input type="password" name="user[password]">
+  </label>
+
+  <input type="submit">
+</form>
+
+Form_tag Form
+<%= form_tag('/users') do %>
+
+  <%= label_tag 'username' %>
+  <%= text_field_tag 'username' %>
+
+  <%= label_tag 'email' %>
+  <%= email_field_tag 'email' %>
+
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password' %>
+
+  <%= submit_tag 'Submit' %>
+
+<% end %>
+
+Form_for Form
+<%= form_for(@user) do |f| %>
+
+  <%= f.label(:username, "A Cool Username") %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "guy@example.com" %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit %>
+    
+<% end %>
