@@ -1,0 +1,17 @@
+<h1>Edit User</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= field_with_errors(@user, :username) %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= field_with_errors(@user, :email) %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= field_with_errors(@user, :password) %>
+  <%= f.password_field :password %>
+
+  <%= f.button 'Save User!' %>
+<% end %>

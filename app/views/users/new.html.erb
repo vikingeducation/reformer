@@ -1,0 +1,48 @@
+<h1>New User Form</h1>
+<p>Having fun with forms in Rails!</p>
+
+<h2>Basic HTML Form</h2>
+<form method="post" action="/users" accept-charset="UTF-8">
+  <input  type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <label for="[user][username]">Username</label>
+  <input type="text" name="[user][username]">
+
+  <label for="[user][email]">Email</label>
+  <input type="text" name="[user][email]">
+
+  <label for="[user][password]">Password</label>
+  <input type="password" name="[user][password]">
+
+  <button type="submit">Sign Up!</button>
+</form>
+
+<h2>Form_Tag Helper</h2>
+<%= form_tag '/users' do %>
+  <%= label_tag 'username' %>
+  <%= text_field_tag 'username' %>
+
+  <%= label_tag 'email' %>
+  <%= text_field_tag 'email' %>
+
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password' %>
+
+  <%= button_tag 'Sign up!' %>
+<% end %>
+
+<h2>Form_For Helper</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.button 'Sign up!' %>
+<% end %>
