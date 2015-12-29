@@ -32,3 +32,17 @@
 
   <%= button_tag 'Sign up!' %>
 <% end %>
+
+<h2>Form_For Helper</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.button 'Sign up!' %>
+<% end %>

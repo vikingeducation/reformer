@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :check_params, only: [:create]
+
   def new
+    @user = User.new
   end
 
   def create
