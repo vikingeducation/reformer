@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_params, only: [:create]
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
   end
@@ -20,6 +20,17 @@ class UsersController < ApplicationController
       redirect_to @user, notice: "User successfully created!"
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: "User successfully updated!"
+    else
+      render :edit
     end
   end
 
