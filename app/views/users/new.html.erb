@@ -1,2 +1,20 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>New User Form</h1>
+<p>Having fun with forms in Rails!</p>
+
+<h2>Basic HTML Form</h2>
+<form method="post" action="/users" accept-charset="UTF-8">
+  <input  type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <label for="[user][username]">Username</label>
+  <input type="text" name="[user][username]">
+
+  <label for="[user][email]">Email</label>
+  <input type="text" name="[user][email]">
+
+  <label for="[user][password]">Password</label>
+  <input type="password" name="[user][password]">
+
+  <button type="submit">Sign Up!</button>
+</form>
