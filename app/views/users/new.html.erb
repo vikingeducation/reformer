@@ -18,3 +18,17 @@
 
   <button type="submit">Sign Up!</button>
 </form>
+
+<h2>Form_Tag Helper</h2>
+<%= form_tag '/users' do %>
+  <%= label_tag 'username' %>
+  <%= text_field_tag 'username' %>
+
+  <%= label_tag 'email' %>
+  <%= text_field_tag 'email' %>
+
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password' %>
+
+  <%= button_tag 'Sign up!' %>
+<% end %>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_params, only: [:create]
   def new
   end
 
@@ -13,6 +14,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def check_params
+    unless params[:user]
+      params[:user] = {username: params[:username], email: params[:email], password: params[:password]}
+    end
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
