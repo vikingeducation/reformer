@@ -3,24 +3,15 @@
 
   <%= f.label :username %>
   <%= f.text_field :username %>
-  <% unless user.errors[:username].empty? %>
-    <div class="error">
-     <%= "User #{user.errors[:username].first}" %>
-    </div>
-  <% end %>
+  <%= field_with_errors(user,:username) %>
+
   <%= f.label :password %>
   <%= f.password_field :password %>
-  <% unless user.errors[:password].empty? %>
-    <div class="error">
-     <%= "User #{user.errors[:password].first}" %>
-    </div>
-  <% end %>
+  <%= field_with_errors(user,:password) %>
+
   <%= f.label :email %>
-  <%= f.text_field :email %>
-  <% unless user.errors[:email].empty? %>
-    <div class="error">
-     <%= "User #{user.errors[:email].first}" %>
-    </div>
-  <% end %>
+  <%= f.text_field :email, placeholder: "example@example.com"%>
+  <%= field_with_errors(user,:email) %>
+
   <%= f.submit %>
 <% end %>
