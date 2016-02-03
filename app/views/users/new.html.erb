@@ -1,3 +1,16 @@
+<% if @user.errors.any? %>
+  <div>
+    <h5><%= pluralize(@user.errors.count, "error")%> prevented this user from being created: </h5>
+
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li class='error'><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <h3>Hello, world! Make a new user in 3 magical ways!</h3>
 
 <h5>1. Basic HTML form</h5>
@@ -44,12 +57,15 @@
   <%= form_for @user do |f| %>
 
     <%= f.label :email %>
+
     <%= f.email_field :email, :placeholder => "email@email.com" %>
 
     <%= f.label :username, "Your user name here" %>
+
     <%= f.text_field :username, value: 'Super Cool User' %>
 
     <%= f.label :password %>
+
     <%= f.password_field :password %>
 
     <%= f.submit "Submit" %>

@@ -27,6 +27,24 @@ class UsersController < ApplicationController
   end
 
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(whitelisted_user_params)
+      flash[:success] = "User '#{@user.username}' successfully updated"
+      redirect_to @user
+    else
+      flash.now[:error] = "User '#{@user.username}' was not updated"
+      render :edit
+    end
+
+  end
+
+
+
 
 
 

@@ -1,0 +1,16 @@
+<%= form_for @user do |f| %>
+
+  <%= f.label :email %>
+  <%= field_with_errors(@user, :email) %>
+  <%= f.email_field :email, :placeholder => "email@email.com" %>
+
+  <%= f.label :username, "Your user name here" %>
+  <%= field_with_errors(@user, :username) %>
+  <%= f.text_field :username, value: 'Super Cool User' %>
+
+  <%= f.label :password %>
+  <%= field_with_errors(@user, :password) %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Save" %>
+<% end %>
