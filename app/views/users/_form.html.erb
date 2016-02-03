@@ -1,0 +1,18 @@
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username %>
+    <%= display_error_message(@user, :username)%>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= display_error_message(@user, :email)%>
+    <%= f.text_field :email, placeholder: "Your email here" %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= display_error_message(@user, :password)%>
+    <%= f.password_field :password %>
+  </p>
+  <%= f.submit %>
+<%end%>
