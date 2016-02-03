@@ -1,0 +1,28 @@
+
+<!-- <form action="/users" method="POST">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="user_username">Username</label>
+  <input type="text" name="user[username]" id="user_username">
+  <label for="user_password">Password</label>
+  <input type="password" name="user[password]" id="user_password">
+  <label for="user_email">Email</label>
+  <input type="text" name="user[email]" id="user_email">
+  <input type="submit" value="Create User">
+</form>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:user_username, "Username") %>
+  <%= text_field_tag('user[username]', nil, id:'user_username')%>
+  <%= label_tag(:user_password, "Password") %>
+  <%= password_field_tag('user[password]', nil, id:'user_password') %>
+  <%= label_tag(:user_email, "Email") %>
+  <%= text_field_tag('user[email]', nil, id:'user_email') %>
+  <%= submit_tag("Create User") %>
+<% end %> -->
+
+
+<h3> Create a New User</h3>
+<%= render partial: 'form' ,locals: {user: @user}%> 
+
