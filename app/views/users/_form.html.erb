@@ -1,0 +1,17 @@
+
+<%= form_for user do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= field_with_errors(user,:username) %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= field_with_errors(user,:password) %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "example@example.com"%>
+  <%= field_with_errors(user,:email) %>
+
+  <%= f.submit %>
+<% end %>
