@@ -1,0 +1,26 @@
+
+<%= form_for user do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <% unless user.errors[:username].empty? %>
+    <div class="error">
+     <%= "User #{user.errors[:username].first}" %>
+    </div>
+  <% end %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <% unless user.errors[:password].empty? %>
+    <div class="error">
+     <%= "User #{user.errors[:password].first}" %>
+    </div>
+  <% end %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <% unless user.errors[:email].empty? %>
+    <div class="error">
+     <%= "User #{user.errors[:email].first}" %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
