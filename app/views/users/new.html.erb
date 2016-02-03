@@ -1,0 +1,49 @@
+<h1>New User</h1>
+
+
+<h2>Shitty Form</h2>
+
+<form action="/users" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <label for="user_email">Email</label>
+  <input id="user_email" name="user[email]" type="email">
+  <br>
+  <label for="user_username">Username</label>
+  <input id="user_username" name="user[username]" type="text">
+  <br>
+  <label for="user_password">Password</label>
+  <input id="user_password" name="user[password]" type="password">
+  <br>
+  <input type="submit">
+</form>
+
+<h2>Less-Shitty Form</h2>
+
+<% flash.each do |key,val| %>
+  <%= val %>
+<% end %>
+
+<%= form_tag "/users", method: :post do %>
+
+  <%= label_tag :email, "Email" %>
+  <%= email_field_tag :email %>
+  <br>
+  <%= label_tag :username, "Username" %>
+  <%= text_field_tag :username %>
+  <br>
+  <%= label_tag :password, "Password" %>
+  <%= password_field_tag :password %>
+  <br>
+  <%= submit_tag "Submit" %>
+
+<% end %>
+
+<h2>Much better Form</h2>
+
+<%= form_for @user do %>
+
+  
+
+<% end %>
