@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
   def new
     @user = User.new
   end
 
   def create
+    nest_flat_tags
+
     @user = User.new(whitelisted_params)
     if @user.save
       flash[:success] = 'New user created'
