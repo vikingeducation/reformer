@@ -1,0 +1,9 @@
+<h1> User </h1>
+
+<h3><%= @user.username %></h3>
+
+<h3><%= @user.email %></h3>
+
+<%= link_to "Edit", edit_user_path(@user) %>
+
+<%= link_to "Home", users_path(@user) %>
