@@ -1,0 +1,5 @@
+<ul>
+<% @users.each do |user| %>
+  <li><%= "User ID: #{user.id} Username: #{user.username}  Password: #{user.password} Email: #{user.email}" %></li>
+<% end %>
+<ul>
