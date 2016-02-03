@@ -13,29 +13,29 @@
 </form>
 
 
-<%= form_tag( users_path, :method => "POST" ) do   %>
+<%= form_tag( users_path, :method => "POST" ) do %>
 
-    <%= label_tag(:username, "username") %>
-    <%= text_field_tag('user[username]') %>
+  <%= label_tag(:username, "username") %>
+  <%= text_field_tag('user[username]') %>
 
-    <%= label_tag(:email, "email") %>
-    <%= text_field_tag('user[email]') %>
+  <%= label_tag(:email, "email") %>
+  <%= text_field_tag('user[email]') %>
 
-    <%= label_tag(:password, "password") %>
-    <%= password_field_tag('user[password]') %>
+  <%= label_tag(:password, "password") %>
+  <%= password_field_tag('user[password]') %>
 
-    <%= hidden_field_tag( :form_authenticity_token, "authenticity_token" ) %>
+  <%= hidden_field_tag( :form_authenticity_token, "authenticity_token" ) %>
 
-    <%= submit_tag("create user") %>
+  <%= submit_tag("create user") %>
 
 <%  end %>
 
 <%= form_for @user do |f| %>
 
- <ul>
-  <% @user.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
   </ul>
 
   <%= f.label :username, 'your user name here' %>

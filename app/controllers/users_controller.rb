@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.save
+    if @user.update(whitelisted_params)
       flash[:success] = 'User updated'
       redirect_to users_path
     else
