@@ -14,5 +14,9 @@ UsersController	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controll
 UsersHelper	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
 change	/Users/kitlangton/Viking/Unit10/assignment_reformer/db/migrate/20160203164459_create_users.rb	/^  def change$/;"	f	class:CreateUsers
 create	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+edit	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
+index	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
 new	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+show	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+update	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
 user_params	/Users/kitlangton/Viking/Unit10/assignment_reformer/app/controllers/users_controller.rb	/^  def user_params$/;"	f	class:UsersController

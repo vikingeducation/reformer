@@ -1,0 +1,7 @@
+<li class="user">
+  <%= link_to user do %>
+    <%= user.username %>
+    <%= user.password %>
+  <% end %>
+  <%= link_to "Edit User", edit_user_path(user) %>
+</li>

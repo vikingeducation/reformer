@@ -1,3 +1,24 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  // perspective: 1000px;
+}
+
+.field_with_errors {
+  display: inline-block;
+  // transform: translateZ(-500px);
+  label {
+    color: red;
+  }
+  input {
+    border: 1px red solid;
+  }
+}
+
+.error {
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+}
