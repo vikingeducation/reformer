@@ -18,6 +18,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 
 
 
@@ -32,16 +40,6 @@ class UsersController < ApplicationController
       params[:user] = {email: params[:email], username: params[:username], password: params[:password]}
     end
   end
-
-
-#   flat
-#     Parameters: {"utf8"=>"✓", "authenticity_token"=>"ElYux4YpBrp0r50aTYDpEkCl+8m4oKftacEOur+pbTVfhwK03ALtn1ReTjQiWOzohxL5Z07lX1O2oDHCfwunBg==", "email"=>"e", "username"=>"e@email.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
-# Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
-
-
-# nested
-
-# Parameters: {"utf8"=>"✓", "authenticity_token"=>"ElYux4YpBrp0r50aTYDpEkCl+8m4oKftacEOur+pbTVfhwK03ALtn1ReTjQiWOzohxL5Z07lX1O2oDHCfwunBg==", "user"=>{"email"=>"e", "username"=>"e", "password"=>"[FILTERED]"}}
 
 
 end

@@ -39,6 +39,21 @@
 
 
 
-
-
 <h5>3. The Form_for way</h5>
+
+  <%= form_for @user do |f| %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, :placeholder => "email@email.com" %>
+
+    <%= f.label :username, "Your user name here" %>
+    <%= f.text_field :username, value: 'Super Cool User' %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+
+<br>
+<%= link_to "Back to all users", users_path %>
