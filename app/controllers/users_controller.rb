@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_params)
     if @user.save
       flash[:success] = 'New user created'
-      redirect_to user_path
+      redirect_to users_path
     else
       flash.now[:error] = 'User was not created'
       render :new
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.save
       flash[:success] = 'User updated'
-      redirect_to user_path
+      redirect_to users_path
     else
       flash.now[:error] = 'User was not updated'
       render :edit

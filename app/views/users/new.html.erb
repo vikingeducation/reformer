@@ -31,11 +31,18 @@
 <%  end %>
 
 <%= form_for @user do |f| %>
-  <%= f.label :username, 'Username' %>
-  <%= f.text_field :username %>
+
+ <ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+
+  <%= f.label :username, 'your user name here' %>
+  <%= f.text_field :username , :value => "john smith"%>
 
   <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, :placeholder => "example@example.com" %>
 
   <%= f.label :password, 'Password' %>
   <%= f.password_field :password %>
