@@ -1,0 +1,18 @@
+<h3>Hello, world! Make a new user in 3 magical ways!</h3>
+
+<form action='/users' method='post'>
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for='user[email]'>Email:</label>
+  <input type='text' name='[user][email]'/>
+
+  <label for='user[username]'>Username:</label>
+  <input type='text' name='[user][username]'/>
+
+  <label for='user[password]'>Password:</label>
+  <input type='password' name='[user][password]'/>
+
+  <button type='submit'>Submit
+
+</form>
