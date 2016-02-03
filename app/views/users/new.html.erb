@@ -10,3 +10,15 @@
   <input type="text" name="user[email]" id="user_email">
   <input type="submit" value="Create User">
 </form>
+
+
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:user_username, "User Name") %>
+  <%= text_field_tag('user[username]', nil, id:'user_username')%>
+  <%= label_tag(:user_password, "Password") %>
+  <%= password_field_tag('user[password]', nil, id:'user_password') %>
+  <%= label_tag(:user_email, "Email") %>
+  <%= text_field_tag('user[email]', nil, id:'user_email') %>
+  <%= submit_tag("Create User") %>
+<% end %>
