@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
 
   def create
-    @user = User.new(whitelisted_user_params) if params_nested?
-    @user = User.new(params.permit(:email,:username,:password))
+    if params_nested?
+      @user = User.new(whitelisted_user_params)
+    else
+      @user = User.new(params.permit(:email,:username,:password))
+    end
     if @user.save
       redirect_to @user
     else
