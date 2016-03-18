@@ -50,7 +50,7 @@
 
 <%= form_for @user do |f| %>
 	<%= f.label :email, "Email: " %>
-	<%= f.text_field :email %>
+	<%= f.text_field :email, :placeholder => "example@example.com" %>
 	<br>
 	<br>
 	<%= f.label :username, "Username: " %>
