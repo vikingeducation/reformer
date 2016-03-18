@@ -1,22 +1,23 @@
 <h1>Hello World!</h1>
 
+<%= @message %>
 <form accept-charset="utf8" action="/users" method="post">
 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
 	<label>
 		Email: 
-		<input type="text" id="email" name="email" />
+		<input type="text" id="email" name="user[email]" />
 	</label>
 	<br>
 	<br>
 	<label>
 		Username: 
-		<input type="text" id="username" name="username" />
+		<input type="text" id="username" name="user[username]" />
 	</label>
 	<br>
 	<br>
 	<label>
 		Password: 
-		<input type="password" id="password" name="password" />
+		<input type="password" id="password" name="user[password]" />
 	</label>
 	<br>
 	<br>
