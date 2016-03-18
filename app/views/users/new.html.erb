@@ -23,3 +23,23 @@
 	<br>
 	<input type="submit" value="Sign Up!">
 </form>
+
+<br>
+
+<h1>Create New User - Form Tag Edition</h1>
+
+<%= form_tag("/users", method: "post") do %>
+	<%= label_tag(:user_email, "Email: ") %>
+	<%= text_field_tag :email %>
+	<br>
+	<br>
+	<%= label_tag(:user_username, "Username: ") %>
+	<%= text_field_tag :username %>
+	<br>
+	<br>
+	<%= label_tag(:user_password, "Password: ") %>
+	<%= password_field_tag :password %>
+	<br>
+	<br>
+	<%= submit_tag("Submit") %>
+<% end %>
