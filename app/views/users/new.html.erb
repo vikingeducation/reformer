@@ -1,6 +1,7 @@
 <h1>Hello World!</h1>
 
 <form accept-charset="utf8" action="/users" method="post">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
 	<label>
 		Email: 
 		<input type="text" id="email" name="email" />
