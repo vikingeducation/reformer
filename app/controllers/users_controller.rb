@@ -32,13 +32,9 @@ class UsersController < ApplicationController
 
     # now i'm assigning params to the user
     if params_nested?
-      @user.email = params[:user][:email]
-      @user.username = params[:user][:username]
-      @user.password = params[:user][:password]
+      @user.update_attributes(whitelisted_user_params)
     else
-      @user.email = params[:email]
-      @user.username = params[:username]
-      @user.password = params[:password]
+      @user.update_attributes(params.permit(:email,:username,:password))
     end
 
     if @user.save
