@@ -30,11 +30,8 @@ class UsersController < ApplicationController
     # updating user with params
     @user.update_attributes(whitelisted_user_params)
 
-    if @user.save
-      redirect_to user_path
-    else
-      render :edit
-    end
+    # Ternary fun: if we can save, we'll redirect to user_path, else it's time to render the edit page again.
+    @user.save ? (redirect_to user_path) : (render :edit)
   end
 
   private
