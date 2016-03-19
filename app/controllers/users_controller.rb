@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      @message = "fail, try again"
       render :new
     end
   end
