@@ -1,0 +1,83 @@
+<h1>Edit User - Basic Form</h1>
+
+<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@user.errors.count, "error") %></h2>
+
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<form accept-charset="utf8" action="/users/<%= @user.id %>" method="post">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" >
+<input name="_method" type="hidden" value="patch" />
+	<label>
+		Email: 
+		<input type="text" id="email" name="user[email]" value=<%= @user.email %> />
+	</label>
+	<br>
+	<br>
+	<label>
+		Username: 
+		<input type="text" id="username" name="user[username]" value=<%= @user.username%> />
+	</label>
+	<br>
+	<br>
+	<label>
+		Password: 
+		<input type="password" id="password" name="user[password]" value=<%= @user.password%>/>
+	</label>
+	<br>
+	<br>
+	<input type="submit" value="Create">
+</form>
+
+<br>
+
+<h1>Edit User - Form Tag Edition</h1>
+
+<%= form_tag user_path, :method => "patch" do %>
+	
+	<%= label_tag(:user_email, "Email: ") %>
+	<%= field_with_errors(@user,:email) %>
+	<br>
+	<br>
+	
+	<%= label_tag(:user_username, "Username: ") %>
+	<%= field_with_errors(@user,:username) %>
+	<br>
+	<br>
+	
+	<%= label_tag(:user_password, "Password: ") %>
+	<%= field_with_errors(@user,:password) %>
+	<br>
+	<br>
+	<%= submit_tag("Create") %>
+<% end %>
+
+<br>
+
+<h1>Edit User - Form For Edition</h1>
+
+<%= form_for @user do |f| %>
+	<%= @user.errors[:email] %>
+	<%= f.label :email, "Email: " %>
+	<%= f.text_field :email, :placeholder => "example@example.com" %>
+	<br>
+	<br>
+	<%= @user.errors[:username] %>
+	<%= f.label :username, "Username: " %>
+	<%= f.text_field :username %>
+	<br>
+	<br>
+	<%= @user.errors[:password] %>
+	<%= f.label :password, "Password: " %>
+	<%= f.password_field :password, :value=>@user.password %>
+	<br>
+	<br>
+	<%= f.submit "Create" %>
+<% end %>
