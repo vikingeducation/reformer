@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
 
   def create
-    if params_nested?
-      @user = User.new(whitelisted_user_params)
-    else
-      @user = User.new(params.permit(:email,:username,:password))
-    end
+    @user = User.new(whitelisted_user_params)
+
     if @user.save
       redirect_to @user
     else
@@ -30,12 +27,8 @@ class UsersController < ApplicationController
     # First gotta find the user that we want to update
     @user = User.find(params[:id])
 
-    # now i'm assigning params to the user
-    if params_nested?
-      @user.update_attributes(whitelisted_user_params)
-    else
-      @user.update_attributes(params.permit(:email,:username,:password))
-    end
+    # updating user with params
+    @user.update_attributes(whitelisted_user_params)
 
     if @user.save
       redirect_to user_path
@@ -46,12 +39,9 @@ class UsersController < ApplicationController
 
   private
 
-  def params_nested?
-    params[:user]
-  end
-
+  # Sweet ternary method used here. If params[:user] exists (aka nested) then we gonna run that params.require... else we're running params.permid...
   def whitelisted_user_params
-    params.require(:user).permit(:email,:username,:password)
+    params[:user] ? params.require(:user).permit(:email,:username,:password) : params.permit(:email,:username,:password)
   end
 
 end
