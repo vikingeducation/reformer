@@ -1,0 +1,74 @@
+<% if @user.errors.any? %>
+  <div>
+    <h5><%= pluralize(@user.errors.count, "error")%> prevented this user from being created: </h5>
+
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li class='error'><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<h3>Hello, world! Make a new user in 3 magical ways!</h3>
+
+<h5>1. Basic HTML form</h5>
+<form action='/users' method='post'>
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for='user[email]'>Email:</label>
+  <input type='text' name='user[email]'/>
+
+  <label for='user[username]'>Username:</label>
+  <input type='text' name='user[username]'/>
+
+  <label for='user[password]'>Password:</label>
+  <input type='password' name='user[password]'/>
+
+  <button type='submit'>Submit</button>
+
+</form>
+
+
+
+<h5>2. The Form_tag way</h5>
+
+  <%= form_tag('/users') do %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= email_field_tag(:email) %>
+
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:password, "password:") %>
+    <%= password_field_tag(:password) %>
+
+    <%= submit_tag("Submit") %>
+
+  <% end %>
+
+
+
+<h5>3. The Form_for way</h5>
+
+  <%= form_for @user do |f| %>
+
+    <%= f.label :email %>
+
+    <%= f.email_field :email, :placeholder => "email@email.com" %>
+
+    <%= f.label :username, "Your user name here" %>
+
+    <%= f.text_field :username, value: 'Super Cool User' %>
+
+    <%= f.label :password %>
+
+    <%= f.password_field :password %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+
+<br>
