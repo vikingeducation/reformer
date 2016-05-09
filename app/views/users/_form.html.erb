@@ -30,14 +30,14 @@
 
 <p>Form For</p>
 <%= form_for(user) do |f| %>
-  <%= f.label(:username) %>
   <%= render :partial => 'shared/errors', :locals => {:object => user, :field => :username} %>
+  <%= f.label(:username) %>
   <%= f.text_field(:username) %>
-  <%= f.label(:email) %>
   <%= render :partial => 'shared/errors', :locals => {:object => user, :field => :email} %>
+  <%= f.label(:email) %>
   <%= f.email_field(:email) %>
-  <%= f.label(:password) %>
   <%= render :partial => 'shared/errors', :locals => {:object => user, :field => :password} %>
+  <%= f.label(:password) %>
   <%= f.password_field(:password) %>
   <%= f.submit %>
 <% end %>
