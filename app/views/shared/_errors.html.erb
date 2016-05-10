@@ -1,0 +1,12 @@
+<div style="color:red;">
+  <ul>
+    <%
+    field ||= nil
+    error_messages_for(object, field) do |error|
+    %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ul>
+</div>
