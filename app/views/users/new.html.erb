@@ -1,0 +1,72 @@
+<h1>Hello, World!</h1>
+<h3>Basic Form</h3>
+
+<form accept-charset="UTF-8" action="/users" method="post">
+
+	<label for='username'>
+		Username :
+	</label>
+	<input type='text' name="user[username]" id="username" value="<%= @user[:username] %>">
+
+	<label for="email">
+		Email :
+	</label>
+	<input type='email' name="user[email]" id="email" value="<%= @user[:email] %>" >
+
+	<label for='password'>
+		Password :
+	</label>
+	<input type='password' name='user[password]' id='password' value="<%= @user[:password] %>" >
+
+	<input type='submit' value="Create me!">
+
+	<input name="utf8" type="hidden" value="✓">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+
+<h3>Form Tag</h3>
+
+<%= form_tag( users_path ) %>
+	<%= label_tag( :username ) %>
+	<%= text_field_tag( :username ) %>
+
+	<%= label_tag( :email) %>
+	<%= email_field_tag( :email ) %>
+
+	<%= label_tag( :password ) %>
+	<%= password_field_tag( :password )%>
+	<%= submit_tag( "Submit" ) %>
+
+
+<h3>Form For</h3>
+
+<%= form_for @user do |f| %>
+<%= f.label :username, "Your username here :" %>
+<%= f.text_field :username, placeholder: "John" %>
+
+<%= f.label :email, "Your email here :" %>
+<%= f.email_field :email, placeholder: "John@vcs.com" %>
+
+<%= f.label :password, "And your password should go here :" %>
+<%= f.password_field :password %>
+<%= f.submit %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
