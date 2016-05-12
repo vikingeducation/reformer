@@ -1,0 +1,40 @@
+<h3>Form For</h3>
+
+<% if @user.errors.any? %>
+	<h4 class= "error"><%= pluralize(@user.errors.count, "error") %> appeared</h4>		
+<% end %>
+
+
+<%= form_for @user do |f| %>
+	<%= f.label :username, "Your username here :" %>
+	<%= error_field(@user, :username) %>
+	<%= f.text_field :username, placeholder: "John" %>
+
+	<%= f.label :email, "Your email here :" %>
+	<%= error_field(@user, :email) %>
+	<%= f.email_field :email, placeholder: "John@vcs.com" %>
+
+	<%= f.label :password, "And your password should go here :" %>
+	<%= error_field(@user, :password) %>
+	<%= f.password_field :password %>
+	<%= f.submit %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
