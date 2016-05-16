@@ -1,0 +1,12 @@
+<%= form_tag('/user') do %>
+	<%= label_tag 'email', "Email:" %>
+	<%= email_field_tag 'email', "#{params["user"][:email] unless params["user"].nil?}" , placeholder: 'Enter email' %>
+
+	<%= label_tag 'username', "Name:" %>
+	<%= text_field_tag 'username', "#{params["user"][:username] unless params["user"].nil?}", placeholder: "Enter username" %>
+
+	<%= label_tag 'password', "Password:" %>
+	<%= password_field_tag 'password', nil, placeholder: "Password" %>
+	
+	<%= submit_tag 'Submit' %>
+<% end %> 

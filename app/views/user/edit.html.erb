@@ -1,0 +1,7 @@
+<h2>Edit User:</h2>
+<%= form_for(@user, url: "/user/#{params[:id]}") do |f| %>
+  Email: <%= f.email_field :email, placeholder: "Enter email" %>
+  Name: <%= f.text_field :username, placeholder: "Enter username" %>
+  Password: <%= f.password_field :password, placeholder: "Enter password" %>
+  <%= f.submit "Submit" %>
+<% end %>
