@@ -1,4 +1,9 @@
 <%= link_to "Index of Users", users_path %>
+<% unless @user.errors.empty? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <p class="error"><%= error %></p>
+  <% end %>
+<% end %>
 
 <h1>Hello world! This is the New template</h1>
 <form action="/users" method="post">
@@ -41,12 +46,15 @@
 <%= form_for @user do |f|%>
   <%= f.label "Your username here"%>
   <%= f.text_field :username %>
+  <%= f.label @user.errors[:username].first, class: "error" unless @user.errors[:username].empty? %>
 
   <%= f.label :email %>
   <%= f.email_field :email, placeholder: "admin@example.com" %>
+  <%= f.label @user.errors[:email].first, class: "error" unless @user.errors[:email].empty? %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
+  <%= f.label @user.errors[:password].first, class: "error" unless @user.errors[:password].empty? %>
 
   <%= f.submit 'Submit-yo-yo-yo' %>
 <% end %>

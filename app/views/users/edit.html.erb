@@ -1,5 +1,11 @@
 <%= link_to "Index of Users", users_path %>
+<% unless @user.errors.empty? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <p class="error"><%= error %></p>
+  <% end %>
+<% end %>
 <form action="/users" method="post">
+  <input name="_method" type="hidden" value="patch">
   <input name="utf8" type="hidden" value="✓">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
@@ -22,7 +28,7 @@
 </form>
 
 
-<%= form_tag("/users", method: "post") do %>
+<%= form_tag("/users/:id", method: "patch") do %>
   <%= label_tag(:username, "Username") %>
   <%= text_field_tag(:username) %>
   <%= field_with_errors(@user, :username) %>
@@ -39,13 +45,16 @@
 
 <%= form_for @user do |f|%>
   <%= f.label "Your username here"%>
-  <%= f.text_field :username %></br>
+  <%= f.text_field :username %>
+  <%= f.label @user.errors[:username].first, class: "error" unless @user.errors[:username].empty? %>
 
-  <%= f.label "Email Here" %>
-  <%= f.email_field :email, placeholder: "admin@example.com" %><br>
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "admin@example.com" %>
+  <%= f.label @user.errors[:email].first, class: "error" unless @user.errors[:email].empty? %>
 
-  <%= f.label "Password" %>
-  <%= f.password_field :password %></br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label @user.errors[:password].first, class: "error" unless @user.errors[:password].empty? %>
 
   <%= f.submit 'Submit-yo-yo-yo' %>
 <% end %>
