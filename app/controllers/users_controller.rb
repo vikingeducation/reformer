@@ -14,6 +14,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.new(nested_params)
+
+    if @user.save!
+      redirect_to new_user_path
+    else
+      render :new
+    end
+
+  end
+
   private
 
   def user_params
