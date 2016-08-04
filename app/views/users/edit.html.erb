@@ -1,9 +1,31 @@
 <%= form_for @user do |f| %>
+    <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li>
+          <%= error %>
+        </li>
+      <% end %>
+    </ul>
     <%=  f.label :username, "Username:" %>
+    <% unless @user.errors[:username].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:username][0] %>
+      </div>
+    <% end %>
     <%= f.text_field :username %>
     <%= f.label :email, "Email:" %>
+    <% unless @user.errors[:email].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:email][0] %>
+      </div>
+    <% end %>
     <%= f.text_field :email %>
     <%= f.label :password, "Password:" %>
+    <% unless @user.errors[:password].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:password][0] %>
+      </div>
+    <% end %>
     <%= f.password_field :password %>
     <%= f.submit %>
-    <% end %>
+<% end %>

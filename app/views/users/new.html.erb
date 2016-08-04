@@ -1,4 +1,13 @@
 Hello World, Make a user in 3 different ways
+
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li>
+      <%= error %>
+    </li>
+  <% end %>
+</ul>
+
 <div> Crappy way
   <form action="/users" method="post">
     <input type="hidden" accept-charset="UTF-8" />
@@ -20,10 +29,25 @@ Hello World, Make a user in 3 different ways
   Form Tag Way
   <%= form_tag "/users", method: 'POST' do %>
     <%= label_tag("user[username]", "Username:") %>
+    <% unless @user.errors[:username].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:username][0] %>
+      </div>
+    <% end %>
     <%= text_field_tag("user[username]") %>
     <%= label_tag("user[email]", "Email:") %>
+    <% unless @user.errors[:email].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:email][0] %>
+      </div>
+    <% end %>
     <%= text_field_tag("user[email]") %>
     <%= label_tag("user[password]", "Password:") %>
+    <% unless @user.errors[:password].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:password][0] %>
+      </div>
+    <% end %>
     <%= password_field_tag("user[password]") %>
     <%= submit_tag("Submit") %>
   <% end %>
@@ -32,6 +56,15 @@ Hello World, Make a user in 3 different ways
 <div>
   Form For Way
   <%= form_for @user do |f| %>
+  <% if @user.errors %>
+      <ul>
+        <% @user.errors.full_messages.each do |error| %>
+          <li>
+            <%= error %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
     <%=  f.label :username, "Username:" %>
     <%= f.text_field :username %>
     <%= f.label :email, "Email:" %>
