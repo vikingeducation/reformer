@@ -1,0 +1,12 @@
+<%= form_tag( action, method: method) do %>
+  <% = label_tag("users[username]", "name") %>
+  <%= text_field_tag("users[username]") %>
+
+  <% = label_tag("users[email]", "email") %>
+  <%= text_field_tag("users[email]") %
+
+  <% = label_tag("users[password]", "password") %>
+  <%= text_field_tag(users[password]) %
+
+  <%= submit_tag("Submit") %>
+<% end %>
