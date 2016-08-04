@@ -1,11 +1,20 @@
 <%= form_for user do |f| %>
 
+  <% unless user.errors[:username].empty? %>
+    <span><%= user.errors[:username][0] %></span>
+  <% end %>
   <%= f.label :username %>
   <%= f.text_field :username %>
 
+  <% unless user.errors[:email].empty? %>
+    <span><%= user.errors[:email][0] %></span>
+  <% end %>
   <%= f.label :email %>
   <%= f.text_field :email %>
 
+  <% unless user.errors[:password].empty? %>
+    <span><%= user.errors[:password][0] %></span>
+  <% end %>
   <%= f.label :password %>
   <%= f.password_field :password %>
 
