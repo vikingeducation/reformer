@@ -1,6 +1,4 @@
 <%= link_to "Index of Users", users_path %>
-
-<h1>Hello world! This is the New template</h1>
 <form action="/users" method="post">
   <input name="utf8" type="hidden" value="✓">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -27,6 +25,7 @@
 <%= form_tag("/users", method: "post") do %>
   <%= label_tag(:username, "Username") %>
   <%= text_field_tag(:username) %>
+  <%= field_with_errors(@user, :username) %>
 
   <%= label_tag(:email, "Email") %>
   <%= email_field_tag(:email) %>
@@ -40,13 +39,13 @@
 
 <%= form_for @user do |f|%>
   <%= f.label "Your username here"%>
-  <%= f.text_field :username %>
+  <%= f.text_field :username %></br>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, placeholder: "admin@example.com" %>
+  <%= f.label "Email Here" %>
+  <%= f.email_field :email, placeholder: "admin@example.com" %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.label "Password" %>
+  <%= f.password_field :password %></br>
 
   <%= f.submit 'Submit-yo-yo-yo' %>
 <% end %>

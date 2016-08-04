@@ -1,0 +1,7 @@
+<%= link_to "Index of Users", users_path %>
+<%= link_to "Edit User", edit_user_path(@user) %>
+
+<h1>This is <%= @user.username%>'s information</h1>
+<%= @user.username %>
+<%= @user.password %>
+<%= @user.email %>
