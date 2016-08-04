@@ -4,4 +4,4 @@
 
 <%= render partial: 'shared/form_tag_user_form', locals: { action: users_path, method: 'post', user: @user } %>
 
-<%= render partial: 'shared/better_form', locals: { action: users_path, method: 'post', user: @user } %>
+<%= render partial: 'shared/better_form', locals: { user: @user } %>
