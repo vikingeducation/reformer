@@ -1,9 +1,12 @@
 
-
-<form action="" method="">
+<form action=<%= users_path %> method="POST">
   <input type="hidden" accept-charset="UTF-8">
-  <input type="text" name="user[username]">
-  <input type="text" name="user[email]">
-  <input type="password" name="user[password]">
-
+  <label for="user_username">Username</label>
+  <input type="text" id="user_username" name="user[username]">
+  <label for="user_email">Email</label>
+  <input type="text" id="user_email" name="user[email]">
+  <label for="user_password">Password</label>
+  <input type="password" id="user_password" name="user[password]">
+  <input type="submit">
+  <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
 </form>

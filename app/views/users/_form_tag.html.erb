@@ -1,0 +1,7 @@
+<%= form_tag(users_path) do %>
+ <%= label_tag :user_username, "Username" %>
+ <%= text_field_tag "user[username]" %>
+ <%= label_tag :user_password %>
+ <%= password_field_tag "user[password]" %>
+ <%=  %>
+<% end %>
