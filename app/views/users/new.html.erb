@@ -1,31 +1,31 @@
-Hello WOrld, Make a user in 3 different ways
+Hello World, Make a user in 3 different ways
 <div> Crappy way
   <form action="/users" method="post">
     <input type="hidden" accept-charset="UTF-8" />
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
       <label for="username">Username:
-        <input type="text" name="username"/>
+        <input type="text" name="user[username]"/>
       </label>
       <label for="email">Email:
-        <input type="text" name="email"/>
+        <input type="text" name="user[email]"/>
       </label>
       <label for="password">Password:
-        <input type="password" name="password"/>
+        <input type="password" name="user[password]"/>
       </label>
-    <input type="submit" value="submit" />
+    <input type="submit" value="Submit" />
   </form>
 </div>
 </br>
 <div>
   Form Tag Way
   <%= form_tag "/users", method: 'POST' do %>
-    <%= label_tag(:username, "Username:") %>
-    <%= text_field_tag(:username) %>
-    <%= label_tag(:email, "Email:") %>
-    <%= text_field_tag(:email) %>
-    <%= label_tag(:password, "Password:") %>
-    <%= password_field_tag(:password) %>
-    <%= submit_tag("Search") %>
+    <%= label_tag("user[username]", "Username:") %>
+    <%= text_field_tag("user[username]") %>
+    <%= label_tag("user[email]", "Email:") %>
+    <%= text_field_tag("user[email]") %>
+    <%= label_tag("user[password]", "Password:") %>
+    <%= password_field_tag("user[password]") %>
+    <%= submit_tag("Submit") %>
   <% end %>
 </div>
 </br>
