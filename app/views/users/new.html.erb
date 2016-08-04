@@ -1,7 +1,25 @@
 <%= content_tag :h1, "Hello World!" %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+
+    <h2> <%= pluralize(@user.errors.count, "error") %> prohibited from being saved : </h2>
+
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+
+    </ul>
+  </div>
+<% end %>
+
 <%= render partial: 'shared/user_form', locals: { action: users_path, method: 'post', user: @user } %>
 
+<br>
+
 <%= render partial: 'shared/form_tag_user_form', locals: { action: users_path, method: 'post', user: @user } %>
+
+<br>
 
 <%= render partial: 'shared/better_form', locals: { user: @user } %>
