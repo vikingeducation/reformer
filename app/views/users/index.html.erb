@@ -1,0 +1,10 @@
+
+
+<ul class="list-group">
+<% @users.each do |u| %>
+<li class="list-group-item">
+<%= link_to u.username, user_path(u) %>
+<%= u.email %>
+</li>
+<% end %>
+</ul>
