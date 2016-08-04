@@ -18,3 +18,14 @@ Hello, world!
   <input type="submit" value="Submit!" />
 
 </form>
+
+<%= form_tag("/users", method:"post") do %>
+  <%= label_tag(:username, "Name") %>
+  <%= text_field_tag(:username, @user.username) %>
+  <%= label_tag(:email, "Email") %>
+  <%= email_field_tag(:email, @user.email) %>
+  <%= label_tag(:password, "Passowrd") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit!") %>
+<% end %>
+  
