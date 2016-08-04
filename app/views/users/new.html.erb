@@ -28,4 +28,13 @@ Hello, world!
   <%= password_field_tag(:password) %>
   <%= submit_tag("Submit!") %>
 <% end %>
-  
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :username, "Your Name" %>
+  <%= f.text_field(:username, value: "Write your name!") %>
+  <%= f.label :email, "Your Email" %>
+  <%= f.email_field(:email, placeholder: "example@example.com") %>
+  <%= f.label :password, "Your Password" %>
+  <%= f.password_field(:password) %>
+  <%= f.submit "SubMiT!" %>
+<% end %>

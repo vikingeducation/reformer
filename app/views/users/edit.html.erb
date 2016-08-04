@@ -1,0 +1,13 @@
+
+<%= form_for(@user) do |f| %>
+  <%= @user.errors[:username][0] unless @user.errors[:username].empty? %>
+  <%= f.label :username, "Your Name" %>
+  <%= f.text_field(:username) %><br />
+  <%= @user.errors[:email][0] unless @user.errors[:email].empty? %>
+  <%= f.label :email, "Your Email" %>
+  <%= f.email_field(:email, placeholder: "example@example.com") %><br />
+  <%= @user.errors[:password][0] unless @user.errors[:password].empty? %>
+  <%= f.label :password, "Your Password" %>
+  <%= f.password_field(:password) %><br />
+  <%= f.submit "SubMiT!" %>
+<% end %>
