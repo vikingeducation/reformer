@@ -1,0 +1,66 @@
+<h1>Hello World</h1>
+
+<p>Using raw HTML...</p>
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+  <input name="utf8" type="hidden" value="✓">
+  <label for="username">
+    Username: <input type="text" name="user[username]">
+  </label>
+  <label for="email">
+    Email: <input type="text" name="user[email]">
+  </label>
+  <label for="password">
+    Password: <input type="password" name="user[password]">
+  </label>
+  <input type="submit">
+</form>
+
+<br>
+<p>Using form tag...</p>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email:") %>
+  <%= email_field_tag(:email) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<br>
+<p>Using form for...</p>
+
+<%= form_for @user do |f| %>
+  <%= f.label "Username: " %>
+  <%= f.text_field :username, value: "alex" %>
+  <%= f.label "Email: " %>
+  <%= f.email_field :email, placeholder: "email@domain.com" %>
+  <%= f.label "Password: " %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
