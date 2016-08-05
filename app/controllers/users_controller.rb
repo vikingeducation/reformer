@@ -7,9 +7,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(nested_params)
 
-    if @user.save!
+    if @user.save
+      flash[:success] = "Can do it"
       redirect_to new_user_path
     else
+      flash.now[:error] = "Can't do it"
       render :new
     end
   end
@@ -21,10 +23,12 @@ class UsersController < ApplicationController
   def update
     @user = User.new(nested_params)
 
-    if @user.save!
+    if @user.save
+      flash[:success] = "Can do it"
       redirect_to new_user_path
     else
-      render :new
+      flash.now[:error] = "Can't do it"
+      render :edit
     end
 
   end
