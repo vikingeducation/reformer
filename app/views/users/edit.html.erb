@@ -1,6 +1,6 @@
 
 <%= form_for(@user) do |f| %>
-  <%= @user.errors[:username][0] unless @user.errors[:username].empty? %>
+  <%= @user.errors[:username].join(", ") unless @user.errors[:username].empty? %>
   <%= f.label :username, "Your Name" %>
   <%= f.text_field(:username) %><br />
   <%= @user.errors[:email][0] unless @user.errors[:email].empty? %>
