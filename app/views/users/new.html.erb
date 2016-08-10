@@ -1,1 +1,45 @@
-hello world!
+<h1>hello world!</h1>
+
+<h2>Create  new User!</h2>
+
+<form action="/users" method="post" accept-charset="UTF-8">
+  <input  type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+  <label>User Name:<br>
+  <input type="text" name="user[username]" value="<%= @user.username %>" placeholder="username"></label><br>
+  <label>Email:<br>
+  <input type="text" name="user[email]" value="<%= @user.email %>" placeholder="email"></label><br>
+  <label>Password:<br>
+    <input type="password" name="user[password]" value="<%= @user.password %>" placeholder="password"></label><br>
+  <input type="submit">
+</form>
+
+<h2>Again!</h2>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "Username: ") %>
+  <%= text_field_tag(:username, @user.username, placeholder: "username") %>
+  <%= label_tag(:email, "Email: ") %>
+  <%= email_field_tag(:email, @user.email, placeholder: "email") %>
+  <%= label_tag(:password, "Password: ")%>
+  <%= password_field_tag(:password, @user.password, placeholder: "xxxx") %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<h2>And yet again!</h2>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= field_error_message(@user, :username) %>
+
+  <%= f.text_field :username, value: "wtf?!", placeholder: "jane_doe" %>
+  <%= f.label :email %>
+  <%= field_error_message(@user, :email) %>
+  <%= f.email_field :email, placeholder: "jane@doe.xyz" %>
+  <%= f.label :password %>
+  <%= field_error_message(@user, :password) %>
+  <%= f.password_field :password, placeholder: "xxxx" %>
+  <%= f.submit "Create" %>
+<% end %>
