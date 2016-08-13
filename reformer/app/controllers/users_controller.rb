@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.update(whitelisted_params)
       redirect_to user_path(@user.id)
     else
-      redirect_to edit_user_path(@user.id)
+      render :edit
     end
   end
 
