@@ -1,0 +1,15 @@
+<h1>Edit User</h1>
+
+<%= form_for @user do |f| %>
+
+  <%= @user.errors[:username].first %><br/>
+  Username: <%= f.text_field :username %><br/>
+
+  <%= @user.errors[:email].first %><br/>
+  Email: <%= f.email_field :email, :value => "email@email.com" %><br/>
+
+  <%= @user.errors[:password].first %><br/>
+  Password: <%= f.password_field :password %>
+  
+  <%= f.submit %>
+<% end %>

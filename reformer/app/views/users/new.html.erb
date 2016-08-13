@@ -1,0 +1,55 @@
+<h1>User Barebones HTML Form</h1>
+<form action="/users" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <label for="username">
+    Username:
+  </label>
+  <input id="username" type="text" name="user[username]">
+
+  <label for="email">
+    Email:
+  </label>
+  <input id="email" type="text" name="user[email]">
+
+  <label for="password">
+    Password:
+  </label>
+  <input id="password" type="password" name="user[password]">
+  <input type="submit">
+</form>
+
+
+<h1>Form_Tag Users Form</h1>
+
+<%= form_tag(users_path, method: "POST") do %>
+  <%#= hidden_field_tag("authenticity_token", form_authenticity_token) %>
+  <%#= hidden_field_tag("utf8", "✓") %>
+  <%# don't need the hidden tags but keeping for reference anyway! %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+
+  <%= label_tag(:email, "Email:") %>
+  <%= email_field_tag(:email) %>
+
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag %>
+  
+  <%= submit_tag("Submit") %>
+<% end %>
+
+
+<h1>Users Form_For Form</h1>
+<%= form_for @user do |f| %>
+
+  <%= @user.errors[:username].first %><br/>
+  Username: <%= f.text_field :username %><br/>
+
+  <%= @user.errors[:email].first %><br/>
+  Email: <%= f.email_field :email, :value => "email@email.com" %><br/>
+
+  <%= @user.errors[:password].first %><br/>
+  Password: <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>
