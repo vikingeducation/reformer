@@ -1,0 +1,76 @@
+Hello World, Make a user in 3 different ways
+
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li>
+      <%= error %>
+    </li>
+  <% end %>
+</ul>
+
+<div> Crappy way
+  <form action="/users" method="post">
+    <input type="hidden" accept-charset="UTF-8" />
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+      <label for="username">Username:
+        <input type="text" name="user[username]"/>
+      </label>
+      <label for="email">Email:
+        <input type="text" name="user[email]"/>
+      </label>
+      <label for="password">Password:
+        <input type="password" name="user[password]"/>
+      </label>
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+</br>
+<div>
+  Form Tag Way
+  <%= form_tag "/users", method: 'POST' do %>
+    <%= label_tag("user[username]", "Username:") %>
+    <% unless @user.errors[:username].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:username][0] %>
+      </div>
+    <% end %>
+    <%= text_field_tag("user[username]") %>
+    <%= label_tag("user[email]", "Email:") %>
+    <% unless @user.errors[:email].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:email][0] %>
+      </div>
+    <% end %>
+    <%= text_field_tag("user[email]") %>
+    <%= label_tag("user[password]", "Password:") %>
+    <% unless @user.errors[:password].empty? %>
+      <div>
+        Big trouble: <%= @user.errors[:password][0] %>
+      </div>
+    <% end %>
+    <%= password_field_tag("user[password]") %>
+    <%= submit_tag("Submit") %>
+  <% end %>
+</div>
+</br>
+<div>
+  Form For Way
+  <%= form_for @user do |f| %>
+  <% if @user.errors %>
+      <ul>
+        <% @user.errors.full_messages.each do |error| %>
+          <li>
+            <%= error %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%=  f.label :username, "Username:" %>
+    <%= f.text_field :username %>
+    <%= f.label :email, "Email:" %>
+    <%= f.text_field :email %>
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password %>
+    <%= f.submit %>
+  <% end %>
+</div>
