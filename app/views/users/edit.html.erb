@@ -1,0 +1,21 @@
+<h2>Blinged-Out Artisanal Paleo Gluten-free Form_for</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :email, "Your Email here" %>
+  <% unless @user.errors[:email].empty? %>
+    Email <%= @user.errors[:email].first %>
+  <% end %>
+  <%= f.text_field :email %>
+
+  <%= f.label :username %>
+  <% unless @user.errors[:username].empty? %>
+    Username <%= @user.errors[:username].first %>
+  <% end %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <% unless @user.errors[:password].empty? %>
+    Password <%= @user.errors[:password].first %>
+  <% end %>
+  <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
