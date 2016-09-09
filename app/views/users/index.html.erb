@@ -1,0 +1,4 @@
+<h4>Users</h4>
+<% @users.each do |u| %>
+  <p><%= link_to u.username, user_path(u.id) %> - <%= u.email %> </p>
+<% end %>

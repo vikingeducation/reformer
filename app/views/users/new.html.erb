@@ -26,3 +26,14 @@
   <%= password_field_tag(:password) %>
   <%= submit_tag("Submit") %>
 <% end %>
+
+<h2>Blinged-Out Artisanal Paleo Gluten-free Form_for</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :email, "Your Email here" %>
+  <%= f.text_field :email, placeholder: "example@example.com" %>
+  <%= f.label :username %>
+  <%= f.text_field :username, value: "deepak" %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
