@@ -21,6 +21,19 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(whitelisted_user_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
   def whitelisted_user_params

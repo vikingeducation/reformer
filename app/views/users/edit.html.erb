@@ -1,0 +1,10 @@
+<h1>Blinged Out, Artisanal Paleo Gluten-Free Form_For</h1>
+<%= form_for @user do |f| %>
+  <%= @user.errors[:username].first %><br/>
+  Username: <%= f.text_field :username, placeholder: 'Your username here' %><br/>
+  <%= @user.errors[:email].first %><br/>
+  Email: <%= f.text_field :email, placeholder: 'Example@example.com' %><br/>
+  <%= @user.errors[:password].first %><br/>
+  Password: <%= f.password_field :password %><br/>
+  <%= f.submit "Submit" %>
+<% end %>
