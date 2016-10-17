@@ -1,4 +1,5 @@
-<form action='/user' method='post' accept-charset="UTF-8">
+<h1>Rugged Original HTML Form</h1>
+<form action='#' method='post' accept-charset="UTF-8">
   <input type='hidden'
          name='authenticity_token'
          value='<%= form_authenticity_token %>'>
@@ -17,7 +18,8 @@
   <input type='submit' value='Submit' name='commit'>
 </form>
 
-<%= form_tag("/user", method: "post") do %>
+<h1>Business Class Form tag</h1>
+<%= form_tag("#", method: "post") do %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field_tag(:username) %>
   <%= label_tag(:email, "Email:") %>
@@ -25,4 +27,12 @@
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password) %>
   <%= submit_tag("Submit") %>
+<% end %>
+
+<h1>Blinged Out, Artisanal Paleo Gluten-Free Form_For</h1>
+<%= form_for @user do |f| %>
+  Username: <%= f.text_field :username, placeholder: 'Your username here' %>
+  Email: <%= f.text_field :email, placeholder: 'Example@example.com' %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
 <% end %>
