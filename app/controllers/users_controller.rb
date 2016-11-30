@@ -19,16 +19,20 @@ class UsersController < ApplicationController
 		@user = User.new( user_params(params[:user]) )
 
 		if @user.save
-			redirect_to users_path
+			redirect_to user_path( @user )
 		else
 			redirect_to new_user_path
 		end
 
 	end
 
-
 	def show
 
+		@user = User.find( params[ :id ] )
+
+
 	end
+
+
 
 end
