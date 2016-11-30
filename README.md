@@ -1,4 +1,1 @@
-reformer
-========
-
-Re-Former!
+[Joe Bernardi](https://github.com/jdbernardi/assignment_reformer)
