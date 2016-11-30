@@ -4,3 +4,5 @@
 <h1>Email: <%= @user.email %></h1><br />
 
 <p><%= link_to "<<back to new user", new_user_path %></p>
+
+<p><%= link_to "Edit User", edit_user_path( @user ) %>
