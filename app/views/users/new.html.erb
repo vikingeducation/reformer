@@ -1,17 +1,6 @@
-<%= form_for @user do |f| %>
+<h1> New User </h1>
 
-	<%= f.label :username %>:
-	<%= f.text_field :username, placeholder: 'Enter Username' %> <br />
-
-	<%= f.label :email %>:
-	<%= f.text_field :email, placeholder: 'my@email.com' %> <br />
-
-	<%= f.label :password %>:
-	<%= f.text_field :password, placeholder: 'Enter Password' %> <br />
-
-	<%= f.submit %>
-
-<% end %>
+<%= render partial: 'form' %>
 
 
 
