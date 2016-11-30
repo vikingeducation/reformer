@@ -1,1 +1,7 @@
-Hello Index
+<%= @users.each do |user| %>
+
+Username: <%= user.username %><br />
+Email: <%= user.email %><br /><br />
+
+
+<% end %>
