@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-	resources :users
+	resources :users, only: [:new, :create]
 
-	root to: 'users#index'
+	root to: 'users#new'
 
 end
