@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 	def create
 
-		@user = User.new( user_params )
+		@user = User.new( user_params(params[:user]) )
 
 		if @user.save
 			redirect_to users_path
