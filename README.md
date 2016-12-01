@@ -1,4 +1,5 @@
-reformer
-========
+Viking Code School
 
-Re-Former!
+Working with Forms and form validation
+
+[Joe Bernardi](https://github.com/jdbernardi/assignment_reformer)
