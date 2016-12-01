@@ -1,19 +1,23 @@
 <%= form_for @user do |f| %>
 
-  <ul>
-  <% @user.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+
+
+	<%= f.label :username %>
+	<% if !@user.errors[:username].empty? %>
+    <%= @user.errors[:username].join %>
   <% end %>
-  </ul>
-
-
-	<%= f.label :username %>:
 	<%= f.text_field :username, placeholder: 'Enter Username' %> <br />
 
-	<%= f.label :email %>:
+	<%= f.label :email %>
+	<% if !@user.errors[:email].empty? %>
+    <%= @user.errors[:email].join %>
+  <% end %>
 	<%= f.text_field :email, placeholder: 'my@email.com' %> <br />
 
-	<%= f.label :password %>:
+	<%= f.label :password %>
+	<% if !@user.errors[:password].empty? %>
+    <%= @user.errors[:password].join %>
+  <% end %>
 	<%= f.text_field :password, placeholder: 'Enter Password' %> <br />
 
 	<%= f.submit %>
