@@ -1,0 +1,42 @@
+<h1> Just HTML </h1>
+<form action="<%= user_index_path %>" method="post">
+  <input <input name="authenticity_token" type="hidden" value="<%=form_authenticity_token%>">
+  <input name="utf8" type="hidden" value="✓">
+  <label for="username">Username:</label>
+  <input type="text" value="<%=@user.username%>" name="user[username]" placeholder="username">
+  <br>
+  <label for="email">Email:</label>
+  <input type="text" value="<%=@user.email%>" name="user[email]" placeholder="email">
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" value="<%=@user.password%>"  name="user[password]" placeholder="password">
+  <br>
+  <input type="submit">
+</form>
+<br>
+<br>
+
+<h1> Form Tag </h1>
+
+<%= form_tag(user_index_path, method: "post") do %>
+  <%= label_tag("user[username]", "Username:") %>
+  <%= text_field_tag("user[username]") %><br>
+  <%= label_tag("user[email]", "Email:") %>
+  <%= text_field_tag("user[email]") %><br>
+  <%= label_tag("user[password]", "Password:") %>
+  <%= password_field_tag("user[password]") %><br>
+  <%= submit_tag("Sumbit") %>
+<% end %>
+
+
+<h1> Form For </h1>
+
+<%= form_for @user, url: user_index_path(@user) do |f| %>
+  <%= f.label(:username, "Your Username Here") %>
+  <%= f.text_field :username, placeholder: 'Example Username' %><br>
+  <%= f.label(:email, "Email!!!") %>  
+  <%= f.text_field :email, value: "Here" %><br>
+  <%= f.label(:email, "Secret Phrase") %> 
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>

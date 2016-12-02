@@ -1,0 +1,7 @@
+<h1> Index </h1>
+
+<% @users.each do |user| %>
+  <br><%= user.username %>  
+  <%= link_to "show", user_path(user) %>
+  <%= link_to "edit", edit_user_path(user)%>
+<% end %>
