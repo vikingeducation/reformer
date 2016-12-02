@@ -13,10 +13,31 @@ class UserController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(strong_validation)
+      redirect_to @user
+    else
+      render "edit"
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 private
 
   def strong_validation
-    params.permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password)
   end
 
 end

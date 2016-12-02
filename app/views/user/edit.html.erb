@@ -1,0 +1,14 @@
+<h1> Form For </h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label(:username, "Your Username Here") %>
+  <%= f.text_field :username, placeholder: 'Example Username' %>
+  <%= @user.errors[:username].first %><br>
+  <%= f.label(:email, "Email!!!") %>  
+  <%= f.text_field :email, value: "Here" %>
+  <%= @user.errors[:email].first %><br>
+  <%= f.label(:password, "Secret Phrase") %> 
+  <%= f.password_field :password %>
+  <%= @user.errors[:password].first %><br>
+  <%= f.submit %>
+<% end %>
