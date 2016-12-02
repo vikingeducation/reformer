@@ -1,0 +1,15 @@
+<h1>Form For:</h1>
+
+<br>
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username, required: true, placeholder: "Your Name" %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true, placeholder: "Password" %>
+
+  <%= f.submit "Submit" %>
+<% end %>
