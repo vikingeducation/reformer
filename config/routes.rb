@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  root 'users#index'
 
-  get 'users/create'
-
-  root 'users#new'
-
-  resources :users, only: [:new, :create]
+  resources :users, only: [:index, :new, :create, :edit, :update]
 end

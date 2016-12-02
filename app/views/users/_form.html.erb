@@ -1,0 +1,21 @@
+<%= form_for @user do |f| %>
+
+  <h3 class="form-group error">
+    <%= pluralize(@user.errors.count, "error") if @user.errors.any? %>
+  </h3>
+
+  <div class="form-group">
+    <%= f.label :username %> <%= error_tag(:username) %>
+    <%= f.text_field :username, placeholder: "Enter a username", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %> <%= error_tag(:email) %>
+    <%= f.text_field :email, placeholder: "Enter an email", class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %> <%= error_tag(:password) %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
