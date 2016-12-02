@@ -1,3 +1,5 @@
+<h1>No Help:</h1>
+
 <form action="/users" method="post" accept-charset="UTF-8">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
@@ -11,3 +13,38 @@
   <input type="submit" value="submit">
 
 </form>
+<br>
+<br>
+
+<h1>Form tag:</h1>
+
+<br>
+<%= form_tag("/users") do %>
+  <%= label_tag        "Email:" %>
+  <%= email_field_tag  "user[email]", nil %>
+
+  <%= label_tag       "Username:" %>
+  <%= text_field_tag  "user[username]", nil, required: true %>
+
+  <%= label_tag           "Password:" %>
+  <%= password_field_tag  "user[password]", nil, required: true %>
+
+  <%= submit_tag "Submit" %>
+<% end %>
+<br>
+
+<h1>Form For:</h1>
+
+<br>
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username, required: true, placeholder: "Your Name" %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true, placeholder: "Password" %>
+
+  <%= f.submit "Submit" %>
+<% end %>
