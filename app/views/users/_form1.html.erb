@@ -7,21 +7,29 @@ Email: Username: Password:
 <form action="/users" method="post" accept-charset="UTF-8">
 <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
-  <label for="Username:">
+  <label for="username">
+    <p>
+      Username:
+    </p>
     <input type="text" name="user[username]" placeholder="Lucius Seneca">
   </label>
 
-  <label for="Email:">
+  <label for="email">
+    <p>
+      Email:
+    </p>
     <input type="text" name="user[email]"placeholder="you@example.com">
   </label>
 
 
-  <label for="Password:">
+  <label for="password">
+    <p>
+      Password:
+    </p>
     <input type="password" name="user[password]">
   </label>
 
-  <input name="utf8" type="hidden" value="✓">
-
-  <input type="submit" value="Create Account">
+  <br><br>
+  <input type="submit" value="Create Account!">
 
 </form>

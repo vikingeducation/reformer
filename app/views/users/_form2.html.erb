@@ -1,0 +1,12 @@
+<%= form_tag("/users") do %>
+  <%= label_tag 'Username:' %>
+  <%= text_field_tag 'user[username]', nil %>
+
+  <%= label_tag 'Email:' %>
+  <%= email_field_tag 'user[email]', nil, required: true %>
+
+  <%= label_tag 'Password:' %>
+  <%= password_field_tag 'user[password]', nil, required: true %>
+
+  <%= submit_tag("Create yourself!") %>
+<% end %>
