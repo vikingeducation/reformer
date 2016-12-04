@@ -1,10 +1,12 @@
 <hr><hr>
+<h2 style='color:red;'>Create User</h2>
 <h2>Rugged Original HTML Form</h2>
-<%= render 'form1' %>
+<%= render :partial => 'form1', :locals => {user: @user, path: users_path } %>
 <hr>
 <h2>Business-Class Form-Tag</h2>
-<%= render 'form2' %>
+<%= render :partial => 'form2', :locals => {user: @user, path: users_path } %>
 <hr>
 <h2>Blinged-Out Artisanal Paleo Gluten-free Form_for</h2>
-<%= render 'form3' %>
+<%= render :partial => 'form3', :locals => {user: @user, path: users_path } %>
+
 <hr><hr>

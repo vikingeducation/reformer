@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = "Success!"
       render :new
-
     else
       render :new
     end
