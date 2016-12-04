@@ -1,1 +1,27 @@
 <!-- Rugged Original HTML Form   |||  Business-Class Form-Tag    |||   Blinged-Out Artisanal Paleo Gluten-free Form_for -->
+
+<!--
+Email: Username: Password:
+-->
+
+<form action="/users" method="post" accept-charset="UTF-8">
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <label for="Username:">
+    <input type="text" name="user[username]" placeholder="Lucius Seneca">
+  </label>
+
+  <label for="Email:">
+    <input type="text" name="user[email]"placeholder="you@example.com">
+  </label>
+
+
+  <label for="Password:">
+    <input type="password" name="user[password]">
+  </label>
+
+  <input name="utf8" type="hidden" value="✓">
+
+  <input type="submit" value="Create Account">
+
+</form>
