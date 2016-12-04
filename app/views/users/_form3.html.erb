@@ -3,10 +3,10 @@
   <%= user_fields.text_field :username %>
 
   <%= user_fields.label :email %>
-  <%= user_fields.text_field :email %>
+  <%= user_fields.text_field :email, required: true %>
 
   <%= user_fields.label :password %>
-  <%= user_fields.password_field :password %>  
+  <%= user_fields.password_field :password, required: true %>
 
   <%= user_fields.submit 'Submitter 10,000' %>
 
