@@ -1,19 +1,33 @@
 <h1>USERS NEW FORM PAGE</h1>
 
+<h2>HTML FORM</h2>
+
 <form method="post" action="/users" accept-charset="UTF-8">
-  <label>username</label>
+  <label>Username</label>
   <input type="text" name="user[username]">
 
-  <label>email</label>
-  <input type="text" name="user[email]">
+  <label>Email</label>
+  <input type="email" name="user[email]">
 
-  <label>password</label>
+  <label>Password</label>
   <input type="password" name="user[password]">
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-<!--   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
-
   <button type="submit">Submit!</button>
 
 </form>
+
+<h2>FORM TAG FORM</h2>
+
+<%= form_tag ('/users') do %>
+  <%= label_tag("Your Username Here") %>
+  <%= text_field_tag('username', 'username')%>
+  <%= label_tag("Your Email Here") %>
+  <%= email_field_tag('email', 'email@example.com') %>
+  <%= label_tag("Your Password Here") %>
+  <%= password_field_tag('password', 'something') %>
+
+  <%= submit_tag('Submit!')%>
+
+<% end %>
