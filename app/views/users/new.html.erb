@@ -31,3 +31,16 @@
   <%= submit_tag('Submit!')%>
 
 <% end %>
+
+<h2>FORM FOR FORM</h2>
+
+<%= form_for @user do |u| %>
+  Your Username Here: 
+  <%= u.text_field :username, placeholder: "username" %> 
+  Your Email Here: 
+  <%= u.email_field :email, placeholder: "email" %>
+  Your Password Here: 
+  <%= u.password_field :password, placeholder: "password" %>
+  
+  <%= u.submit 'Submit!' %>
+<% end %>
