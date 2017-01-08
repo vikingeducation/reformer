@@ -1,0 +1,39 @@
+<h2>FORM FOR FORM</h2>
+
+<%= form_for @user do |u| %>
+
+
+
+<% if @user.errors.any? %>
+  <h3><%= pluralize(@user.errors.count, " Error") %>!</h2>
+
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="form-group">
+  <%= u.label 'Your Username Here:' %>
+  <%= form_field_error_message(@user, :username) %>
+  <%= u.text_field :username, placeholder: "username" %>   
+</div>
+
+<div class="form-group">
+  <%= u.label 'Your Email Here:' %>
+  <%= form_field_error_message(@user, :email) %>
+  <%= u.email_field :email, placeholder: "email" %>  
+</div>
+
+<div class="form-group">
+  <%= u.label 'Your Password Here:' %>
+  <%= form_field_error_message(@user, :password) %>
+  <%= u.password_field :password, placeholder: "password" %>  
+</div>
+
+
+
+  
+  <%= u.submit 'Submit!' %>
+<% end %>
