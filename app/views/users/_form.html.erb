@@ -1,0 +1,9 @@
+<h2>Form For HTML Form</h2>
+<%= form_for @user do |f| %>
+  Username : <%= f.text_field :username, placeholder: "peter_foo" %> <%= form_field_error_messages(@user, :username) %><br />
+  Email    : <%= f.text_field :email, placeholder: "peter_foo@example.com" %> <%= form_field_error_messages(@user, :email) %><br />
+  Password : <%= f.password_field :password %> <%= form_field_error_messages(@user, :password) %><br />
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Show All Users", users_path %>
