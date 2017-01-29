@@ -1,0 +1,29 @@
+<h1>Hello World!</h1>
+
+<br><br>
+
+<h2>Naked HTML Form</h2>
+<form class="naked-html-form-wrapper" method="post" action="/users">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input name="utf8" type="hidden" value="✓">
+	<label for="username">User Name:</label>
+	<input type="text" name="user[username]" id="username"><br>
+	<label for="email">Email:</label>
+	<input type="text" name="user[email]" id="email"><br>
+	<label for="password">Password:</label>
+	<input type="password" name="user[password]" id="password"><br>
+	<input type="submit" value="Submit">
+</form>
+
+<h2>Form Tag HTML Form</h2>
+<%= form_tag('/users') do -%>
+	<%= label_tag 'username' %>
+	<%= text_field_tag 'username' %><br>
+	<%= label_tag 'email' %>
+	<%= text_field_tag 'email' %><br>
+	<%= label_tag 'password' %>
+	<%= password_field_tag 'password' %><br>
+	<%= submit_tag "Submit" %>
+<% end %>
+
+<%= render "form" %>
