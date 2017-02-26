@@ -1,0 +1,7 @@
+<h1>Registered Users List</h1>
+<% @users.each do |u| %>
+  Email: <%= u.email %>
+  Username: <%= u.username %>
+  <hr>
+<% end %>
+<%= link_to "Create New User", new_user_path %>
