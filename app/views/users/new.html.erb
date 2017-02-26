@@ -6,3 +6,15 @@
   <button type="submit">Sign Up</button>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form>
+<hr>
+<%= form_tag('/users', method: 'post') do %>
+  <%= label_tag('email', "Email:") %>
+  <%= text_field_tag('email') %>
+  <%= label_tag('username', "Username:") %>
+  <%= text_field_tag('username') %>
+  <%= label_tag('password', "Password:") %>
+  <%= password_field_tag('password') %>
+  <%= label_tag('confirm_password', "Re-enter Password:") %>
+  <%= password_field_tag('confirm_password') %>
+  <%= button_tag('Sign Up') %>
+<% end %>
