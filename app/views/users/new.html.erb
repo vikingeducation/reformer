@@ -1,1 +1,8 @@
-"Hello, world!"
+<form action="/users" method="POST" accept-charset="UTF-8">
+  <label><span>Email</span> <input type="text" name="user[email]"></label>
+  <label><span>Username</span><input type="text" name="user[username]"></label>
+  <label><span>Password</span><input type="password" name="user[password]"></label>
+  <label><span>Re-enter Password</span><input type="password" name="user[confirm_password]"></label>
+  <button type="submit">Sign Up</button>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
