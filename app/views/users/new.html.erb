@@ -1,0 +1,44 @@
+<h2>HTML Form</h2>
+<form action="/users" method="POST" accept-charset="UTF-8">
+  <label><span>Email</span> <input type="email" name="user[email]"></label>
+  <%= form_errors(@user, :email) %>
+  <label><span>Username</span><input type="text" name="user[username]"></label>
+  <%= form_errors(@user, :username) %>
+  <label><span>Password</span><input type="password" name="user[password]"></label>
+  <%= form_errors(@user, :password) %>
+  <label><span>Re-enter Password</span><input type="password" name="user[confirm_password]"></label>
+  <button type="submit">Sign Up</button>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+<hr>
+<h2>Form_tag form</h2>
+<%= form_tag('/users', method: 'post') do %>
+  <%= label_tag('email', "Email:") %>
+  <%= email_field_tag('email') %>
+  <%= form_errors(@user, :email) %>
+  <%= label_tag('username', "Username:") %>
+  <%= text_field_tag('username') %>
+  <%= form_errors(@user, :username) %>
+  <%= label_tag('password', "Password:") %>
+  <%= password_field_tag('password') %>
+  <%= form_errors(@user, :password) %>
+  <%= label_tag('confirm_password', "Re-enter Password:") %>
+  <%= password_field_tag('confirm_password') %>
+  <%= button_tag('Sign Up') %>
+<% end %>
+<hr>
+<h2>Form_for form</h2>
+<%= form_for @user do |f| %>
+  <%= f.label :email, 'Email:'%>
+  <%= f.email_field :email, placeholder: 'example@example.com' %>
+  <%= form_errors(@user, :email) %>
+  <%= f.label :username, 'Username:' %>
+  <%= f.text_field :username, placeholder: 'i_am_unique_999' %>
+  <%= form_errors(@user, :username) %>
+  <%= f.label :password, 'Password:'%>
+  <%= f.password_field :password %>
+  <%= form_errors(@user, :password) %>
+  <%= f.label :confirm_password, 'Re-enter Password:' %>
+  <%= f.password_field :confirm_password %>
+  <%= f.submit 'Sign Up' %>
+<% end %>
