@@ -1,1 +1,23 @@
 <h1>Hello, world!</h1>
+<br>
+<br>
+<br>
+<form action="/users" method="post" accept-charset="utf-8">
+  <label>
+    Username:
+    <input type="text" name="username" value="<%= user.username if @user.username %>">
+  </label>
+  <label>
+    Email:
+    <input type="text" name="email" value="<%= user.email if @user.email %>">
+  </label>
+  <label>
+    Password:
+    <input type="text" name="password">
+  </label>
+  <input type="submit">
+
+
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
