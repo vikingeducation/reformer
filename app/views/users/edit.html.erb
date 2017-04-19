@@ -1,0 +1,14 @@
+<h1>Edit your Form</h1>
+<br>
+<br>
+<br>
+<br>  
+<%= form_for @user, url: edit_user_path, html: { :class => "my_class" } do |f| %>
+  <%= f.label(:username, "Username goes here:", :class => "label_class") %>
+  <%= f.text_field(:username) %>
+  <%= f.label(:email, "Email:", :class => "label_class") %>
+  <%= f.email_field(:email) %>
+  <%= f.label(:password, "Password:", :class => "label_class") %>
+  <%= f.password_field(:password) %>
+  <%= f.submit "Update" %>
+<% end %>

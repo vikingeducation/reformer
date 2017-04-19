@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   protect_from_forgery
 
+  def index
+    @user = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -12,6 +16,14 @@ class UsersController < ApplicationController
     else
       render 'new', :locals => {:user => @user}
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+
   end
 
 

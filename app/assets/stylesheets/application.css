@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.my_class {
+  padding-top: 3px;
+}
+
+.label_class {
+  color: #33E;
+}
