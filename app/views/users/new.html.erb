@@ -5,15 +5,15 @@
 <form action="/users" method="post" accept-charset="utf-8">
   <label>
     Username:
-    <input type="text" name="username" value="<%= user.username if @user.username %>">
+    <input type="text" name="user[username]" value="">
   </label>
   <label>
     Email:
-    <input type="text" name="email" value="<%= user.email if @user.email %>">
+    <input type="text" name="user[email]" value="">
   </label>
   <label>
     Password:
-    <input type="text" name="password">
+    <input type="text" name="user[password]">
   </label>
   <input type="submit">
 
@@ -21,3 +21,14 @@
   <input name="utf8" type="hidden" value="✓">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form>
+
+
+<%= form_tag("/users", method: "post") do%>
+  <%= label_tag(:username, "Username Tag:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email Tag:") %>
+  <%= email_field_tag(:email) %>
+  <%= label_tag(:password, "Password Tag:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit Tag") %>
+<% end %>

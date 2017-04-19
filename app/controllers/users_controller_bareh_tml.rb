@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(whitelisted_user_params)
+    @user = User.new(whitelisted_params)
     if @user.save
       redirect_to "/users/new"
     else
@@ -17,12 +17,10 @@ class UsersController < ApplicationController
 
 
   private
-  def whitelisted_user_params
-    if params[:user]
-      params.require(:user).permit(:username, :email, :password)
-    else
-      params.permit(:username, :email, :password)
-    end
+  def whitelisted_params
+    params.permit(:username, :email, :password)
   end
+
+# require(params)
 
 end
