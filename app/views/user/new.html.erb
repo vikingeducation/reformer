@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h1>Hello World</h1>
+  <h3>HTML</h3>
 
   <form action="<%= user_index_path %>" method="post" accept-charset="UTF-8">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -24,6 +24,8 @@
 
   <hr>
 
+  <h3>form_tag</h3>
+
   <%= form_tag user_index_path, :method => :post do %>
     <div class="form-group">
       <%= label_tag "user[username]", "Username" %>
@@ -38,6 +40,20 @@
       <%= password_field_tag "user[password]", nil, :class => "form-control" %>
     </div>
     <%= button_tag "Submit", :class => "btn btn-primary" %>
+  <% end %>
+
+  <hr>
+
+  <h3>form_for</h3>
+
+  <%= form_for User.new, :url => user_index_path, :method => :post do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username, :class => "form-control" %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "form-control" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control" %>
+    <%= f.button "Submit", :class => "btn btn-primary" %>
   <% end %>
 
 </div>
