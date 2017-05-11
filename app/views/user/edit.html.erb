@@ -1,13 +1,13 @@
 <div class="container">
   <h1>Edit user</h1>
 
-  <%= form_for User.new, :url => user_index_path, :method => :post do |f| %>
+  <%= form_for @user, :url => user_index_path, :method => :post do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username, :class => "form-control" %>
     <%= f.label :email %>
     <%= f.text_field :email, :class => "form-control" %>
     <%= f.label :password %>
-    <%= f.password_field :password, :class => "form-control" %>
+    <%= f.password_field :password, :value=> @user.password, :class => "form-control" %>
     <%= f.button "Submit", :class => "btn btn-primary" %>
   <% end %>
 </div>
