@@ -2,6 +2,13 @@
   <h1>Edit user</h1>
 
   <%= form_for @user, :method => :put do |f| %>
+    <% if @user.errors %>
+      <% @user.errors.full_messages.each do |err| %>
+        <p class="alert-danger"><%= err %></p>
+      <% end %>
+    <% end %>
+
+
     <%= f.label :username %>
     <%= f.text_field :username, :class => "form-control" %>
     <%= f.label :email %>
