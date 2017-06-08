@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+reformer
+========
+
+Re-Former!
+>>>>>>> 8541030e90c26d3e857d17273a19fc28d3f9fc69
