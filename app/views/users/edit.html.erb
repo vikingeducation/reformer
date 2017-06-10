@@ -1,0 +1,28 @@
+<%= form_for @user do |f| %>
+  <%= label_tag(:email, "Email") %>
+  <br />
+  <%= form_field_error_message(@user, :email) %>
+  <br />
+  <%= f.text_field :email %>
+  <br />
+  <br />
+  <br />
+
+  <%= label_tag(:username, "Username") %>
+  <br />
+  <%= form_field_error_message(@user, :username) %>
+  <br />
+  <%= f.text_field :username %>
+  <br />
+  <br />
+  <br />
+  <%= label_tag(:password, "Password") %>
+  <br />
+  <%= form_field_error_message(@user, :password) %>
+  <br />
+  <%= f.password_field :password %>
+  <br />
+  <br />
+  <br />
+  <%= f.submit "Edit User" %>
+<% end %>

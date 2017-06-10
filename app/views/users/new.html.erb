@@ -1,0 +1,31 @@
+<h1>Hello World. Make a new user in 3 magical ways!</h1>
+<form accept-charset="UTF-8" action="/users" method="post">
+  <input name="authenticity_token" type="hidden" value=@auth_token>
+  <label for="email">Email</label>
+  <input type="text" id="email" name="user[email]" />
+  <label for="username">Username</label>
+  <input type="text" id="username" name="user[username]" />
+  <label for="password">Password</label>
+  <input type="password" id="password" name="user[password]" />
+  <button type="submit">Create User</button>
+</form>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:username, "Username") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Create User") %>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= label_tag(:email, "Email") %>
+  <%= f.text_field :email %>
+  <%= label_tag(:username, "Username") %>
+  <%= f.text_field :username %>
+  <%= label_tag(:password, "Password") %>
+  <%= f.password_field :password %>
+  <%= f.submit "Create User" %>
+<% end %>
