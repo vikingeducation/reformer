@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  
   def new
+    @user = User.new
   end
 
   def create
@@ -9,6 +11,10 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path(@user)
     end
+  end
+
+  def edit
+     @user = User.find(params[:id])
   end
 
   private
