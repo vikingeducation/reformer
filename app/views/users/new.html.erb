@@ -1,0 +1,49 @@
+<h1>Form 1</h1>
+<form action="/users" method="post">
+   <input type="hidden" 
+    name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>
+    Username:
+    <input name="user[username]" type="text"/>
+  </label>
+  <label>
+    Email:
+    <input name="user[email]" type="text"/>
+  </label>
+  <label>
+    Password:
+    <input name="user[password]" type="password"/>
+  </label>
+  <input type="submit">
+</form>
+
+
+<h1>Form 2</h1>
+<%= form_tag('/users', method: "post") do %>
+  <%= label_tag 'username', 'Username' %>
+  <%= text_field_tag("user[username]") %>
+  <%= label_tag 'email', 'Email' %>
+  <%= text_field_tag("user[email]") %>
+  <%= label_tag 'password', 'Password' %>
+  <%= password_field_tag("user[password]") %>
+   <%= submit_tag %>
+<% end %>
+
+<h1>Form 3</h1>
+<%= form_for @user do |f| %>
+  <ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <%= f.label :username %>:
+  <%= field_with_errors(@user, :username) %>
+  <%= f.text_field :username %>
+  <%= f.label :email %>:
+  <%= field_with_errors(@user, :email) %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>:
+  <%= field_with_errors(@user, :password) %>
+  <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
