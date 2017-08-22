@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-12">
+
+    <h2>Blinged-Out Artisanal Paleo Gluten-free form_for Form - for the hipster in you</h2>
+
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |error_message| %>
+          <li class="error-message"><%= error_message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :username, "User name:", class: "font-weight-bold" %>
+
+        <%= field_with_errors(@user, :username) %>
+
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Password:", class: "font-weight-bold" %>
+
+        <%= field_with_errors(@user, :password) %>
+
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email:", class: "font-weight-bold" %>
+
+        <%= field_with_errors(@user, :email) %>
+
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
