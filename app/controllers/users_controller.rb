@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(whitelisted_user_params)
+    if nested_user_params?
+      @user = User.new(nested_whitelisted_user_params)
+    else
+      @user = User.new(flat_whitelisted_user_params)
+    end
 
     if @user.save
       redirect_to new_user_path
@@ -15,7 +19,15 @@ class UsersController < ApplicationController
 
   private
 
-  def whitelisted_user_params
+  def nested_user_params?
+    params.has_key?("user")
+  end
+
+  def nested_whitelisted_user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+
+  def flat_whitelisted_user_params
+    params.permit(:username, :password, :email)
   end
 end
