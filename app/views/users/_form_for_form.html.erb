@@ -3,17 +3,49 @@
 
     <h2>Blinged-Out Artisanal Paleo Gluten-free form_for Form - for the hipster in you</h2>
 
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |error_message| %>
+          <li><%= error_message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
     <%= form_for @user do |f| %>
-      <%= f.label :username, "User name:" %>
-      <%= f.text_field :username %>
+      <div class="form-group">
+        <%= f.label :username, "User name:" %>
 
-      <%= f.label :password, "Password:" %>
-      <%= f.password_field :password %>
+        <% unless @user.errors[:username].empty? %>
+          <span class="error-message"><%= "User name #{@user.errors[:username].first}" %></span>
+        <% end %>
 
-      <%= f.label :email, "Email:" %>
-      <%= f.email_field :email %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
 
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <div class="form-group">
+        <%= f.label :password, "Password:" %>
+
+        <% unless @user.errors[:password].empty? %>
+          <span class="error-message"><%= "Password #{@user.errors[:password].first}" %></span>
+        <% end %>
+
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email:" %>
+
+        <% unless @user.errors[:email].empty? %>
+          <span class="error-message"><%= "Email #{@user.errors[:email].first}"%></span>
+        <% end %>
+
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
     <% end %>
 
   </div>
