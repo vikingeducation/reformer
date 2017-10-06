@@ -5,7 +5,7 @@
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <label>
       Email:
-      <input type="email" name="user[email]" value="<%= email %>">
+      <input type="email" name="user[email]" value="<%= email %>" placeholder="example@example.com">
     </label>
     <label>
       Username:
@@ -23,7 +23,7 @@
   <h2>Business-class form-tag</h2>
   <%= form_tag '/users' do %>
       <%= label_tag 'user[email]', 'Email:' %>
-      <%= email_field_tag 'user[email]', email %>
+      <%= email_field_tag 'user[email]', email, placeholder: 'example@example.com' %>
 
       <%= label_tag 'user[username]', 'Username:' %>
       <%= text_field_tag 'user[username]', username %>
@@ -32,5 +32,21 @@
       <%= password_field_tag 'user[password]' %>
 
       <%= submit_tag 'Submit' %>
+  <% end %>
+</section>
+
+<section class="form-for">
+  <h2>Blinged-out form_for</h2>
+  <%= form_for @user do |f| %>
+      <%= f.label :email, 'Email:' %>
+      <%= f.email_field :email, placeholder: 'example@example.com' %>
+
+      <%= f.label :username, 'Username:' %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password, "What's the password?" %>
+      <%= f.password_field :password %>
+
+      <%= f.submit 'Kneel before Zod!' %>
   <% end %>
 </section>
