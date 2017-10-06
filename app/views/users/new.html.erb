@@ -1,1 +1,20 @@
-<h1>Hello, World!</h1>
+<h1>Make a new user in 3 magical ways!</h1>
+<section class="naked">
+  <h2>Rugged, original HTML form</h2>
+  <form accept-charset="UTF-8" action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>
+      Email:
+      <input type="email" name="email" value="<%= email %>">
+    </label>
+    <label>
+      Username:
+      <input type="text" name="username" value="<%= username %>">
+    </label>
+    <label>
+      Password:
+      <input type="password" name="password">
+    </label>
+    <input type="submit" value="Kneel before Zod!">
+  </form>
+</section>
