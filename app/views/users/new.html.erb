@@ -18,3 +18,19 @@
     <input type="submit" value="Kneel before Zod!">
   </form>
 </section>
+
+<section class="form-tags">
+  <h2>Business-class form-tag</h2>
+  <%= form_tag '/users' do %>
+      <%= label_tag 'user[email]', 'Email:' %>
+      <%= email_field_tag 'user[email]', email %>
+
+      <%= label_tag 'user[username]', 'Username:' %>
+      <%= text_field_tag 'user[username]', username %>
+
+      <%= label_tag 'user[password]', 'Password:' %>
+      <%= password_field_tag 'user[password]' %>
+
+      <%= submit_tag 'Submit' %>
+  <% end %>
+</section>
