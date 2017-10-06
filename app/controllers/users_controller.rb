@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
     render :new, locals: {
       email: @user.email,
-      username: @user.username
+      username: @user.username,
+      errors: []
     }
   end
 
@@ -15,9 +16,14 @@ class UsersController < ApplicationController
     else
       render :new, locals: {
         email: @user.email,
-        username: @user.username
+        username: @user.username,
+        errors: @user.errors.full_messages
       }
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   private

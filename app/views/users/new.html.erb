@@ -2,6 +2,13 @@
 <section class="naked">
   <h2>Rugged, original HTML form</h2>
   <form accept-charset="UTF-8" action="/users" method="post">
+    <% if errors.any? %>
+        <ul>
+          <% errors.each do |msg| %>
+              <li class="error"><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <label>
       Email:
@@ -22,6 +29,13 @@
 <section class="form-tags">
   <h2>Business-class form-tag</h2>
   <%= form_tag '/users' do %>
+      <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li class="error"><%= msg %></li>
+            <% end %>
+          </ul>
+      <% end %>
       <%= label_tag 'user[email]', 'Email:' %>
       <%= email_field_tag 'user[email]', email, placeholder: 'example@example.com' %>
 
@@ -38,6 +52,13 @@
 <section class="form-for">
   <h2>Blinged-out form_for</h2>
   <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li class="error"><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <%= f.label :email, 'Email:' %>
       <%= f.email_field :email, placeholder: 'example@example.com' %>
 
