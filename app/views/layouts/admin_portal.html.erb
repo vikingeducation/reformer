@@ -15,44 +15,40 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-3 mr-auto">
+      <div class="col-sm-3 mr-1">
         <section class="navigation">
-          <nav class="navbar navbar-text">
-            <ul class="list-group">
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Users</a>
-              </li>
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Addresses</a>
-              </li>
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Orders</a>
-              </li>
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Products</a>
-              </li>
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Categories</a>
-              </li>
-              <hr>
-              <li class="nav-item list-group-item">
-                <a class="nav-link" href="#">Analytics Dashboard</a>
-              </li>
-            </ul>
+          <nav class="nav flex-column nav-pills text-center">
+            <a href="#" class="nav-link">Users</a>
+            <a href="#" class="nav-link">Addresses</a>
+            <a href="#" class="nav-link">Orders</a>
+            <a href="#" class="nav-link">Products</a>
+            <a href="#" class="nav-link">Categories</a>
+            <hr class="border border-primary">
+            <a href="#" class="nav-link">Analytics Dashboard</a>
           </nav>
         </section>
       </div>
 
       <div class="col-sm-8">
+        <% flash.each do |type, message| %>
+            <div class="row">
+              <div class="alert alert-<%= type %> alert-dismissible fade show col-sm-12 m-auto" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <%= message %>
+              </div>
+            </div>
+        <% end %>
+
+
         <div class="row">
-          <!--placeholder: flash window-->
-        </div>
-        <div class="row">
-          <%= yield %>
+          <div class="col-sm-12">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
-
 
 
   </section>
