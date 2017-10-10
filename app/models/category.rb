@@ -1,7 +1,5 @@
 class Category < ApplicationRecord
-  validates :name, presence: true, length: { in: 4..16 }
+  include IdAvailable
 
-  def available_id
-    id || 'N/A'
-  end
+  validates :name, presence: true, length: { in: 4..16 }
 end
