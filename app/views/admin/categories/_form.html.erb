@@ -1,0 +1,27 @@
+<div class="row top-buffer">
+  <div class="col-sm-12">
+    <% if @category.errors.any? %>
+        <ul class="list-group">
+          <% @category.errors.full_messages.each do |msg| %>
+              <li class="list-group-item list-group-item-danger"><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <%= form_for [:admin, @category] do |f| %>
+        <div class="form-group">
+          <%= f.label :id, 'Category ID' %>
+          <%= f.text_field :id,
+                           class: 'form-control',
+                           readonly: true,
+                           placeholder: f.object.available_id %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <%= f.submit class: 'btn btn-block btn-primary' %>
+    <% end %>
+  </div>
+</div>

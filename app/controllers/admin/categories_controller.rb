@@ -25,6 +25,23 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = Category.find params[:id]
+  end
+
+  def update
+    @category = Category.find params[:id]
+    old_name = @category.name
+
+    if @category.update_attributes(cat_params)
+      flash[:success] = "Updated category #{old_name} to #{@category.name}"
+      redirect_to admin_categories_path
+    else
+      flash[:danger] = "Couldn't edit category."
+      render :edit
+    end
+  end
+
   private
 
   def cat_params
