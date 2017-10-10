@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'portal', to: 'portal#index'
-    resources :categories, except: [:destroy]
+    resources :categories
   end
 end

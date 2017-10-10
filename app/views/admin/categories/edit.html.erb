@@ -8,6 +8,11 @@
 
 <div class="row top-buffer">
   <div class="col-sm-12 text-center">
-    <%= link_to 'Delete category', '#' %>
+    <%= link_to 'Delete category',
+                admin_category_path(@category),
+                method: :delete,
+                data: {
+                    confirm: 'You sure you wanna delete this category, my friend?'
+                } %>
   </div>
 </div>
