@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   resources :users, except: [:destroy]
-  get '/admin', to: 'admin_portal#index'
+
+  namespace :admin do
+    get 'portal', to: 'portal#index'
+    resources :categories, except: [:destroy]
+  end
 end
