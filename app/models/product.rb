@@ -10,6 +10,6 @@ class Product < ApplicationRecord
   end
 
   def category
-    Category.find(category_id)
+    @category ||= Category.find(category_id)
   end
 end
