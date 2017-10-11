@@ -8,4 +8,8 @@ class Product < ApplicationRecord
   def price=(new_price)
     write_attribute(:price, new_price.to_s.delete('$')) unless new_price.nil?
   end
+
+  def category
+    Category.find(category_id)
+  end
 end

@@ -2,6 +2,7 @@ class Admin::ProductsController < ApplicationController
   layout 'admin_portal'
 
   def index
+    @products = Product.all
   end
 
   def new
