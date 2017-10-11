@@ -25,6 +25,23 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find params[:id]
   end
 
+  def edit
+    @product = Product.find params[:id]
+  end
+
+  def update
+    @product = Product.find params[:id]
+    old_name = @product.name
+
+    if @product.update_attributes(prod_params)
+      flash[:success] = "Updated product #{old_name} to #{@product.name}"
+      redirect_to admin_products_path
+    else
+      flash[:danger] = "Couldn't edit product."
+      render :edit
+    end
+  end
+
   private
 
   def prod_params
