@@ -42,6 +42,16 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    if Product.find(params[:id]).destroy
+      flash[:success] = 'Product deleted.'
+      redirect_to admin_products_path
+    else
+      flash[:danger] = "Couldn't delete product."
+      redirect_to :back
+    end
+  end
+
   private
 
   def prod_params
