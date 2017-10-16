@@ -23,7 +23,7 @@ RSpec.feature "Admin products", type: :feature do
   end
 
   scenario 'admin views product' do
-    product = create :product, category_id: @category.id
+    product = create :product, category: @category
 
     visit admin_product_path product
 
