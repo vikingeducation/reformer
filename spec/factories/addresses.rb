@@ -6,6 +6,6 @@ FactoryGirl.define do
     post_code { Faker::Address.postcode }
 
     city
-    state
+    state_id { city.state.id }
   end
 end
