@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   it 'is valid with name, price, and category' do
-    prod = build :product, category_id: 1
+    prod = build :product
     expect(prod).to be_valid
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Product, type: :model do
   end
 
   it 'removes dollar signs from price before validating' do
-    prod = build :product, price: '$2.00', category_id: 1
+    prod = build :product, price: '$2.00'
     expect(prod).to be_valid
   end
 end
