@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get 'portal', to: 'portal#index'
     resources :categories
     resources :products
-    resources :users
+
+    resources :users do
+      resources :addresses
+    end
   end
 end
