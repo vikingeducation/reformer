@@ -15,8 +15,12 @@
       <input type="email" name="user[email]" value="<%= email %>" placeholder="example@example.com">
     </label>
     <label>
-      Username:
-      <input type="text" name="user[username]" value="<%= username %>">
+      First name:
+      <input type="text" name="user[first_name]" value="<%= first_name %>">
+    </label>
+    <label>
+      Last name:
+      <input type="text" name="user[last_name]" value="<%= last_name %>">
     </label>
     <label>
       Password:
@@ -39,8 +43,11 @@
       <%= label_tag 'user[email]', 'Email:' %>
       <%= email_field_tag 'user[email]', email, placeholder: 'example@example.com' %>
 
-      <%= label_tag 'user[username]', 'Username:' %>
-      <%= text_field_tag 'user[username]', username %>
+      <%= label_tag 'user[first_name]', 'First name:' %>
+      <%= text_field_tag 'user[first_name]', first_name %>
+
+      <%= label_tag 'user[last_name]', 'Last name:' %>
+      <%= text_field_tag 'user[last_name]', last_name %>
 
       <%= label_tag 'user[password]', 'Password:' %>
       <%= password_field_tag 'user[password]' %>
@@ -62,8 +69,11 @@
       <%= f.label :email, 'Email:' %>
       <%= f.email_field :email, placeholder: 'example@example.com' %>
 
-      <%= f.label :username, 'Username:' %>
-      <%= f.text_field :username %>
+      <%= f.label :first_name, 'First name:' %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name, 'Last name:' %>
+      <%= f.text_field :last_name %>
 
       <%= f.label :password, "What's the password?" %>
       <%= f.password_field :password %>

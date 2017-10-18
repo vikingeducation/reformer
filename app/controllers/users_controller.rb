@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
     render :new, locals: {
       email: @user.email,
-      username: @user.username,
+      first_name: @user.first_name,
+      last_name: @user.last_name,
       errors: []
     }
   end
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
     else
       render :new, locals: {
         email: @user.email,
-        username: @user.username,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
         errors: @user.errors.full_messages
       }
     end
@@ -29,6 +31,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 end
