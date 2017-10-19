@@ -3,9 +3,8 @@ class User < ApplicationRecord
             presence: true,
             length: { in: 1..64 }
 
-  validates :email, format: { with: /@/, message: 'must have an @ symbol' }
+  validates :email,
+            format: { with: /@/, message: 'must have an @ symbol' },
+            uniqueness: true
 
-  def joined_on
-    created_at.strftime "%Y-%m-%d"
-  end
 end
