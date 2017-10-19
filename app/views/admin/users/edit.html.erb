@@ -1,0 +1,22 @@
+<div class="row top-buffer">
+  <h1 class="col-sm-12 h2 text-center">
+    Edit User <%= user.id %>: <%= user.full_name %>
+  </h1>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <div class="col-sm-12 top-buffer">
+    <h2 class="h3 text-center"><u>Demographic information</u></h2>
+  </div>
+
+  <%= render partial: 'form', locals: { user: user, show_address_fields: true } %>
+
+  <div class="col-sm-12 top-buffer bottom-buffer text-center">
+    <%= link_to "Delete #{user.full_name}",
+                admin_user_path(user),
+                method: :delete,
+                data: {
+                    confirm: "You sure you wanna delete #{user.full_name}?"
+                } %>
+  </div>
+</div>

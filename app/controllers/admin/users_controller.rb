@@ -27,9 +27,26 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit
+    user = User.find params[:id]
+    render :edit, locals: { user: UserDecorator.new(user) }
+  end
+
+  def update
+    user = UserDecorator.new(User.find(params[:id]))
+
+    if user.update_attributes user_params
+      flash[:success] = "Updated user #{user.full_name}"
+      redirect_to admin_user_path(user)
+    else
+      flash[:danger] = "Couldn't update user #{user.full_name}"
+      render :edit, locals: { user: user }
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit [:first_name, :last_name, :email, :telephone]
+    params.require(:user).permit [:first_name, :last_name, :email, :phone]
   end
 end

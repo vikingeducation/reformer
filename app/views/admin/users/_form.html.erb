@@ -26,6 +26,29 @@
         <%= f.text_field :phone, class: 'form-control' %>
       </div>
 
+      <% if show_address_fields %>
+
+        <div class="form-group">
+          <%= f.label 'Default billing address' %>
+          <!--Will eventually use #collection_select-->
+          <select name="address" id="address" class="form-control">
+            <option value="1">Hard coded</option>
+            <option value="2">Hard coded</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Default shipping address' %>
+          <!--Will eventually use #collection_select-->
+          <select name="address" id="address" class="form-control">
+            <option value="1">Hard coded</option>
+            <option value="2">Hard coded</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <%= link_to 'View saved addresses', '#' %>
+        </div>
+      <% end %>
+
       <%= f.submit class: 'btn btn-block btn-primary' %>
   <% end %>
 </div>

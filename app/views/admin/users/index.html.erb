@@ -42,7 +42,7 @@
                             admin_user_path(user),
                             method: :delete,
                             data: {
-                                confirm: 'You sure you wanna delete this category, my friend?'
+                                confirm: "You sure you wanna delete #{user.full_name}?"
                             } %>
             </td>
           </tr>
