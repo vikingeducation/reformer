@@ -8,8 +8,6 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
       t.string :post_code, null: false
       t.string :plus_4
 
-      t.datetime :deleted_at, default: nil
-
       t.timestamps
     end
   end
