@@ -1,6 +1,6 @@
 class City < ApplicationRecord
-  belongs_to :state
   has_many :addresses
 
-  validates :name, presence: true
+  validates :name, presence: true,
+            length: { maximum: 64 }
 end
