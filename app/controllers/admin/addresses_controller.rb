@@ -1,8 +1,13 @@
 class Admin::AddressesController < ApplicationController
   layout 'admin_portal'
 
+  def index
+    user = UserDecorator.new(User.find(params[:user_id]))
+    render :user_addresses, locals: { user: user, addresses: user.addresses }
+  end
+
   def new
-    user = UserDecorator.new(User.find params[:user_id])
+    user = UserDecorator.new(User.find(params[:user_id]))
     address = Address.new
     address.build_city
 
@@ -11,9 +16,9 @@ class Admin::AddressesController < ApplicationController
 
   def create
     user = UserDecorator.new(User.find(params[:user_id]))
-    address = Address.new address_params
+    address = user.addresses.build address_params
 
-    if address.save
+    if user.save
       flash[:success] = 'Created address.'
       redirect_to admin_user_addresses_path(user)
     else
