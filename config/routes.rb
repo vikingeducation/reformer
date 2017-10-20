@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'portal', to: 'portal#index'
+    get 'addresses', to: 'addresses#all'
     resources :categories
     resources :products
 

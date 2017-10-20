@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h1 class="h2">Addresses</h1>
+    <p>Create new addresses from within <%= link_to 'User', admin_users_path %> profiles</p>
+  </div>
+</div>
+
+<div class="row top-buffer">
+  <div class="col-sm-12">
+    <%= render partial: 'address_table',
+               locals: { addresses: addresses } %>
+  </div>
+</div>

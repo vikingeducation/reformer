@@ -1,6 +1,11 @@
 class Admin::AddressesController < ApplicationController
   layout 'admin_portal'
 
+  def all
+    addresses = Address.all
+    render :index, locals: { addresses: addresses }
+  end
+
   def index
     user = UserDecorator.new(User.find(params[:user_id]))
     render :user_addresses, locals: { user: user, addresses: user.addresses }
