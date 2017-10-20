@@ -23,4 +23,10 @@ RSpec.describe Address, type: :model do
     bad_address = build :address, street_1: 'a' * 65
     expect(bad_address).not_to be_valid
   end
+
+  it 'is invalid without a post code' do
+    bad_address = build :address, post_code: nil
+    bad_address.save
+    expect(bad_address.errors[:post_code]).to include "can't be blank"
+  end
 end

@@ -7,4 +7,8 @@ class Address < ApplicationRecord
 
   validates :street_1, presence: true,
             length: { maximum: 64 }
+
+  validates :post_code, presence: true
+
+  accepts_nested_attributes_for :city
 end

@@ -2,26 +2,32 @@ class Admin::AddressesController < ApplicationController
   layout 'admin_portal'
 
   def new
-    @user = User.find params[:user_id]
-    @address = Address.new
+    user = UserDecorator.new(User.find params[:user_id])
+    address = Address.new
+    address.build_city
+
+    render :new, locals: { user: user, address: address }
   end
 
   def create
-    @address = Address.new address_params
-    @address.city = City.find_or_create_by name: params[:city]
+    user = UserDecorator.new(User.find(params[:user_id]))
+    address = Address.new address_params
 
-    if @address.save
+    if address.save
       flash[:success] = 'Created address.'
+      redirect_to admin_user_addresses_path(user)
+    else
+      flash[:danger] = "Couldn't create address for #{user.full_name}"
+      render :new, locals: { user: user, address: address }
     end
   end
 
   private
 
   def address_params
-    params.permit :city
-
     params.require(:address).permit(
-      %i[street_1 street_2 post_code plus_4 state_id]
+      :street_1, :street_2, :post_code, :plus_4,
+      :state_id, city_attributes: :name
     )
   end
 end
