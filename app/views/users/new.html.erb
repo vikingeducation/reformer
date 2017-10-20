@@ -37,7 +37,7 @@
     </div>
 <% end %>
   <%= label_tag(:username, "Username Tag:") %>
-  <%= text_field_tag(:username) %>
+  <%= text_field_tag(:username, @user.username) %>
   <%= label_tag(:email, "Email Tag:") %>
   <%= email_field_tag(:email) %>
   <%= label_tag(:password, "Password Tag:") %>

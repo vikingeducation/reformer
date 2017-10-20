@@ -1,12 +1,21 @@
-reformer
-========
+#  Rails App - Practicing with forms
 
-Re-Former!
+Practicing using some forms, both using naked HTML and then graduating to using the Rails helper methods; also working with validations and errors.
 
-Dariusz Biskupski
+## Getting Started
 
-# The journey from bare HTML to Form_for.
+If you want to quick run some the examples to see the code in action, and you have installed Ruby and Rails, run
+```
+$ rails s
+```
 
-## Building some examples of Form Helpers
+the page will be available in the browser at localhost:3000
+
+## Authors
+
+* **Dariusz Biskupski** - *Initial work* - https://dariuszbiskupski.com
 
 
+## Acknowledgments
+
+It is the assignment created for [Viking Code School](https://www.vikingcodeschool.com/)
