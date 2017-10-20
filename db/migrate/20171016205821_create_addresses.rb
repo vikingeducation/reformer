@@ -5,6 +5,7 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
       t.string :street_2
       t.references :city
       t.references :state
+      t.references :user
       t.string :post_code, null: false
       t.string :plus_4
 
