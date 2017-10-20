@@ -1,7 +1,9 @@
+require 'faker/internet'
+
 FactoryGirl.define do
   factory :user do
     first_name "MyString"
     last_name "MyString"
-    email "MyString@example.com"
+    email { Faker::Internet.safe_email }
   end
 end
