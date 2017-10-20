@@ -1,0 +1,63 @@
+<h1>Hello, world!</h1>
+<br>
+<br>
+<br>
+<h3>HTML FORM</h3>
+<form action="/users" method="post" accept-charset="utf-8">
+  <label>
+    Username:
+    <input type="text" name="user[username]" value="">
+  </label>
+  <label>
+    Email:
+    <input type="text" name="user[email]" value="">
+  </label>
+  <label>
+    Password:
+    <input type="text" name="user[password]">
+  </label>
+  <input type="submit">
+
+
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+
+<h3>for_tag form</h3>
+<%= form_tag("/users", method: "post") do %>
+  <% if @user.errors.any? %>
+    <div class="error_explanation">
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this action to make i work</h4>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+  <%= label_tag(:username, "Username Tag:") %>
+  <%= text_field_tag(:username, @user.username) %>
+  <%= label_tag(:email, "Email Tag:") %>
+  <%= email_field_tag(:email) %>
+  <%= label_tag(:password, "Password Tag:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit Tag") %>
+<% end %>
+
+<h3>form_for</h3>
+<%= form_for @user, html: { :class => "my_class" } do |f| %>
+  <%= f.label(:username, "Username goes here:", :class => "label_class") %>
+  <%= field_with_errors(@user, :username)  %>
+  <%= f.text_field(:username, placeholder: "Your user name here") %>
+  <%= f.label(:email, "Email:", :class => "label_class") %>
+  <%= field_with_errors(@user, :email)  %>
+  <%= f.email_field(:email, placeholder: "example@example.com") %>
+  <%= f.label(:password, "Password:", :class => "label_class") %>
+  <%= f.password_field(:password) %>
+  <%= f.submit "Submit" %>
+<% end %>
+
+
+
+
