@@ -1,0 +1,55 @@
+<!-- Basic HTML Form -->
+
+<form accept-charset="UTF-8" action="/users" method="post">
+
+
+  <input name="utf8" type="hidden" value="✓" >
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <h3>Create A New User!</h3>
+
+  <label for="username">Username:</label><br>
+  <input name="user[username]" type="text" placeholder="bobbbyby">
+
+  <br>
+
+  <label for="email">Email:</label><br>
+  <input name="user[email]" type="text" placeholder="jason.doe@gmail.com">
+
+  <br>
+
+  <label for="password">Password:</label><br>
+  <input name="user[password]" type="password" placeholder="************">
+
+  <br>
+
+  <button type="submit" name="create_new_user">
+    Create User!
+  </button>
+
+
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- form_tag Form -->
+
+<%= form_tag '/users'  do %>
+  <%= label_tag 'username', 'Username:'  %><br>
+  <%= text_field_tag 'username', nil, placeholder: 'Enter Username Here...' %>
+  <br>
+  <%= label_tag 'email', 'Email:'  %><br>
+  <%= text_field_tag 'email', nil, placeholder: 'Enter Email Here...' %>
+  <br>
+  <%= label_tag 'password', 'Password:' %><br>
+  <%= password_field_tag 'password', nil, placeholder: 'Enter Password Here...' %>
+  <br>
+  <%= submit_tag 'Create New User', class: 'create_new_user' %>
+<% end %>
+
+
+
+<!-- form_for Form -->
