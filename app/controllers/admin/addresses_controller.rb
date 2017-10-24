@@ -59,6 +59,8 @@ class Admin::AddressesController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:user_id])
+    user.clear_shipping_or_billing_address(found_address)
     if found_address.destroy
       flash[:success] = 'Address deleted.'
       redirect_to admin_user_addresses_path
@@ -82,7 +84,7 @@ class Admin::AddressesController < ApplicationController
   end
 
   def found_address
-    Address.find params[:id]
+    @address ||= Address.find params[:id]
   end
 
 end

@@ -30,22 +30,20 @@
 
         <div class="form-group">
           <%= f.label 'Default billing address' %>
-          <!--Will eventually use #collection_select-->
-          <select name="address" id="address" class="form-control">
-            <option value="1">Hard coded</option>
-            <option value="2">Hard coded</option>
-          </select>
+          <%= f.collection_select :billing_id, user.addresses,
+                                  :id, :street_1,
+                                  { prompt: true },
+                                  { class: 'form-control'}  %>
         </div>
         <div class="form-group">
           <%= f.label 'Default shipping address' %>
-          <!--Will eventually use #collection_select-->
-          <select name="address" id="address" class="form-control">
-            <option value="1">Hard coded</option>
-            <option value="2">Hard coded</option>
-          </select>
+          <%= f.collection_select :shipping_id, user.addresses,
+                                  :id, :street_1,
+                                  { prompt: true },
+                                  { class: 'form-control'}  %>
         </div>
         <div class="form-group">
-          <%= link_to 'View saved addresses', '#' %>
+          <%= link_to 'View saved addresses', admin_user_addresses_path(user) %>
         </div>
       <% end %>
 
