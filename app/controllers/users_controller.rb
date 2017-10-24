@@ -8,10 +8,31 @@ class UsersController < ApplicationController
   def create
     @user = create_user_with_params
     if @user.save
-      redirect_to new_user_path
+      redirect_to @user
     else # = this doesnt render with the info still in there :/
       render :new
     end
+  end
+
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+
+  def index
+    @users = User.all
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path(@user)
+  end
+
+
+  def edit
+
   end
 
 

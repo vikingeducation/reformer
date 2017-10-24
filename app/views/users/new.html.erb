@@ -8,17 +8,17 @@
 
   <h3>Create A New User!</h3>
 
-  <label for="username">Username:</label><br>
+  <label for="username">Username:</label>
   <input name="user[username]" type="text" placeholder="bobbbyby">
 
   <br>
 
-  <label for="email">Email:</label><br>
+  <label for="email">Email:</label>
   <input name="user[email]" type="text" placeholder="jason.doe@gmail.com">
 
   <br>
 
-  <label for="password">Password:</label><br>
+  <label for="password">Password:</label>
   <input name="user[password]" type="password" placeholder="************">
 
   <br>
@@ -27,8 +27,8 @@
     Create User!
   </button>
 
-
 </form>
+
 <br>
 <br>
 <br>
@@ -38,18 +38,30 @@
 <!-- form_tag Form -->
 
 <%= form_tag '/users'  do %>
-  <%= label_tag 'username', 'Username:'  %><br>
+  <%= label_tag 'username', 'Username:'  %>
   <%= text_field_tag 'username', nil, placeholder: 'Enter Username Here...' %>
   <br>
-  <%= label_tag 'email', 'Email:'  %><br>
+  <%= label_tag 'email', 'Email:'  %>
   <%= text_field_tag 'email', nil, placeholder: 'Enter Email Here...' %>
   <br>
-  <%= label_tag 'password', 'Password:' %><br>
+  <%= label_tag 'password', 'Password:' %>
   <%= password_field_tag 'password', nil, placeholder: 'Enter Password Here...' %>
   <br>
-  <%= submit_tag 'Create New User', class: 'create_new_user' %>
+  <%= submit_tag 'Create New User', class: 'create_new_user'%>
 <% end %>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <!-- form_for Form -->
+
+<%= form_for @user  do |f| %>
+  Username: <%= f.text_field :username, placeholder: 'Enter Username Here...' %><br>
+  Email: <%= f.text_field :email, placeholder: 'Enter Email Here...' %><br>
+  Password: <%= f.password_field :password, placeholder: 'Enter Password Here...' %><br>
+  <%= f.submit "Create New User" %>
+<% end %>
