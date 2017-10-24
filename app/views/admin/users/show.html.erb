@@ -35,7 +35,7 @@
                           confirm: "You sure you want to delete user #{user.full_name}?"
                       } %>
       </li>
-      <li><%= link_to 'View saved addresses', '#' %></li>
+      <li><%= link_to 'View saved addresses', admin_user_addresses_path(user) %></li>
       <li><%= link_to 'View unplaced order (Cart)', '#' %></li>
     </ul>
   </div>
