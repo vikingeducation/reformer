@@ -58,6 +58,16 @@ class Admin::AddressesController < ApplicationController
     end
   end
 
+  def destroy
+    if found_address.destroy
+      flash[:success] = 'Address deleted.'
+      redirect_to admin_user_addresses_path
+    else
+      flash[:danger] = "Couldn't delete address."
+      redirect_to :back
+    end
+  end
+
   private
 
   def address_params
