@@ -7,12 +7,12 @@ class Admin::AddressesController < ApplicationController
   end
 
   def index
-    user = UserDecorator.new(User.find(params[:user_id]))
+    user = decorated_user
     render :user_addresses, locals: { user: user, addresses: user.addresses }
   end
 
   def new
-    user = UserDecorator.new(User.find(params[:user_id]))
+    user = decorated_user
     address = Address.new
     address.build_city
 
@@ -20,7 +20,7 @@ class Admin::AddressesController < ApplicationController
   end
 
   def create
-    user = UserDecorator.new(User.find(params[:user_id]))
+    user = decorated_user
     address = user.addresses.build address_params
 
     if user.save
@@ -32,6 +32,12 @@ class Admin::AddressesController < ApplicationController
     end
   end
 
+  def show
+    user = decorated_user
+    address = Address.find params[:id]
+    render :show, locals: { user: user, address: address }
+  end
+
   private
 
   def address_params
@@ -40,4 +46,9 @@ class Admin::AddressesController < ApplicationController
       :state_id, city_attributes: :name
     )
   end
+
+  def decorated_user
+    UserDecorator.new(User.find(params[:user_id]))
+  end
+
 end
