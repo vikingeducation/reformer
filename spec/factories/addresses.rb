@@ -7,5 +7,6 @@ FactoryGirl.define do
 
     city
     state { State.all.sample }
+    user
   end
 end

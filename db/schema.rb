@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016210158) do
+ActiveRecord::Schema.define(version: 20171024151428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,11 @@ ActiveRecord::Schema.define(version: 20171016210158) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "billing_id"
+    t.bigint "shipping_id"
   end
 
   add_foreign_key "products", "categories"
+  add_foreign_key "users", "addresses", column: "billing_id"
+  add_foreign_key "users", "addresses", column: "shipping_id"
 end
