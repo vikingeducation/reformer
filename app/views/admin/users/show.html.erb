@@ -20,11 +20,11 @@
 
   <div class="col-sm-12">
     <h3 class="h5">Default billing address:</h3>
-    <p>(hardcoded) 123 Main St. Denver, CO 80202</p>
+    <p><%= user.show_billing_address %></p>
   </div>
   <div class="col-sm-12">
     <h3 class="h5">Default shipping address:</h3>
-    <p>(hardcoded) 123 Main St. Denver, CO 80202</p>
+    <p><%= user.show_shipping_address %></p>
 
     <ul class="list-unstyled">
       <li><%= link_to "Edit #{user.full_name}'s information", edit_admin_user_path(user) %></li>
