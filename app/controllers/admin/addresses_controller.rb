@@ -34,8 +34,28 @@ class Admin::AddressesController < ApplicationController
 
   def show
     user = decorated_user
-    address = Address.find params[:id]
+    address = found_address
     render :show, locals: { user: user, address: address }
+  end
+
+  def edit
+    user = decorated_user
+    address = found_address
+
+    render :edit, locals: { user: user, address: address}
+  end
+
+  def update
+    user = decorated_user
+    address = found_address
+
+    if address.update_attributes address_params
+      flash[:success] = 'Updated address.'
+      redirect_to admin_user_address_path(user, address)
+    else
+      flash[:danger] = "Couldn't update address for #{user.full_name}"
+      render :edit, locals: { user: user, address: address }
+    end
   end
 
   private
@@ -49,6 +69,10 @@ class Admin::AddressesController < ApplicationController
 
   def decorated_user
     UserDecorator.new(User.find(params[:user_id]))
+  end
+
+  def found_address
+    Address.find params[:id]
   end
 
 end
