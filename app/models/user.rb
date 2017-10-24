@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   belongs_to :shipping_address,
              class_name: 'Address',
-             foreign_key: :billing_id,
+             foreign_key: :shipping_id,
              required: false
 
   belongs_to :billing_address,
              class_name: 'Address',
-             foreign_key: :shipping_id,
+             foreign_key: :billing_id,
              required: false
 
   validates :first_name, :last_name, :email,
