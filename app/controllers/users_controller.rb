@@ -9,14 +9,14 @@ class UsersController < ApplicationController
     @user = create_user_with_params
     if @user.save
       redirect_to @user
-    else # = this doesnt render with the info still in there :/
-      render :new
+    else # on new this isn't rendering properly
+      render 'new'
     end
   end
 
 
   def show
-    @user = User.find(params[:id])
+    find_user
   end
 
 
@@ -25,14 +25,24 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    find_user
     @user.destroy
     redirect_to users_path(@user)
   end
 
 
   def edit
+    find_user
+  end
 
+
+  def update
+    find_user
+    if @user.update(whitelisted_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
 
@@ -50,6 +60,11 @@ class UsersController < ApplicationController
     else
       User.new
     end
+  end
+
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
 
