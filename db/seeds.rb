@@ -90,3 +90,30 @@ Address.create street_1: '4545 S. Crystal Way', city: denver, state: state,
 
 Address.create street_1: '235 KrisKross Drive', city: denver,
                state: state, post_code: '80015', user: user2
+
+# credit cards
+user1.cards.create(
+  [{
+     number: '1234567890123456',
+     expires: 1.year.from_now,
+     cv2: 123
+   },
+   {
+     number: '1234567890123456'.reverse,
+     expires: 1.year.from_now,
+     cv2: 223
+   }]
+)
+
+user2.cards.create(
+  [{
+     number: '5554443890123456',
+     expires: 1.year.from_now,
+     cv2: 123
+   },
+   {
+     number: '1234565558886698',
+     expires: 1.year.from_now,
+     cv2: 223
+   }]
+)

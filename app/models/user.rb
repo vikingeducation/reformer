@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # - shopping cart
   # - credit card
   has_many :addresses
+  has_many :cards, class_name: 'CreditCard', dependent: :destroy
 
   belongs_to :shipping_address,
              class_name: 'Address',
