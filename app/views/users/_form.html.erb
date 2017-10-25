@@ -1,0 +1,12 @@
+<%= form_for @user  do |f| %>
+  <%= f.label :username %>
+  <%= display_user_errors(@user, :username) %>
+  <%= f.text_field :username, placeholder: 'Enter Username Here...' %><br>
+  <%= f.label :email %>
+  <%= display_user_errors(@user, :email) %>
+  <%= f.text_field :email, placeholder: 'Enter Email Here...' %><br>
+  <%= f.label :password %>
+  <%= display_user_errors(@user, :password) %>
+  <%= f.password_field :password, placeholder: 'Enter Password Here...' %><br>
+  <%= f.submit "Submit",  class: "btn btn-primary"%>
+<% end %>
