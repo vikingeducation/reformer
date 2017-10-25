@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else # on new this isn't rendering properly
-      render 'new'
+      render :new
     end
   end
 
