@@ -2,17 +2,7 @@
   <h1 class="col-sm-12 text-center h2">New order for <%= user.full_name %></h1>
 </div>
 
-<div class="row top-buffer">
-  <div class="col-sm-3"><h2 class="h5">Customer ID:</h2></div>
-  <div class="col-sm-9"><p class="h5"><%= user.id %></p></div>
-  <div class="col-sm-3"><h2 class="h5">Customer:</h2></div>
-  <div class="col-sm-9"><p class="h5">
-    <%= link_to "#{user.full_name} (click to view user)", admin_user_path(user) %>
-  </p></div>
-  <div class="col-sm-3"><h2 class="h5">Date placed:</h2></div>
-  <div class="col-sm-9"><p class="h5">N/A</p></div>
-  <div class="col-sm-12"><%= link_to 'Edit customer profile', edit_admin_user_path(user) %></div>
-</div>
+<%= render partial: 'logistical_info', locals: { user: user } %>
 
 <div class="row top-buffer">
   <div class="col-sm-12">
@@ -25,28 +15,13 @@
     <% end %>
 
     <%= form_for [:admin, user, order] do |f| %>
-        <div class="form-group">
-          <%= f.label 'Shipping address', class: 'h5' %>
-          <%= f.collection_select :shipping_id, user.addresses,
-                                  :id, :street_1,
-                                  { selected: user.shipping_id, prompt: true },
-                                  { class: 'form-control' } %>
-        </div>
-        <div class="form-group">
-          <%= f.label 'Billing address', class: 'h5' %>
-          <%= f.collection_select :billing_id, user.addresses,
-                                  :id, :street_1,
-                                  { selected: user.billing_id, prompt: true },
-                                  { class: 'form-control' } %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label 'Billing card', class: 'h5' %>
-          <%= f.collection_select :credit_card_id, credit_cards,
-                                  :id, :discreet_number,
-                                  { prompt: true },
-                                  { class: 'form-control' } %>
-        </div>
+        <%= render partial: 'fields_for_order',
+                   locals: {
+                       user: user,
+                       order: order,
+                       credit_cards: credit_cards,
+                       f: f
+                   } %>
 
         <%= f.submit 'Create order in shopping cart', class: 'btn btn-block btn-primary' %>
     <% end %>
