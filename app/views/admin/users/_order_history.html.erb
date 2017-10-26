@@ -1,0 +1,36 @@
+<div class="row top-buffer border border-dark rounded">
+  <div class="col-sm-12">
+    <h2 class="h3 text-center"><u>Order history</u></h2>
+  </div>
+  <div class="col-sm-12">
+    <table class="table-striped table-bordered">
+      <caption>Hardcoded data</caption>
+      <thead class="thead-default">
+      <th>ID</th>
+      <th>Order date</th>
+      <th>Order value</th>
+      <th>Status</th>
+      <th>SHOW</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>2017-08-31</td>
+        <td>$150</td>
+        <td>PLACED</td>
+        <td><%= link_to 'show', '#' %></td>
+        <td><%= link_to 'edit', '#' %></td>
+        <td><%= link_to 'delete',
+                        '#',
+                        method: :delete,
+                        data: {
+                            confirm: 'Delete order?'
+                        } %>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

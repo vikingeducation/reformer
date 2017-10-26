@@ -1,0 +1,25 @@
+<div class="row top-buffer border border-dark rounded">
+  <div class="col-sm-12">
+    <h2 class="h3 text-center"><u>Credit card information</u></h2>
+  </div>
+
+  <div class="col-sm-3 top-buffer"><h3 class="h5">First name:</h3></div>
+  <div class="col-sm-9 top-buffer"><p><%= user.first_name %></p></div>
+  <div class="col-sm-3"><h3 class="h5">Last name:</h3></div>
+  <div class="col-sm-9"><p><%= user.last_name %></p></div>
+
+  <div class="col-sm-3"><h3 class="h5">Number:</h3></div>
+  <div class="col-sm-9"><p><%= card.number %></p></div>
+  <div class="col-sm-3"><h3 class="h5">Expiration:</h3></div>
+  <div class="col-sm-9"><p><%= card.expires %></p></div>
+  <div class="col-sm-3"><h3 class="h5">CV2:</h3></div>
+  <div class="col-sm-9"><p><%= card.cv2 %></p></div>
+
+  <div class="col-sm-12">
+    <%= link_to 'Remove card',
+                admin_user_card_path(user, card),
+                method: :delete,
+                data: { confirm: 'Want to remove this card?' }
+    %>
+  </div>
+</div>
