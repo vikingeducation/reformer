@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   def can_only_have_one_unplaced_order
     user_orders = user.orders.select { |order| !order.placed? }
 
-    if user_orders.any?
+    if user_orders.any? && user_orders.size > 1
       errors.add(:user, "can't have more than one unplaced order")
     end
   end

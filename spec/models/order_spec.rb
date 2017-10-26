@@ -10,7 +10,9 @@ RSpec.describe Order, type: :model do
     it 'is invalid unless it is the only one' do
       user = User.first
       create :order, checkout_date: nil, user: user
-      new_order = user.orders.build(
+      # expect(user.reload.orders.size).to be 1
+
+      new_order = user.reload.orders.build(
         credit_card_id: user.cards.first.id,
         billing_id: user.billing_address,
         shipping_id: user.shipping_address
