@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024204748) do
+ActiveRecord::Schema.define(version: 20171026173919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20171024204748) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "credit_card_id"
+    t.bigint "billing_id"
+    t.bigint "shipping_id"
+    t.datetime "checkout_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "price", precision: 8, scale: 2, null: false
@@ -82,6 +94,10 @@ ActiveRecord::Schema.define(version: 20171024204748) do
   end
 
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "orders", "addresses", column: "billing_id"
+  add_foreign_key "orders", "addresses", column: "shipping_id"
+  add_foreign_key "orders", "credit_cards"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "users", "addresses", column: "billing_id"
   add_foreign_key "users", "addresses", column: "shipping_id"
