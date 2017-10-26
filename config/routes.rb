@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :addresses
+      resources :orders
       resources :cards, only: [:destroy]
     end
   end
