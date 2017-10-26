@@ -1,0 +1,7 @@
+<h2>User Info: </h2>
+<h4>Username:  <%= @user[:username]%> </h4>
+<h4>Email:  <%= @user[:email]%> </h4>
+<h4>Password:  <%= @user[:password]%> </h4>
+<%= link_to "Index", users_path,  class: "btn btn-primary" %>
+<%= link_to "Delete", user_path(@user), method: "delete",  class: "btn btn-primary"  %>
+<%= link_to "Edit", edit_user_path(@user),  class: "btn btn-primary" %>
