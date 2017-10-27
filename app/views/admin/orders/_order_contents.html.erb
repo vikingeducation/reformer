@@ -1,0 +1,46 @@
+<div class="col-sm-12">
+  <h2 class="h3 text-center">Edit order contents</h2>
+</div>
+
+<div class="col-sm-12">
+  <%= form_for [:admin, user, order],
+               url: admin_user_order_update_contents_path(user, order) do |f| %>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-default">
+      <th>ID</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total price</th>
+      <th>REMOVE</th>
+      </thead>
+      <tbody>
+      <% order.contents.each do |content| %>
+          <tr>
+            <td><%= content.product.id %></td>
+            <td><%= text_field_tag 'quantity', content.product.quantity, class: 'form-control' %></td>
+            <td><%= content.product.price %></td>
+            <td><%= content.product.price * content.quantity %></td>
+            <td><%= link_to 'remove',
+                            admin_user_order_update_contents_path(user, order),
+                            method: :delete,
+                            data: {
+                                confirm: "Remove product?"
+                            } %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= f.submit 'Update order contents', class: 'btn btn-block btn-primary bottom-buffer' %>
+  <% end %>
+
+  <div class="col-sm-12 bottom-buffer text-center">
+    <%= link_to 'Delete order',
+                admin_user_order_path(user, order),
+                method: :delete,
+                data: {
+                    confirm: 'You sure you wanna delete this order?'
+                } %>
+  </div>
+</div>

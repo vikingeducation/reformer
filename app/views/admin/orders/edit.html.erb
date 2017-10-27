@@ -7,7 +7,9 @@
 </div>
 
 <div class="row top-buffer border border-dark rounded">
-  <div class="col-sm-12">
-    <h2 class="h3 text-center">Logistical information</h2>
-  </div>
+  <%= render partial: 'order_contents', locals: { user: user, order: order } %>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'add_products', locals: { user: user, order: order } %>
 </div>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :addresses
       resources :orders do
         patch 'add_products', to: 'orders#add_products'
+        patch 'update_contents', to: 'orders#update_contents'
+        delete 'update_contents', to: 'orders#delete_content'
       end
       resources :cards, only: [:destroy]
     end

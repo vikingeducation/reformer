@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
     user = UserDecorator.new(User.find(params[:user_id]))
     cards = user.cards.map { |card| ::CardDecorator.new(card) }
 
-    render :new, locals: { user: user, credit_cards: cards, order: Order.new }
+    render :new, locals: { user: user, credit_cards: cards, order: OrderDecorator.new(Order.new) }
   end
 
   def create
@@ -28,6 +28,13 @@ class Admin::OrdersController < ApplicationController
     order = OrderDecorator.new(Order.find(params[:id]))
 
     render :edit, locals: { user: user, credit_cards: cards, order: order }
+  end
+
+  def add_products
+    order = Order.find(params[:order_id])
+  end
+
+  def update_contents
   end
 
   private
