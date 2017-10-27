@@ -117,3 +117,13 @@ user2.cards.create(
      cv2: 223
    }]
 )
+
+# categories and products
+require 'faker/commerce'
+5.times do |i|
+  c = Category.create name: "Category #{i + 1}"
+
+  3.times do
+    c.products.create name: Faker::Commerce.product_name, price: 2.00
+  end
+end
