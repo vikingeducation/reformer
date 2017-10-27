@@ -1,0 +1,59 @@
+<div class="col-sm-12 top-buffer">
+  <% if order.errors.any? %>
+      <ul class="list-group">
+        <% order.errors.full_messages.each do |msg| %>
+            <li class="list-group-item list-group-item-danger"><%= msg %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_for [:admin, user, order] do |f| %>
+      <% if params[:action] == 'edit' %>
+        <h3 class="h4">Order status</h3>
+        <div class="form-check">
+          <label class="form-check-label text-success">
+            <%= f.radio_button :checkout_date,
+                               'placed',{
+                                   class: 'form-check-input',
+                                   checked: order.placed?
+                               } %>
+            PLACED
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label text-danger">
+            <%= f.radio_button :checkout_date,
+                               'unplaced',{
+                                 class: 'form-check-input',
+                                 checked: !order.placed?
+                               } %>
+            UNPLACED<span class="text-secondary">--Only one unplaced order allowed!</span>
+          </label>
+        </div>
+      <% end %>
+      <div class="form-group top-buffer">
+        <%= f.label 'Shipping address', class: 'h5' %>
+        <%= f.collection_select :shipping_id, user.addresses,
+                                :id, :street_1,
+                                { prompt: true },
+                                { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Billing address', class: 'h5' %>
+        <%= f.collection_select :billing_id, user.addresses,
+                                :id, :street_1,
+                                { prompt: true },
+                                { class: 'form-control' } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Billing card', class: 'h5' %>
+        <%= f.collection_select :credit_card_id, credit_cards,
+                                :id, :discreet_number,
+                                { prompt: true },
+                                { class: 'form-control' } %>
+      </div>
+
+      <%= f.submit order_form_button_label, class: 'btn btn-block btn-primary bottom-buffer' %>
+  <% end %>
+</div>

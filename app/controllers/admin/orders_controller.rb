@@ -22,6 +22,14 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def edit
+    user = UserDecorator.new(User.find(params[:user_id]))
+    cards = user.cards.map { |card| ::CardDecorator.new(card) }
+    order = OrderDecorator.new(Order.find(params[:id]))
+
+    render :edit, locals: { user: user, credit_cards: cards, order: order }
+  end
+
   private
 
   def order_params

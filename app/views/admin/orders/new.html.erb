@@ -2,31 +2,11 @@
   <h1 class="col-sm-12 text-center h2">New order for <%= user.full_name %></h1>
 </div>
 
-<%= render partial: 'logistical_info', locals: { user: user } %>
-
-<div class="row top-buffer">
-  <div class="col-sm-12">
-    <% if order.errors.any? %>
-        <ul class="list-group">
-          <% order.errors.full_messages.each do |msg| %>
-              <li class="list-group-item list-group-item-danger"><%= msg %></li>
-          <% end %>
-        </ul>
-    <% end %>
-
-    <%= form_for [:admin, user, order] do |f| %>
-        <%= render partial: 'fields_for_order',
-                   locals: {
-                       user: user,
-                       order: order,
-                       credit_cards: credit_cards,
-                       f: f
-                   } %>
-
-        <%= f.submit 'Create order in shopping cart', class: 'btn btn-block btn-primary' %>
-    <% end %>
-  </div>
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'logistical_info', locals: { user: user } %>
+  <%= render partial: 'form', locals: { user: user, credit_cards: credit_cards, order: order } %>
 </div>
+
 
 <div class="row top-buffer">
   <div class="col-sm-12 text-center">
