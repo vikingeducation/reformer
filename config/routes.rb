@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :addresses
-      resources :orders
+      resources :orders do
+        patch 'add_products', to: 'orders#add_products'
+      end
       resources :cards, only: [:destroy]
     end
   end
