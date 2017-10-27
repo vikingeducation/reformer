@@ -12,7 +12,7 @@
         <h3 class="h4">Order status</h3>
         <div class="form-check">
           <label class="form-check-label text-success">
-            <%= f.radio_button :checkout_date,
+            <%= f.radio_button :status,
                                'placed',{
                                    class: 'form-check-input',
                                    checked: order.placed?
@@ -22,7 +22,7 @@
         </div>
         <div class="form-check">
           <label class="form-check-label text-danger">
-            <%= f.radio_button :checkout_date,
+            <%= f.radio_button :status,
                                'unplaced',{
                                  class: 'form-check-input',
                                  checked: !order.placed?

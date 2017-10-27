@@ -30,6 +30,23 @@ class Admin::OrdersController < ApplicationController
     render :edit, locals: { user: user, credit_cards: cards, order: order }
   end
 
+  def update
+    user = UserDecorator.new(User.find(params[:user_id]))
+    cards = user.cards.map { |card| ::CardDecorator.new(card) }
+    order = Order.find(params[:id])
+
+    checkout_date = determine_checkout_date(order, params[:order][:status])
+
+    if order.update_attributes(order_params.merge(checkout_date: checkout_date))
+      flash[:success] = 'Updated order'
+      redirect_to admin_user_order_path(user, order)
+    else
+      flash[:danger] = "Couldn't update order"
+      render :edit, locals: { user: user, order: OrderDecorator.new(order),
+                              credit_cards: cards }
+    end
+  end
+
   def add_products
     order = Order.find(params[:order_id])
   end
@@ -38,6 +55,19 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
+
+  def determine_checkout_date(order, status)
+    if status == 'placed'
+      if order.placed?
+        date = order.checkout_date
+      else
+        date = Time.zone.now
+      end
+    else
+      date = nil
+    end
+    date
+  end
 
   def order_params
     params.require(:order).permit [:billing_id, :shipping_id, :credit_card_id]
