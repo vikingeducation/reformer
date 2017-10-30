@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Admin categories", type: :feature do
-  before do
-    Category.destroy_all
+  before :all do
     Product.destroy_all
+    Category.destroy_all
   end
+
   scenario 'admin creates new category' do
     new_cat_name = 'Awesomeness'
     visit admin_categories_path

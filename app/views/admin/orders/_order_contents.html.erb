@@ -15,8 +15,7 @@
     <% end %>
   <% end %>
 
-  <%= form_for [:admin, user, order],
-               url: admin_user_order_update_contents_path(user, order) do |f| %>
+  <%= form_for [:admin, user, order] do |f| %>
     <table class="table table-striped table-bordered">
       <thead class="thead-default">
       <th>ID</th>
@@ -27,19 +26,19 @@
       </thead>
       <tbody>
       <% order.contents.each do |content| %>
+        <%= f.fields_for :contents, content do |content_fields| %>
           <tr>
             <td><%= content.product.id %></td>
-            <td><%= text_field_tag 'quantity', content.quantity, class: 'form-control' %></td>
-            <td><%= content.product.price %></td>
-            <td><%= content.product.price * content.quantity %></td>
-            <td><%= link_to 'remove',
-                            admin_user_order_update_contents_path(user, order),
-                            method: :delete,
-                            data: {
-                                confirm: "Remove product?"
-                            } %>
+            <td><%= content_fields.text_field :quantity, class: 'form-control' %></td>
+            <td><%= number_to_currency(content.product.price) %></td>
+            <td><%= number_to_currency(content.product.price * content.quantity) %></td>
+            <td>
+              <% if content_fields.object.persisted? %>
+                <%= content_fields.check_box :_destroy %>
+              <% end %>
             </td>
           </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>

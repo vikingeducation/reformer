@@ -15,6 +15,9 @@ class Order < ApplicationRecord
 
   validate :can_only_have_one_unplaced_order
 
+  accepts_nested_attributes_for :contents, reject_if: :all_blank,
+                                           allow_destroy: true
+
   def placed?
     checkout_date.present?
   end
@@ -22,7 +25,7 @@ class Order < ApplicationRecord
   private
 
   def can_only_have_one_unplaced_order
-    user_orders = user.orders.select { |order| !order.placed? }
+    user_orders = user.orders.reject(&:placed?)
 
     if user_orders.any? && user_orders.size > 1
       errors.add(:user, "can't have more than one unplaced order")

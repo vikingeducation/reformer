@@ -37,7 +37,14 @@ class Admin::OrdersController < ApplicationController
 
     checkout_date = determine_checkout_date(order, params[:order][:status])
 
-    if order.update_attributes(order_params.merge(checkout_date: checkout_date))
+    new_order_params = order_params
+    new_order_params[:contents_attributes].each do |index, content|
+      if content[:quantity] == '0'
+        content[:_destroy] = '1'
+      end
+    end
+
+    if order.update_attributes(new_order_params.merge(checkout_date: checkout_date))
       flash[:success] = 'Updated order'
       redirect_to admin_user_order_path(user, order)
     else
@@ -97,6 +104,13 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit [:billing_id, :shipping_id, :credit_card_id]
+    params
+      .require(:order)
+      .permit(
+        :billing_id, :shipping_id, :credit_card_id,
+        { contents_attributes:
+            [:id, :quantity, :_destroy, :order_id, :product_id]
+        }
+      )
   end
 end
