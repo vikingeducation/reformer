@@ -17,6 +17,6 @@ RSpec.describe OrderContent, type: :model do
     bad_contents = build :order_content, product_id: oc.product_id, order_id: oc.order_id
 
     bad_contents.valid?
-    expect(bad_contents.errors[:product_id]).to include "can't add product more than once"
+    expect(bad_contents.errors[:product_id]).to include "can't be added more than once"
   end
 end

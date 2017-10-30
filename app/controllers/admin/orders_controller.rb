@@ -49,6 +49,33 @@ class Admin::OrdersController < ApplicationController
 
   def add_products
     order = Order.find(params[:order_id])
+    user = UserDecorator.new(User.find(params[:user_id]))
+
+    product_ids = params[:product_ids]
+    quantities = params[:product_quantities]
+    products_to_add = []
+
+    product_ids.each_with_index do |id, i|
+      quantity = quantities[i].to_i
+      next if id.blank? || quantity < 0
+
+      found = products_to_add.detect { |prod| prod[:product_id] == id }
+      if found
+        found[:quantity] += quantity
+      else
+        products_to_add << { product_id: id, quantity: quantity }
+      end
+    end
+
+    order.contents.build products_to_add
+    if order.save
+      flash[:success] = 'Added products to order'
+      redirect_to admin_user_order_path(user, order)
+    else
+      flash[:danger] = "Couldn't add products"
+      cards = user.cards.map { |card| ::CardDecorator.new(card) }
+      render :edit, locals: { user: user, credit_cards: cards, order: OrderDecorator.new(order) }
+    end
   end
 
   def update_contents
