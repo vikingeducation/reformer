@@ -9,6 +9,14 @@ RSpec.describe OrderContent, type: :model do
   it 'is invalid without quantity as a number' do
     oc = build :order_content, quantity: ''
     oc.valid?
-    expect(oc.errors[:quantity]).to include "is not a number"
+    expect(oc.errors[:quantity]).to include 'is not a number'
+  end
+
+  it 'ensures product is not duplicated' do
+    oc = create :order_content
+    bad_contents = build :order_content, product_id: oc.product_id, order_id: oc.order_id
+
+    bad_contents.valid?
+    expect(bad_contents.errors[:product_id]).to include "can't add product more than once"
   end
 end
