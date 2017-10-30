@@ -38,9 +38,11 @@ class Admin::OrdersController < ApplicationController
     checkout_date = determine_checkout_date(order, params[:order][:status])
 
     new_order_params = order_params
-    new_order_params[:contents_attributes].each do |index, content|
-      if content[:quantity] == '0'
-        content[:_destroy] = '1'
+    if new_order_params[:contents_attributes].present?
+      new_order_params[:contents_attributes].each do |index, content|
+        if content[:quantity] == '0'
+          content[:_destroy] = '1'
+        end
       end
     end
 
