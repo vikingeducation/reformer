@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     user = decorated_user
-    orders = user.orders.map { |o| OrderDecorator.new(o) }
+    orders = user.orders.take(50).map { |o| OrderDecorator.new(o) }
 
     render :user_orders, locals: { user: user, orders: orders }
   end

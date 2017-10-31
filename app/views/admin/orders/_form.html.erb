@@ -8,7 +8,7 @@
   <% end %>
 
   <%= form_for [:admin, user, order] do |f| %>
-      <% if params[:action] == 'edit' %>
+      <% if params[:action] == 'edit' || params[:action] == 'update' %>
         <h3 class="h4">Order status</h3>
         <div class="form-check">
           <label class="form-check-label text-success">

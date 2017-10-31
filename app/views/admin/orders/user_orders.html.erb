@@ -1,0 +1,18 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2"><%= user.full_name %>: orders</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to "Create an order for #{user.full_name}",
+                new_admin_user_order_path,
+                class: 'btn btn-block btn-primary' %>
+  </div>
+</div>
+
+<div class="row top-buffer">
+  <div class="col-sm-12">
+    <%= render partial: 'orders_table',
+               locals: { orders: orders } %>
+  </div>
+</div>
