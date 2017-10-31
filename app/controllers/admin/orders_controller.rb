@@ -63,6 +63,16 @@ class Admin::OrdersController < ApplicationController
     render :show, locals: { user: user, order: order}
   end
 
+  def destroy
+    if Order.find(params[:id]).destroy
+      flash[:success] = 'Order deleted'
+      redirect_to admin_user_path(params[:user_id])
+    else
+      flash[:danger] = "Couldn't delete order"
+      redirect_to :back
+    end
+  end
+
   def add_products
     order = Order.find(params[:order_id])
     user = decorated_user

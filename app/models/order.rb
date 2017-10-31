@@ -10,7 +10,8 @@ class Order < ApplicationRecord
              class_name: 'Address',
              foreign_key: :billing_id
 
-  has_many :contents, class_name: 'OrderContent', foreign_key: :order_id
+  has_many :contents, class_name: 'OrderContent',
+           foreign_key: :order_id, dependent: :destroy
   has_many :products, through: :contents
 
   validate :can_only_have_one_unplaced_order
