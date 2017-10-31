@@ -22,8 +22,8 @@ RSpec.describe Order, type: :model do
 
   describe 'number of unplaced orders per user' do
     it 'is invalid unless it is the only one' do
-      user = User.first
-      create :order, checkout_date: nil, user: user
+      exiting_order = create :order, checkout_date: nil
+      user = exiting_order.user
 
       new_order = user.reload.orders.build(
         credit_card_id: user.cards.first.id,

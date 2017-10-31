@@ -6,6 +6,13 @@ class Admin::OrdersController < ApplicationController
     render :index, locals: { orders: orders }
   end
 
+  def index
+    user = decorated_user
+    orders = user.orders.map { |o| OrderDecorator.new(o) }
+
+    render :user_orders, locals: { user: user, orders: orders }
+  end
+
   def new
     user = decorated_user
     cards = decorated_cards(user)
@@ -40,7 +47,7 @@ class Admin::OrdersController < ApplicationController
     cards = decorated_cards(user)
     order = OrderDecorator.new(Order.find(params[:id]))
 
-    checkout_date = determine_checkout_date(order, params[:order][:status])
+    checkout_date = determine_checkout_date(order)
 
     new_order_params = order_params
     if new_order_params[:contents_attributes].present?
@@ -123,7 +130,8 @@ class Admin::OrdersController < ApplicationController
     UserDecorator.new(User.find(params[:user_id]))
   end
 
-  def determine_checkout_date(order, status)
+  def determine_checkout_date(order)
+    status = order_status[:status]
     if status == 'placed'
       if order.placed?
         date = order.checkout_date
@@ -145,5 +153,9 @@ class Admin::OrdersController < ApplicationController
             [:id, :quantity, :_destroy, :order_id, :product_id]
         }
       )
+  end
+
+  def order_status
+    params.require(:order).permit :status
   end
 end

@@ -128,14 +128,28 @@ require 'faker/commerce'
   end
 end
 
-# orders
+# unplaced order for each user
+User.all.each do |user|
+  order = user.orders.create(
+    credit_card: user.cards.first,
+    billing_address: user.addresses.first,
+    shipping_address: user.addresses.last
+  )
 
+  order.contents.create([
+                          { product_id: 1, quantity: 2 },
+                          { product_id: 5, quantity: 3 }
+                        ])
+end
+
+# placed orders for each user
 2.times do
   User.all.each do |user|
     order = user.orders.create(
       credit_card: user.cards.first,
       billing_address: user.addresses.first,
-      shipping_address: user.addresses.last
+      shipping_address: user.addresses.last,
+      checkout_date: Time.zone.now
     )
 
     order.contents.create([
