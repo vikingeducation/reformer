@@ -1,6 +1,11 @@
 class Admin::OrdersController < ApplicationController
   layout 'admin_portal'
 
+  def all
+    orders = Order.limit(50).map { |order| OrderDecorator.new(order) }
+    render :index, locals: { orders: orders }
+  end
+
   def new
     user = decorated_user
     cards = decorated_cards(user)
@@ -60,7 +65,7 @@ class Admin::OrdersController < ApplicationController
     user = decorated_user
     order = decorated_order
 
-    render :show, locals: { user: user, order: order}
+    render :show, locals: { user: user, order: order }
   end
 
   def destroy

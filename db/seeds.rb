@@ -127,3 +127,20 @@ require 'faker/commerce'
     c.products.create name: Faker::Commerce.product_name, price: 2.00
   end
 end
+
+# orders
+
+2.times do
+  User.all.each do |user|
+    order = user.orders.create(
+      credit_card: user.cards.first,
+      billing_address: user.addresses.first,
+      shipping_address: user.addresses.last
+    )
+
+    order.contents.create([
+                            { product_id: 1, quantity: 2 },
+                            { product_id: 5, quantity: 3 }
+                          ])
+  end
+end
