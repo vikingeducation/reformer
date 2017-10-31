@@ -2,15 +2,15 @@ class Admin::OrdersController < ApplicationController
   layout 'admin_portal'
 
   def new
-    user = UserDecorator.new(User.find(params[:user_id]))
-    cards = user.cards.map { |card| ::CardDecorator.new(card) }
+    user = decorated_user
+    cards = decorated_cards(user)
 
     render :new, locals: { user: user, credit_cards: cards, order: OrderDecorator.new(Order.new) }
   end
 
   def create
-    user = UserDecorator.new(User.find(params[:user_id]))
-    cards = user.cards.map { |card| ::CardDecorator.new(card) }
+    user = decorated_user
+    cards = decorated_cards(user)
     order = user.orders.build order_params
 
     if order.save
@@ -23,17 +23,17 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
-    user = UserDecorator.new(User.find(params[:user_id]))
-    cards = user.cards.map { |card| ::CardDecorator.new(card) }
-    order = OrderDecorator.new(Order.find(params[:id]))
+    user = decorated_user
+    cards = decorated_cards(user)
+    order = decorated_order
 
     render :edit, locals: { user: user, credit_cards: cards, order: order }
   end
 
   def update
-    user = UserDecorator.new(User.find(params[:user_id]))
-    cards = user.cards.map { |card| ::CardDecorator.new(card) }
-    order = Order.find(params[:id])
+    user = decorated_user
+    cards = decorated_cards(user)
+    order = OrderDecorator.new(Order.find(params[:id]))
 
     checkout_date = determine_checkout_date(order, params[:order][:status])
 
@@ -51,21 +51,21 @@ class Admin::OrdersController < ApplicationController
       redirect_to admin_user_order_path(user, order)
     else
       flash[:danger] = "Couldn't update order"
-      render :edit, locals: { user: user, order: OrderDecorator.new(order),
+      render :edit, locals: { user: user, order: order,
                               credit_cards: cards }
     end
   end
 
   def show
-    user = UserDecorator.new(User.find(params[:user_id]))
-    order = OrderDecorator.new(Order.find(params[:id]))
+    user = decorated_user
+    order = decorated_order
 
     render :show, locals: { user: user, order: order}
   end
 
   def add_products
     order = Order.find(params[:order_id])
-    user = UserDecorator.new(User.find(params[:user_id]))
+    user = decorated_user
 
     product_ids = params[:product_ids]
     quantities = params[:product_quantities]
@@ -89,15 +89,24 @@ class Admin::OrdersController < ApplicationController
       redirect_to admin_user_order_path(user, order)
     else
       flash[:danger] = "Couldn't add products"
-      cards = user.cards.map { |card| ::CardDecorator.new(card) }
+      cards = decorated_cards(user)
       render :edit, locals: { user: user, credit_cards: cards, order: OrderDecorator.new(order) }
     end
   end
 
-  def update_contents
+  private
+
+  def decorated_cards(user)
+    user.cards.map { |card| CardDecorator.new(card) }
   end
 
-  private
+  def decorated_order
+    OrderDecorator.new(Order.find(params[:id]))
+  end
+
+  def decorated_user
+    UserDecorator.new(User.find(params[:user_id]))
+  end
 
   def determine_checkout_date(order, status)
     if status == 'placed'
