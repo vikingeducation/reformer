@@ -1,0 +1,23 @@
+<div class="col-sm-12">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-default">
+    <th>ID</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total price</th>
+    </thead>
+    <tbody>
+    <% order.contents.each do |content| %>
+        <tr>
+          <td><%= content.product.id %></td>
+          <td><%= link_to content.product.name,
+                          admin_product_path(content.product) %></td>
+          <td><%= content.quantity %></td>
+          <td><%= number_to_currency(content.product.price) %></td>
+          <td><%= number_to_currency(content.product.price * content.quantity) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
