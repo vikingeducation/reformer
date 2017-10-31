@@ -6,4 +6,16 @@ class OrderDecorator < SimpleDelegator
       'N/A'
     end
   end
+
+  def heading_text
+    placed? ? "Order #{id}" : 'Shopping cart'
+  end
+
+  def status_css
+    placed? ? 'order-placed' : 'order-unplaced'
+  end
+
+  def status_text
+    placed? ? 'placed' : 'unplaced'
+  end
 end

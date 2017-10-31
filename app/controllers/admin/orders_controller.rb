@@ -56,6 +56,13 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def show
+    user = UserDecorator.new(User.find(params[:user_id]))
+    order = OrderDecorator.new(Order.find(params[:id]))
+
+    render :show, locals: { user: user, order: order}
+  end
+
   def add_products
     order = Order.find(params[:order_id])
     user = UserDecorator.new(User.find(params[:user_id]))

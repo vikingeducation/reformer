@@ -22,6 +22,10 @@ class Order < ApplicationRecord
     checkout_date.present?
   end
 
+  def total
+    products.sum :price
+  end
+
   private
 
   def can_only_have_one_unplaced_order

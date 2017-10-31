@@ -1,5 +1,9 @@
 class CardDecorator < SimpleDelegator
   def discreet_number
-    'Ending in ' + number.reverse[0, 4]
+    'Ending in ' + last_four
+  end
+
+  def last_four
+    number.reverse[0, 4]
   end
 end

@@ -6,6 +6,18 @@ RSpec.describe Order, type: :model do
     expect(order).to be_valid
   end
 
+  it 'can tell you the product total' do
+    products = [
+      create(:product, price: 4.0),
+      create(:product, price: 2.0)
+    ]
+
+    order = create :order
+    order.products = products
+
+    expect(order.total).to eq 6.0
+  end
+
   describe 'number of unplaced orders per user' do
     it 'is invalid unless it is the only one' do
       user = User.first

@@ -12,4 +12,10 @@
 </p></div>
 <div class="col-sm-3"><h2 class="h5">Date placed:</h2></div>
 <div class="col-sm-9"><p class="h5"><%= order.date_placed %></p></div>
+<% if params[:action] == 'show' %>
+  <div class="col-sm-3"><h2 class="h5"># Products</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= order.products.size %></p></div>
+  <div class="col-sm-3"><h2 class="h5"># Order value</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= number_to_currency(order.total) %></p></div>
+<% end %>
 <div class="col-sm-12"><%= link_to 'Edit customer profile', edit_admin_user_path(user) %></div>
