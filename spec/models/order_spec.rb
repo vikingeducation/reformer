@@ -7,15 +7,17 @@ RSpec.describe Order, type: :model do
   end
 
   it 'can tell you the product total' do
-    products = [
-      create(:product, price: 4.0),
-      create(:product, price: 2.0)
-    ]
-
+    prod1 = create(:product, price: 4.0)
+    prod2 = create(:product, price: 2.0)
     order = create :order
-    order.products = products
 
-    expect(order.total).to eq 6.0
+    order.contents.create [
+                           { product_id: prod1.id, quantity: 2 },
+                           { product_id: prod2.id }
+                         ]
+    expected_total = (2 * prod1.price) + prod2.price
+
+    expect(order.total).to eq expected_total.to_f
   end
 
   describe 'number of unplaced orders per user' do

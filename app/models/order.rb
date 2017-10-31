@@ -16,14 +16,14 @@ class Order < ApplicationRecord
   validate :can_only_have_one_unplaced_order
 
   accepts_nested_attributes_for :contents, reject_if: :all_blank,
-                                           allow_destroy: true
+                                allow_destroy: true
 
   def placed?
     checkout_date.present?
   end
 
   def total
-    products.sum :price
+    products.sum('quantity * price')
   end
 
   private
