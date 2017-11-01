@@ -8,7 +8,10 @@ class Admin::UsersController < ApplicationController
 
   def show
     user = User.find params[:id]
-    render :show, locals: { user: UserDecorator.new(user), card: user.cards.first }
+    orders = user.orders.map { |order| OrderDecorator.new(order) }
+
+    render :show, locals: { user: UserDecorator.new(user),
+                            card: user.cards.first, orders: orders }
   end
 
   def new

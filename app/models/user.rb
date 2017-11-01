@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   #TODO: When orders are added, business logic says deleting user also deletes:
   # - shopping cart
-  # - credit card
   has_many :addresses
   has_many :orders
   has_many :cards, class_name: 'CreditCard', dependent: :destroy

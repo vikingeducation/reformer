@@ -10,4 +10,4 @@
 
 <%= render partial: 'admin_actions', locals: { user: user } %>
 
-<%= render 'order_history' %>
+<%= render partial: 'order_history', locals: { user: user, orders: orders } %>
