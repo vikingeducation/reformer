@@ -13,4 +13,13 @@ class Product < ApplicationRecord
   def price=(new_price)
     write_attribute(:price, new_price.to_s.delete('$')) unless new_price.nil?
   end
+
+
+  def pending_orders_count
+    orders.unplaced.count
+  end
+
+  def times_ordered
+    orders.placed.count
+  end
 end

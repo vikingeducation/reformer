@@ -19,6 +19,9 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :contents, reject_if: :all_blank,
                                 allow_destroy: true
 
+  scope :placed, -> { where.not(checkout_date: nil) }
+  scope :unplaced, -> { where(checkout_date: nil)}
+
   def placed?
     checkout_date.present?
   end

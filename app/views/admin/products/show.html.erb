@@ -6,22 +6,16 @@
 
 <div class="row top-buffer">
   <div class="col-sm-3"><h3 class="h5">Product ID:</h3></div>
-  <div class="col-sm-4"><h3 class="h5"><%= @product.id %></h3></div>
-</div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.id %></h3></div>
 
-<div class="row">
   <div class="col-sm-3"><h3 class="h5">Name:</h3></div>
-  <div class="col-sm-4"><h3 class="h5"><%= @product.name %></h3></div>
-</div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.name %></h3></div>
 
-<div class="row">
   <div class="col-sm-3"><h3 class="h5">Price:</h3></div>
-  <div class="col-sm-4"><h3 class="h5"><%= @product.price %></h3></div>
-</div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.price %></h3></div>
 
-<div class="row">
   <div class="col-sm-3"><h3 class="h5">Category:</h3></div>
-  <div class="col-sm-4"><h3 class="h5"><%= @product.category.name %></h3></div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.category.name %></h3></div>
 </div>
 
 <div class="row top-buffer">
@@ -32,12 +26,10 @@
 
 <div class="row">
   <div class="col-sm-3"><h3 class="h5">Times ordered</h3></div>
-  <div class="col-sm-4"><h3 class="h5">place holder</h3></div>
-</div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.times_ordered %></h3></div>
 
-<div class="row">
-  <div class="col-sm-3"><h3 class="h5">carts in</h3></div>
-  <div class="col-sm-4"><h3 class="h5">place holder</h3></div>
+  <div class="col-sm-3"><h3 class="h5">Carts in</h3></div>
+  <div class="col-sm-9"><h3 class="h5"><%= @product.pending_orders_count %></h3></div>
 </div>
 
 <div class="row top-buffer">
