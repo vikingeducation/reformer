@@ -1,0 +1,18 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2"><%= user.full_name %>: addresses</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to "Create a #{user.full_name} address",
+                new_admin_user_address_path,
+                class: 'btn btn-block btn-primary' %>
+  </div>
+</div>
+
+<div class="row top-buffer">
+  <div class="col-sm-12">
+    <%= render partial: 'address_table',
+               locals: { addresses: addresses } %>
+  </div>
+</div>

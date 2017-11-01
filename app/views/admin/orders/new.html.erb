@@ -1,0 +1,15 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2">New order for <%= user.full_name %></h1>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'logistical_info', locals: { user: user, order: order } %>
+  <%= render partial: 'form', locals: { user: user, credit_cards: credit_cards, order: order } %>
+</div>
+
+
+<div class="row top-buffer">
+  <div class="col-sm-12 text-center">
+    <p class="text-secondary font-italic h5">You can add products on the next screen, once it's been created</p>
+  </div>
+</div>

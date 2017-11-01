@@ -1,0 +1,44 @@
+<div class="row top-buffer">
+  <h1 class="col-sm-12 text-center h2"><%= order.heading_text %></h1>
+</div>
+
+<div class="row top-buffer">
+  <%= render partial: 'logistical_info', locals: { user: user, order: order } %>
+</div>
+
+
+<div class="row top-buffer">
+  <div class="col-sm-12"><h3 class="h4">Order status:</h3></div>
+  <div class="col-sm-12">
+    <p class="h4 text-uppercase <%= order.status_css %>">
+      <%= order.status_text %>
+    </p>
+  </div>
+</div>
+
+<%= render partial: 'addresses', locals: { order: order } %>
+
+<div class="row top-buffer">
+  <div class="col-sm-12"><h3 class="h4">Billing card:</h3></div>
+  <div class="col-sm-3">Last 4 digits</div>
+  <div class="col-sm-9"><%= CardDecorator.new(order.credit_card).last_four %></div>
+</div>
+
+<div class="row top-buffer">
+  <%= render partial: 'edit_delete_order_links',
+             locals: { user: user, order: order } %>
+</div>
+<hr>
+
+<div class="row">
+  <h2 class="h3 text-center col-sm-12">Order contents</h2>
+</div>
+
+<div class="row">
+  <%= render partial: 'order_contents_display_table', locals: { user: user, order: order } %>
+
+  <div class="col-sm-12">
+    <%= render partial: 'edit_delete_order_links',
+               locals: { user: user, order: order } %>
+  </div>
+</div>

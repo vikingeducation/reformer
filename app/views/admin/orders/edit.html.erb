@@ -1,0 +1,15 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2">Edit order #<%= order.id %></h1>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'order', locals: { user: user, credit_cards: credit_cards, order: order } %>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'order_contents_fields', locals: { user: user, order: order } %>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <%= render partial: 'add_products', locals: { user: user, order: order } %>
+</div>

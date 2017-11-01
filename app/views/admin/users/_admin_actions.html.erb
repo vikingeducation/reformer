@@ -1,0 +1,16 @@
+<div class="row top-buffer border border-dark rounded">
+  <div class="col-sm-12">
+    <h2 class="h3 text-center"><u>Admin actions for <%= user.full_name %></u></h2>
+  </div>
+
+  <div class="col-sm-12 top-buffer">
+    <%= link_to 'Create order',
+                new_admin_user_order_path(user),
+                class: 'btn btn-block btn-primary',
+                role: 'button' %>
+    <%= link_to 'Create address',
+                new_admin_user_address_path(user),
+                class: 'btn btn-block btn-primary',
+                role: 'button' %>
+  </div>
+</div>

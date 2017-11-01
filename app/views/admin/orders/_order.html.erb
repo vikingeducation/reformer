@@ -1,0 +1,12 @@
+<%= render partial: 'logistical_info', locals: { user: user, order: order } %>
+
+<%= render partial: 'form', locals: { user: user, credit_cards: credit_cards, order: order } %>
+
+<div class="col-sm-12 bottom-buffer text-center">
+  <%= link_to 'Delete order',
+              admin_user_order_path(user, order),
+              method: :delete,
+              data: {
+                  confirm: 'You sure you wanna delete this order?'
+              } %>
+</div>

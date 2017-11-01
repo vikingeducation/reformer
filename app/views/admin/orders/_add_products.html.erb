@@ -1,0 +1,26 @@
+<div class="col-sm-12 text-center">
+  <h2 class="h3">Add products to order</h2>
+  <p>Add up to 5 products at a time</p>
+</div>
+
+<div class="col-sm-12">
+  <%= form_for [:admin, user, order],
+               url: admin_user_order_add_products_path(user, order) do |f| %>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-default">
+        <th>ProductID</th>
+        <th>Quantity</th>
+        </thead>
+        <tbody>
+        <% 5.times do |i| %>
+            <tr>
+              <td><%= text_field_tag 'product_ids[]', nil, class: 'form-control' %></td>
+              <td><%= text_field_tag 'product_quantities[]', nil, class: 'form-control' %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <%= f.submit 'Add products', class: 'btn btn-block btn-primary bottom-buffer' %>
+  <% end %>
+</div>

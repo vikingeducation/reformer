@@ -1,0 +1,83 @@
+<h1>Make a new user in 3 magical ways!</h1>
+<section class="naked">
+  <h2>Rugged, original HTML form</h2>
+  <form accept-charset="UTF-8" action="/users" method="post">
+    <% if errors.any? %>
+        <ul>
+          <% errors.each do |msg| %>
+              <li class="error"><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>
+      Email:
+      <input type="email" name="user[email]" value="<%= email %>" placeholder="example@example.com">
+    </label>
+    <label>
+      First name:
+      <input type="text" name="user[first_name]" value="<%= first_name %>">
+    </label>
+    <label>
+      Last name:
+      <input type="text" name="user[last_name]" value="<%= last_name %>">
+    </label>
+    <label>
+      Password:
+      <input type="password" name="user[password]">
+    </label>
+    <input type="submit" value="Kneel before Zod!">
+  </form>
+</section>
+
+<section class="form-tags">
+  <h2>Business-class form-tag</h2>
+  <%= form_tag '/users' do %>
+      <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li class="error"><%= msg %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      <%= label_tag 'user[email]', 'Email:' %>
+      <%= email_field_tag 'user[email]', email, placeholder: 'example@example.com' %>
+
+      <%= label_tag 'user[first_name]', 'First name:' %>
+      <%= text_field_tag 'user[first_name]', first_name %>
+
+      <%= label_tag 'user[last_name]', 'Last name:' %>
+      <%= text_field_tag 'user[last_name]', last_name %>
+
+      <%= label_tag 'user[password]', 'Password:' %>
+      <%= password_field_tag 'user[password]' %>
+
+      <%= submit_tag 'Submit' %>
+  <% end %>
+</section>
+
+<section class="form-for">
+  <h2>Blinged-out form_for</h2>
+  <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li class="error"><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= f.label :email, 'Email:' %>
+      <%= f.email_field :email, placeholder: 'example@example.com' %>
+
+      <%= f.label :first_name, 'First name:' %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name, 'Last name:' %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :password, "What's the password?" %>
+      <%= f.password_field :password %>
+
+      <%= f.submit 'Kneel before Zod!' %>
+  <% end %>
+</section>

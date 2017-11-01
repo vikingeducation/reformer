@@ -1,0 +1,21 @@
+<div class="col-sm-12">
+  <h2 class="h3 text-center">Logistical information</h2>
+</div>
+<div class="col-sm-12">
+  <h3 class="h4">Basic information</h3>
+</div>
+<div class="col-sm-3 top-buffer"><h2 class="h5">Customer ID:</h2></div>
+<div class="col-sm-9 top-buffer"><p class="h5"><%= user.id %></p></div>
+<div class="col-sm-3"><h2 class="h5">Customer:</h2></div>
+<div class="col-sm-9"><p class="h5">
+  <%= link_to "#{user.full_name} (click to view user)", admin_user_path(user) %>
+</p></div>
+<div class="col-sm-3"><h2 class="h5">Date placed:</h2></div>
+<div class="col-sm-9"><p class="h5"><%= order.date_placed %></p></div>
+<% if params[:action] == 'show' %>
+  <div class="col-sm-3"><h2 class="h5"># Products</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= order.products.size %></p></div>
+  <div class="col-sm-3"><h2 class="h5"># Order value</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= number_to_currency(order.total) %></p></div>
+<% end %>
+<div class="col-sm-12"><%= link_to 'Edit customer profile', edit_admin_user_path(user) %></div>

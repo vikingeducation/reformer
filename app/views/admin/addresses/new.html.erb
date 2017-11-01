@@ -1,0 +1,14 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2">New address for <%= user.full_name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-3"><h2 class="h5">Owner ID:</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= user.id %></p></div>
+  <div class="col-sm-3"><h2 class="h5">Owner Name:</h2></div>
+  <div class="col-sm-9"><p class="h5"><%= link_to user.full_name, admin_user_path(user) %></p></div>
+</div>
+
+<div class="row top-buffer">
+  <%= render partial: 'form', locals: { user: user, address: address } %>
+</div>

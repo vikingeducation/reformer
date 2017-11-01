@@ -1,0 +1,13 @@
+<div class="row top-buffer">
+  <h1 class="col-sm-12 h2 text-center">
+    User <%= user.id %>: <%= user.full_name %>
+  </h1>
+</div>
+
+<%= render partial: 'demographic_info', locals: { user: user } %>
+
+<%= render partial: 'credit_card_info', locals: { user: user, card: card } %>
+
+<%= render partial: 'admin_actions', locals: { user: user } %>
+
+<%= render partial: 'order_history', locals: { user: user, orders: orders } %>

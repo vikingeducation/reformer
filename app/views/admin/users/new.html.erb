@@ -1,0 +1,11 @@
+<div class="row top-buffer">
+  <h1 class="col-sm-12 h2 text-center">New User</h1>
+</div>
+
+<div class="row top-buffer border border-dark rounded">
+  <div class="col-sm-12 top-buffer">
+    <h2 class="h3 text-center"><u>Demographic information</u></h2>
+  </div>
+
+  <%= render partial: 'form', locals: { user: user, show_address_fields: false } %>
+</div>

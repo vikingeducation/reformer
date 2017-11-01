@@ -1,0 +1,18 @@
+<div class="row">
+  <h1 class="col-sm-12 text-center h2">
+    Edit product <%= @product.id %>
+  </h1>
+</div>
+
+<%= render 'form' %>
+
+<div class="row top-buffer">
+  <div class="col-sm-12 text-center">
+    <%= link_to 'Delete product',
+                admin_product_path(@product),
+                method: :delete,
+                data: {
+                    confirm: 'You sure you wanna delete this product, buddy?'
+                } %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row top-buffer">
+  <div class="col-sm-12"><h3 class="h4">Shipping address:</h3></div>
+  <div class="col-sm-3">Street</div>
+  <div class="col-sm-9"><%= order.shipping_address.street_1 %></div>
+  <div class="col-sm-3">City</div>
+  <div class="col-sm-9"><%= order.shipping_address.city.name %></div>
+  <div class="col-sm-3">State</div>
+  <div class="col-sm-9"><%= order.shipping_address.state.abbrev %></div>
+</div>
+
+<div class="row top-buffer">
+  <div class="col-sm-12"><h3 class="h4">Billing address:</h3></div>
+  <div class="col-sm-3">Street</div>
+  <div class="col-sm-9"><%= order.billing_address.street_1 %></div>
+  <div class="col-sm-3">City</div>
+  <div class="col-sm-9"><%= order.billing_address.city.name %></div>
+  <div class="col-sm-3">State</div>
+  <div class="col-sm-9"><%= order.billing_address.state.abbrev %></div>
+</div>

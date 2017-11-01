@@ -1,0 +1,57 @@
+<div class="col-sm-12">
+  <h2 class="h3 text-center">Edit order contents</h2>
+</div>
+
+<div class="col-sm-12">
+  <% if order.errors.any? %>
+    <%  order.contents.each do |content| %>
+      <ul class="list-group">
+        <% content.errors.full_messages.each do |msg| %>
+          <li class="list-group-item list-group-item-danger">
+            <%= "For ID: #{content.product_id}, #{msg}" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= form_for [:admin, user, order] do |f| %>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-default">
+      <th>ID</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total price</th>
+      <th>REMOVE</th>
+      </thead>
+      <tbody>
+      <% order.contents.each do |content| %>
+        <%= f.fields_for :contents, content do |content_fields| %>
+          <tr>
+            <td><%= content.product.id %></td>
+            <td><%= content_fields.text_field :quantity, class: 'form-control' %></td>
+            <td><%= number_to_currency(content.product.price) %></td>
+            <td><%= number_to_currency(content.product.price * content.quantity) %></td>
+            <td>
+              <% if content_fields.object.persisted? %>
+                <%= content_fields.check_box :_destroy %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= f.submit 'Update order contents', class: 'btn btn-block btn-primary bottom-buffer' %>
+  <% end %>
+
+  <div class="col-sm-12 bottom-buffer text-center">
+    <%= link_to 'Delete order',
+                admin_user_order_path(user, order),
+                method: :delete,
+                data: {
+                    confirm: 'You sure you wanna delete this order?'
+                } %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="row top-buffer">
+  <h1 class="col-sm-12 text-center h2">
+    Edit category <%= @category.id %>: <%= @category.name %>
+  </h1>
+</div>
+
+<%= render 'form' %>
+
+<div class="row top-buffer">
+  <div class="col-sm-12 text-center">
+    <%= link_to 'Delete category',
+                admin_category_path(@category),
+                method: :delete,
+                data: {
+                    confirm: 'You sure you wanna delete this category, my friend?'
+                } %>
+  </div>
+</div>

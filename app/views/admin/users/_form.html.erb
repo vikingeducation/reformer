@@ -1,0 +1,52 @@
+<div class="col-sm-12">
+  <% if user.errors.any? %>
+      <ul class="list-group">
+        <% user.errors.full_messages.each do |msg| %>
+            <li class="list-group-item list-group-item-danger"><%= msg %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_for [:admin, user] do |f| %>
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name,
+                         class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, 'Telephone' %>
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+
+      <% if show_address_fields %>
+
+        <div class="form-group">
+          <%= f.label 'Default billing address' %>
+          <%= f.collection_select :billing_id, user.addresses,
+                                  :id, :street_1,
+                                  { prompt: true },
+                                  { class: 'form-control'}  %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Default shipping address' %>
+          <%= f.collection_select :shipping_id, user.addresses,
+                                  :id, :street_1,
+                                  { prompt: true },
+                                  { class: 'form-control'}  %>
+        </div>
+        <div class="form-group">
+          <%= link_to 'View saved addresses', admin_user_addresses_path(user) %>
+        </div>
+      <% end %>
+
+      <%= f.submit class: 'btn btn-block btn-primary' %>
+  <% end %>
+</div>

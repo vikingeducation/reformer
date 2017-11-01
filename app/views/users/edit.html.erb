@@ -1,0 +1,15 @@
+<section class="form-for">
+  <h2>Blinged-out form_for</h2>
+  <%= form_for @user do |f| %>
+      <%= f.label :email, 'Email:' %>
+      <%= f.email_field :email, placeholder: 'example@example.com' %>
+
+      <%= f.label :username, 'Username:' %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password, "What's the password?" %>
+      <%= f.password_field :password %>
+
+      <%= f.submit 'Kneel before Zod!' %>
+  <% end %>
+</section>
