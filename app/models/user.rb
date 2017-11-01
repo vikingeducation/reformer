@@ -30,4 +30,7 @@ class User < ApplicationRecord
     save
   end
 
+  def most_recent_order
+    orders.maximum('checkout_date').to_date
+  end
 end
