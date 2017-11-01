@@ -23,6 +23,10 @@ class User < ApplicationRecord
             format: { with: /@/, message: 'must have an @ symbol' },
             uniqueness: true
 
+  def cart
+    orders.where(checkout_date: nil).first
+  end
+
   def clear_shipping_or_billing_address(address)
     self.shipping_id = nil if address.id == shipping_id
     self.billing_id = nil if address.id == billing_id

@@ -30,7 +30,7 @@
                       } %>
       </li>
       <li><%= link_to 'View saved addresses', admin_user_addresses_path(user) %></li>
-      <li><%= link_to 'View unplaced order (Cart)', '#' %></li>
+      <li><%= link_to 'View unplaced order (Cart)', admin_user_order_path(user, user.cart) %></li>
     </ul>
   </div>
 </div>
