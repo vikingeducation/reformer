@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -66,7 +67,7 @@ group :test do
 end
 
 group :development do
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
