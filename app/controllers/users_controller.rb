@@ -10,4 +10,12 @@ class UsersController < ApplicationController
       redirect_to new_user_url
     end
   end
+
+  def show
+    
+  end
+
+  def index
+    @users = User.all
+  end
 end
