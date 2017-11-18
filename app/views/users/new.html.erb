@@ -1,0 +1,21 @@
+<h1>hello world!</h1>
+<!--  Build a form for creating a new user. Specify the method
+and the action attributes in your <form> tag as necessary. Include the special
+input attribute accept-charset="UTF-8" as well, which Rails naturally adds to
+its forms to specify Unicode character encoding. Create the proper input tags
+for your user's fields (email, username and password). Use the proper password
+input for "password". Be sure to specify the name attribute for these inputs.
+Make label tags which correspond to each field. -->
+
+<form action="/users", method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="email">E-mail</label>
+  <input type="email" id="email" name="user[email]" />
+  <label for="username">Username</label>
+  <input type="text" id="username" name="user[username]" />
+  <label for="password">Pasword</label>
+  <input type="password" id="password" name="user[password]" />
+  <input type="submit">
+
+</form>
