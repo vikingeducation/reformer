@@ -7,9 +7,10 @@
   </tr>
 <% @users.each do |user| %>
   <tr>
-  <td><%= user.email %></td>
-  <td><%= user.username %></td>
-  <td><%= user.password %></td>
-</tr>
+    <td><%= user.email %></td>
+    <td><%= user.username %></td>
+    <td><%= user.password %></td>
+    <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+  </tr>
   <% end %>
 </table>
