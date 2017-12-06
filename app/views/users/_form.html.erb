@@ -1,30 +1,31 @@
 <h2>Using plain HTML</h2>
-<form accept-charset="UTF-8" action="/user" method="post">
+<form accept-charset="UTF-8" action="/users" method="post">
   <input name="utf8" type="hidden" value="✓">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <div>
-    <label for="user_username">
-      Username:
-      <input type="text" id="username" name="user[username]">
-    </label><br>
 
-    <label for="user_email">
-      Email:
-      <input type="email" id="email" name="user[email]">
-    </label><br>
+  <label for="user_username">Username:</label>
+  <input type="text" id="username" name="user[username]" value="freshy fresh">
 
-    <label for="user_password">
-    <label>
-      Password:
-      <input type="password" id="password" name="user[password]">
-    </label><br>
+  <label for="user_email">Email:</label>
+  <input type="email" id="email" name="user[email]">
 
-    <input type="submit">
-  </div>
+  <label for="user_password">Password:</label>
+  <input type="password" id="password" name="user[password]">
+
+  <input type="submit">
 </form>
 
 
+<hr>
+
+
 <h2>Using form_tag</h2>
+<%= form_tag %>
+<% end %>
+
+
+<hr>
 
 
 <h2>Using form_for</h2>
+
