@@ -4,7 +4,7 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <label for="user_username">Username:</label>
-  <input type="text" id="username" name="user[username]" value="freshy fresh">
+  <input type="text" id="username" name="user[username]">
 
   <label for="user_email">Email:</label>
   <input type="email" id="email" name="user[email]">
@@ -20,7 +20,14 @@
 
 
 <h2>Using form_tag</h2>
-<%= form_tag %>
+<%= form_tag("/users", method: "post", authenticity_token: form_authenticity_token) do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag('[user][username]') %>
+  <%= label_tag(:email, "Email:") %>
+  <%= email_field_tag('[user][email]') %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag('[user][password]') %>
+  <%= submit_tag("Submit") %>
 <% end %>
 
 
