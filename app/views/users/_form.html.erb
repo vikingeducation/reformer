@@ -35,4 +35,12 @@
 
 
 <h2>Using form_for</h2>
-
+<%= form_for(@user) do |f| %>
+  <%= f.label(:username, 'Username:') %>
+  <%= f.text_field(:username, placeholder: 'your username here') %>
+  <%= f.label(:email, 'Email:') %>
+  <%= f.email_field(:email, value: 'snook@email.com') %>
+  <%= f.label(:password, 'Password:') %>
+  <%= f.password_field(:password) %>
+  <%= f.submit %>
+<% end %> <!-- form_for :user -->
