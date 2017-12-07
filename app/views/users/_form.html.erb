@@ -1,0 +1,51 @@
+<h2>Using plain HTML</h2>
+<form accept-charset="UTF-8" action="/users" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="user_username">Username:</label>
+  <input type="text" id="username" name="user[username]">
+
+  <label for="user_email">Email:</label>
+  <input type="email" id="email" name="user[email]">
+
+  <label for="user_password">Password:</label>
+  <input type="password" id="password" name="user[password]">
+
+  <input type="submit">
+</form>
+
+
+<hr>
+
+
+<h2>Using form_tag</h2>
+<%= form_tag("/users", method: "post", authenticity_token: form_authenticity_token) do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag('[user][username]') %>
+  <%= label_tag(:email, "Email:") %>
+  <%= email_field_tag('[user][email]') %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag('[user][password]') %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+
+<hr>
+
+<p>Form For</p>
+<%= form_for(user) do |f| %>
+  <%= f.label(:username, 'Username:') %>
+  <%= show_field_errors(user, :username) %>
+  <%= f.text_field(:username, placeholder: 'your username here') %>
+
+  <%= f.label(:email, 'Email:') %>
+  <%= show_field_errors(user, :email) %>
+  <%= f.email_field(:email, value: 'something@email.com') %>
+
+  <%= f.label(:password, 'Password:') %>
+  <%= show_field_errors(user, :password) %>
+  <%= f.password_field(:password) %>
+
+  <%= f.submit %>
+<% end %>
